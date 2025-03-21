@@ -81,6 +81,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
+    premium: true,
   },
   {
     id: "cryptic",
@@ -403,6 +404,20 @@ const expData = [
   },
 ]
 
+const st = {
+  view: "grid",
+  qry: "",
+  pltFlt: [],
+  lvlFlt: [0, 0],
+  prcFlt: "all",
+  vrfOnly: false,
+  premOnly: false,
+  extOnly: false,
+  execOnly: false,
+  srtBy: "recommended",
+  fltrd: [...expData],
+}
+
 const els = {
   hdr: document.getElementById("hdr"),
   hero: document.getElementById("heroSec"),
@@ -424,6 +439,12 @@ const els = {
   mLvlFill: document.getElementById("mobLvlTrkFill"),
   vrfSwch: document.getElementById("vrfSwch"),
   mVrfSwch: document.getElementById("mobVrfSwch"),
+  premSwch: document.getElementById("premSwch"),
+  mPremSwch: document.getElementById("mobPremSwch"),
+  extSwch: document.getElementById("extSwch"),
+  mExtSwch: document.getElementById("mobExtSwch"),
+  execSwch: document.getElementById("execSwch"),
+  mExecSwch: document.getElementById("mobExecSwch"),
   srtSel: document.getElementById("srtSel"),
   mSrtSel: document.getElementById("mobSrtSel"),
   rstBtn: document.getElementById("rstFltrs"),
@@ -436,33 +457,391 @@ const els = {
   ttlCnt: document.getElementById("ttlCnt"),
   tabBtns: document.querySelectorAll(".tab-trgr"),
   tabCntnt: document.querySelectorAll(".tab-cntnt"),
-  popup: document.getElementById("popupNotification"),
-  closePopup: document.getElementById("closePopup"),
-  cnv: document.getElementById("strCnv")
+  cnv: document.getElementById("strCnv"),
 }
 
-const st = {
-  view: "grid",
-  qry: "",
-  pltFlt: [],
-  lvlFlt: [0, 0],
-  prcFlt: "all",
-  vrfOnly: false,
-  srtBy: "recommended",
-  fltrd: [...expData]
+function crtUncMdl() {
+  const modalContainer = document.createElement("div")
+  modalContainer.className = "unc-modal-container"
+  modalContainer.id = "uncModalContainer"
+  modalContainer.style.display = "none"
+
+  modalContainer.innerHTML = `
+    <div class="unc-modal-overlay" id="uncModalOverlay"></div>
+    <div class="unc-modal">
+      <div class="unc-modal-header">
+        <h2 class="unc-modal-title" id="uncModalTitle">UNC Code</h2>
+      </div>
+      <div class="unc-modal-content">
+        <div class="unc-modal-info">
+          <div class="unc-modal-exploit-info" id="uncModalExploitInfo">
+            <div class="unc-modal-exploit-name" id="uncModalExploitName"></div>
+            <div class="unc-modal-exploit-desc" id="uncModalExploitDesc"></div>
+          </div>
+        </div>
+        <div class="unc-modal-code-container">
+          <div class="unc-modal-code-header">
+            <div class="unc-modal-code-title">UNC Code</div>
+            <button class="unc-modal-copy-btn" id="uncModalCopyBtn">
+              <i class="fas fa-copy"></i> Copy
+            </button>
+          </div>
+          <pre class="unc-modal-code" id="uncModalCode"></pre>
+        </div>
+        <div class="unc-modal-loading" id="uncModalLoading">
+          <div class="unc-modal-spinner"></div>
+          <div class="unc-modal-loading-text">Loading UNC data...</div>
+        </div>
+        <div class="unc-modal-error" id="uncModalError">
+          <i class="fas fa-exclamation-triangle"></i>
+          <div class="unc-modal-error-text" id="uncModalErrorText">Failed to load UNC data</div>
+        </div>
+      </div>
+      <div class="unc-modal-footer">
+        <button class="unc-modal-btn unc-modal-btn-primary" id="uncModalCloseBtn">
+          <i class="fas fa-times"></i> Close
+        </button>
+      </div>
+    </div>
+  `
+
+  document.body.appendChild(modalContainer)
+  document.getElementById("uncModalOverlay").addEventListener("click", clsUncMdl)
+  document.getElementById("uncModalCloseBtn").addEventListener("click", clsUncMdl)
+
+  document.getElementById("uncModalCopyBtn").addEventListener("click", () => {
+    const codeElement = document.getElementById("uncModalCode")
+    if (codeElement) {
+      navigator.clipboard.writeText(codeElement.textContent || "")
+      const copyBtn = document.getElementById("uncModalCopyBtn")
+      const originalText = copyBtn.innerHTML
+      copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!'
+      setTimeout(() => {
+        copyBtn.innerHTML = originalText
+      }, 2000)
+    }
+  })
+}
+
+function shwNtf(msg, type = "error") {
+  let container = document.getElementById("custom-notifications")
+  if (!container) {
+    container = document.createElement("div")
+    container.id = "custom-notifications"
+    container.style.position = "fixed"
+    container.style.top = "20px"
+    container.style.right = "20px"
+    container.style.zIndex = "9999"
+    container.style.display = "flex"
+    container.style.flexDirection = "column"
+    container.style.gap = "10px"
+    document.body.appendChild(container)
+  }
+
+  const notif = document.createElement("div")
+  notif.className = `custom-notification ${type}`
+  notif.style.position = "relative"
+  notif.style.minWidth = "320px"
+  notif.style.maxWidth = "450px"
+  notif.style.overflow = "hidden"
+  notif.style.borderRadius = "12px"
+  notif.style.boxShadow = "0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 5px 10px -5px rgba(0, 0, 0, 0.2)"
+  notif.style.transform = "translateX(120%)"
+  notif.style.transition = "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease"
+  notif.style.margin = "0 0 10px 0"
+  notif.style.opacity = "1"
+
+  const bgColor = type === "error" ? "rgba(239, 68, 68, 0.85)" : "rgba(59, 130, 246, 0.85)"
+  notif.style.background = bgColor
+  notif.style.backdropFilter = "blur(10px)"
+  notif.style.border = type === "error" ? "1px solid rgba(248, 113, 113, 0.4)" : "1px solid rgba(96, 165, 250, 0.4)"
+
+  const content = document.createElement("div")
+  content.style.padding = "16px 20px"
+  content.style.display = "flex"
+  content.style.alignItems = "flex-start"
+  content.style.gap = "15px"
+  content.style.position = "relative"
+  content.style.zIndex = "1"
+
+  const decorativeLine = document.createElement("div")
+  decorativeLine.style.position = "absolute"
+  decorativeLine.style.top = "0"
+  decorativeLine.style.left = "0"
+  decorativeLine.style.width = "4px"
+  decorativeLine.style.height = "100%"
+  decorativeLine.style.background = "rgba(255, 255, 255, 0.9)"
+  decorativeLine.style.borderRadius = "2px"
+  content.appendChild(decorativeLine)
+
+  const iconContainer = document.createElement("div")
+  iconContainer.style.display = "flex"
+  iconContainer.style.alignItems = "center"
+  iconContainer.style.justifyContent = "center"
+  iconContainer.style.width = "32px"
+  iconContainer.style.height = "32px"
+  iconContainer.style.borderRadius = "50%"
+  iconContainer.style.background = "rgba(255, 255, 255, 0.25)"
+  iconContainer.style.flexShrink = "0"
+
+  const icon = document.createElement("i")
+  icon.className = type === "error" ? "fas fa-exclamation-circle" : "fas fa-info-circle"
+  icon.style.color = "white"
+  icon.style.fontSize = "16px"
+  iconContainer.appendChild(icon)
+
+  const msgContainer = document.createElement("div")
+  msgContainer.style.flex = "1"
+
+  const title = document.createElement("div")
+  title.textContent = type === "error" ? "UNC Test Unavailable" : "Information"
+  title.style.fontWeight = "600"
+  title.style.fontSize = "14px"
+  title.style.color = "white"
+  title.style.marginBottom = "4px"
+  title.style.letterSpacing = "0.3px"
+
+  const msgText = document.createElement("div")
+  msgText.textContent = msg
+  msgText.style.fontSize = "13px"
+  msgText.style.color = "rgba(255, 255, 255, 0.9)"
+  msgText.style.lineHeight = "1.4"
+
+  msgContainer.appendChild(title)
+  msgContainer.appendChild(msgText)
+
+  const closeBtn = document.createElement("button")
+  closeBtn.innerHTML = '<i class="fas fa-times"></i>'
+  closeBtn.style.background = "none"
+  closeBtn.style.border = "none"
+  closeBtn.style.color = "white"
+  closeBtn.style.opacity = "0.7"
+  closeBtn.style.cursor = "pointer"
+  closeBtn.style.fontSize = "14px"
+  closeBtn.style.padding = "4px"
+  closeBtn.style.marginLeft = "8px"
+  closeBtn.style.transition = "all 0.2s"
+  closeBtn.style.display = "flex"
+  closeBtn.style.alignItems = "center"
+  closeBtn.style.justifyContent = "center"
+  closeBtn.style.width = "24px"
+  closeBtn.style.height = "24px"
+  closeBtn.style.borderRadius = "50%"
+
+  closeBtn.addEventListener("mouseover", () => {
+    closeBtn.style.opacity = "1"
+    closeBtn.style.background = "rgba(255, 255, 255, 0.2)"
+  })
+
+  closeBtn.addEventListener("mouseout", () => {
+    closeBtn.style.opacity = "0.7"
+    closeBtn.style.background = "none"
+  })
+
+  closeBtn.addEventListener("click", () => {
+    notif.style.transform = "translateX(120%)"
+    notif.style.opacity = "0"
+    setTimeout(() => {
+      notif.remove()
+    }, 500)
+  })
+
+  content.appendChild(iconContainer)
+  content.appendChild(msgContainer)
+  content.appendChild(closeBtn)
+  notif.appendChild(content)
+
+  const progressBarContainer = document.createElement("div")
+  progressBarContainer.style.position = "absolute"
+  progressBarContainer.style.bottom = "0"
+  progressBarContainer.style.left = "0"
+  progressBarContainer.style.width = "100%"
+  progressBarContainer.style.height = "3px"
+  progressBarContainer.style.background = "rgba(0, 0, 0, 0.1)"
+
+  const progressBar = document.createElement("div")
+  progressBar.style.height = "100%"
+  progressBar.style.width = "100%"
+  progressBar.style.background = "rgba(255, 255, 255, 0.7)"
+  progressBar.style.transition = "width 5s cubic-bezier(0.1, 0.5, 0.2, 1)"
+
+  progressBarContainer.appendChild(progressBar)
+  notif.appendChild(progressBarContainer)
+
+  const shineEffect = document.createElement("div")
+  shineEffect.style.position = "absolute"
+  shineEffect.style.top = "0"
+  shineEffect.style.left = "-100%"
+  shineEffect.style.width = "50%"
+  shineEffect.style.height = "100%"
+  shineEffect.style.background = "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)"
+  shineEffect.style.transform = "skewX(-20deg)"
+  shineEffect.style.animation = "shine 3s infinite"
+  notif.appendChild(shineEffect)
+
+  container.appendChild(notif)
+
+  setTimeout(() => {
+    notif.style.transform = "translateX(0)"
+  }, 10)
+
+  setTimeout(() => {
+    progressBar.style.width = "0"
+  }, 100)
+
+  setTimeout(() => {
+    notif.style.transform = "translateX(120%)"
+    notif.style.opacity = "0"
+    setTimeout(() => {
+      notif.remove()
+    }, 500)
+  }, 5000)
+}
+
+async function ftchUncDt(id, name) {
+  try {
+    const response = await fetch(`https://voxlis.net/assets/unc/${id}.json`)
+    if (response.status === 404) {
+      shwNtf(`UNC/sUNC test for ${name} is unknown`, "error")
+      throw new Error("UNC data not found")
+    }
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+    const rawText = await response.text()
+    return { code: rawText }
+  } catch (error) {
+    console.error("Error fetching UNC data:", error)
+    throw error
+  }
+}
+
+function opnUncMdl(exploit) {
+  const modalContainer = document.getElementById("uncModalContainer")
+  if (!modalContainer) {
+    crtUncMdl()
+  }
+
+  const modalContainer2 = document.getElementById("uncModalContainer")
+  const modalTitle = document.getElementById("uncModalTitle")
+  const modalExploitName = document.getElementById("uncModalExploitName")
+  const modalExploitDesc = document.getElementById("uncModalExploitDesc")
+  const modalCode = document.getElementById("uncModalCode")
+  const modalLoading = document.getElementById("uncModalLoading")
+  const modalError = document.getElementById("uncModalError")
+
+  modalContainer2.style.display = "flex"
+  modalTitle.textContent = `${exploit.name} UNC Code`
+  modalExploitName.textContent = exploit.name
+  modalExploitDesc.textContent = exploit.desc
+
+  modalLoading.style.display = "flex"
+  modalCode.style.display = "none"
+  modalError.style.display = "none"
+
+  ftchUncDt(exploit.id, exploit.name)
+    .then((data) => {
+      modalLoading.style.display = "none"
+      modalCode.style.display = "block"
+      modalCode.textContent = data.code || "-- No UNC code available"
+      if (window.hljs) {
+        window.hljs.highlightElement(modalCode)
+      }
+    })
+    .catch((error) => {
+      modalLoading.style.display = "none"
+      modalError.style.display = "flex"
+      document.getElementById("uncModalErrorText").textContent =
+        `Failed to load UNC data: ${error.message || "Unknown error"}`
+    })
+
+  setTimeout(() => {
+    document.querySelector(".unc-modal").classList.add("show")
+  }, 10)
+
+  document.body.style.overflow = "hidden"
+}
+
+function clsUncMdl() {
+  const modal = document.querySelector(".unc-modal")
+  if (modal) {
+    modal.classList.remove("show")
+    setTimeout(() => {
+      const container = document.getElementById("uncModalContainer")
+      if (container) {
+        container.style.display = "none"
+      }
+      document.body.style.overflow = ""
+    }, 300)
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  els.lvlVal.textContent = "ALL"
-  els.mLvlVal.textContent = "ALL"
+  const loadingScreen = document.createElement("div")
+  loadingScreen.className = "loading-screen"
+  loadingScreen.innerHTML = `
+    <div class="loading-logo">
+      <div class="logo-bar"></div>
+      <span class="logo-txt-lt">WWW.</span>
+      <span class="logo-txt-grd">VOXLIS</span>
+      <span class="logo-txt-lt">.NET</span>
+    </div>
+    <div class="loading-bar-container">
+      <div class="loading-bar" id="loadingBar"></div>
+    </div>
+    <div class="loading-text">Loading resources...</div>
+  `
+  document.body.appendChild(loadingScreen)
+
+  const loadingBar = document.getElementById("loadingBar")
+  let progress = 0
+  const startTime = performance.now()
+  const isSlowDevice = () => performance.now() - startTime > 300
+  
+  const loadingInterval = setInterval(
+    () => {
+      if (progress < 100) {
+        const increment = isSlowDevice() ? 5 : 10
+        progress += increment
+        if (progress > 100) progress = 100
+        requestAnimationFrame(() => {
+          loadingBar.style.width = `${progress}%`
+        })
+        const loadingText = document.querySelector(".loading-text")
+        if (progress < 30) {
+          loadingText.textContent = "Loading resources..."
+        } else if (progress < 60) {
+          loadingText.textContent = "Preparing exploits..."
+        } else if (progress < 90) {
+          loadingText.textContent = "Almost ready..."
+        } else {
+          loadingText.textContent = "Welcome to voxlis.NET"
+        }
+      } else {
+        clearInterval(loadingInterval)
+        setTimeout(
+          () => {
+            loadingScreen.classList.add("hidden")
+            setTimeout(() => {
+              loadingScreen.remove()
+            }, 800)
+          },
+          isSlowDevice() ? 500 : 200,
+        )
+      }
+    },
+    isSlowDevice() ? 100 : 50,
+  )
+
+  if (els.lvlVal) els.lvlVal.textContent = "ALL"
+  if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
 
   updCnts()
   rndrExps()
   initStrs()
-  setupEvts()
+  stpEvts()
+  crtUncMdl()
 })
 
-function setupEvts() {
+function stpEvts() {
   window.addEventListener("scroll", () => {
     const heroH = els.hero ? els.hero.offsetHeight : 0
     if (window.scrollY > heroH / 2) {
@@ -481,13 +860,16 @@ function setupEvts() {
 
   els.srch.addEventListener("input", (e) => {
     st.qry = e.target.value
+    els.mSrch.value = st.qry
     els.clrBtn.classList.toggle("hidden", !st.qry)
+    els.mClrBtn.classList.toggle("hidden", !st.qry)
     fltrExps()
   })
 
   els.mSrch.addEventListener("input", (e) => {
     st.qry = e.target.value
     els.srch.value = st.qry
+    els.clrBtn.classList.toggle("hidden", !st.qry)
     els.mClrBtn.classList.toggle("hidden", !st.qry)
     fltrExps()
   })
@@ -510,60 +892,79 @@ function setupEvts() {
     fltrExps()
   })
 
-  els.fltrBtn.addEventListener("click", () => {
-    els.drwr.classList.add("open")
-    document.body.style.overflow = "hidden"
-  })
+  if (els.fltrBtn) {
+    els.fltrBtn.addEventListener("click", () => {
+      els.drwr.classList.add("open")
+      document.body.style.overflow = "hidden"
+    })
+  }
 
-  els.mFltrBtn.addEventListener("click", () => {
-    els.drwr.classList.add("open")
-    document.body.style.overflow = "hidden"
-    els.menu.classList.add("hidden")
-    els.menuTgl.innerHTML = '<i class="fas fa-bars"></i>'
-  })
+  if (els.mFltrBtn) {
+    els.mFltrBtn.addEventListener("click", () => {
+      els.drwr.classList.add("open")
+      document.body.style.overflow = "hidden"
+      els.menu.classList.add("hidden")
+      els.menuTgl.innerHTML = '<i class="fas fa-bars"></i>'
+    })
+  }
 
-  els.drwr.querySelector(".fltr-drwr-ovl").addEventListener("click", () => {
-    els.drwr.classList.remove("open")
-    document.body.style.overflow = ""
-  })
+  if (els.drwr) {
+    els.drwr.querySelector(".fltr-drwr-ovl").addEventListener("click", () => {
+      els.drwr.classList.remove("open")
+      document.body.style.overflow = ""
+    })
+  }
 
-  els.applyBtn.addEventListener("click", () => {
-    els.drwr.classList.remove("open")
-    document.body.style.overflow = ""
-  })
+  if (els.applyBtn) {
+    els.applyBtn.addEventListener("click", () => {
+      els.drwr.classList.remove("open")
+      document.body.style.overflow = ""
+    })
+  }
 
-  els.lvlSldr.addEventListener("input", (e) => {
-    const val = parseInt(e.target.value)
-    st.lvlFlt = [0, val]
-    els.lvlVal.textContent = val === 0 ? "ALL" : val
-    updLvlSldr()
-    fltrExps()
-  })
+  if (els.lvlSldr) {
+    els.lvlSldr.addEventListener("input", (e) => {
+      const val = Number.parseInt(e.target.value)
+      st.lvlFlt = [0, val]
+      els.lvlVal.textContent = val === 0 ? "ALL" : val
+      if (els.mLvlSldr) els.mLvlSldr.value = val
+      if (els.mLvlVal) els.mLvlVal.textContent = val === 0 ? "ALL" : val
+      updLvlSldr()
+      updMLvlSldr()
+      fltrExps()
+    })
+  }
 
-  els.mLvlSldr.addEventListener("input", (e) => {
-    const val = parseInt(e.target.value)
-    st.lvlFlt = [0, val]
-    els.mLvlVal.textContent = val === 0 ? "ALL" : val
-    els.lvlSldr.value = val
-    els.lvlVal.textContent = val === 0 ? "ALL" : val
-    updLvlSldr()
-    updMLvlSldr()
-    fltrExps()
-  })
+  if (els.mLvlSldr) {
+    els.mLvlSldr.addEventListener("input", (e) => {
+      const val = Number.parseInt(e.target.value)
+      st.lvlFlt = [0, val]
+      els.mLvlVal.textContent = val === 0 ? "ALL" : val
+      if (els.lvlSldr) els.lvlSldr.value = val
+      if (els.lvlVal) els.lvlVal.textContent = val === 0 ? "ALL" : val
+      updLvlSldr()
+      updMLvlSldr()
+      fltrExps()
+    })
+  }
 
   document.querySelectorAll(".cstm-chkbx input").forEach((cb) => {
+    if (!cb.hasAttribute("data-pltf") && cb.id !== "vrfSwch" && cb.id !== "premSwch") return
+
     cb.addEventListener("change", () => {
-      const pltf = cb.getAttribute("data-pltf")
-      if (cb.checked) {
-        if (!st.pltFlt.includes(pltf)) {
-          st.pltFlt.push(pltf)
+      if (cb.hasAttribute("data-pltf")) {
+        const pltf = cb.getAttribute("data-pltf")
+        if (cb.checked) {
+          if (!st.pltFlt.includes(pltf)) {
+            st.pltFlt.push(pltf)
+          }
+        } else {
+          st.pltFlt = st.pltFlt.filter((p) => p !== pltf)
         }
-      } else {
-        st.pltFlt = st.pltFlt.filter((p) => p !== pltf)
+        document.querySelectorAll(`[data-pltf="${pltf}"]`).forEach((c) => {
+          c.checked = cb.checked
+        })
       }
-      document.querySelectorAll(`[data-pltf="${pltf}"]`).forEach((c) => {
-        c.checked = cb.checked
-      })
       fltrExps()
     })
   })
@@ -581,7 +982,6 @@ function setupEvts() {
       document.querySelectorAll(`[data-pltf="${pltf}"]`).forEach((c) => {
         c.checked = cb.checked
       })
-
       fltrExps()
     })
   })
@@ -590,11 +990,11 @@ function setupEvts() {
     btn.addEventListener("click", () => {
       const prc = btn.getAttribute("data-prc")
       st.prcFlt = prc
-      document.querySelectorAll(".prc-btn").forEach((b) => {
+      document.querySelectorAll(".prc-btn, .mob-prc-btn").forEach((b) => {
         b.classList.remove("actv")
-      })
-      document.querySelectorAll(`[data-prc="${prc}"]`).forEach((b) => {
-        b.classList.add("actv")
+        if (b.getAttribute("data-prc") === prc) {
+          b.classList.add("actv")
+        }
       })
       fltrExps()
     })
@@ -604,62 +1004,129 @@ function setupEvts() {
     btn.addEventListener("click", () => {
       const prc = btn.getAttribute("data-prc")
       st.prcFlt = prc
-      document.querySelectorAll(".mob-prc-btn").forEach((b) => {
+      document.querySelectorAll(".prc-btn, .mob-prc-btn").forEach((b) => {
         b.classList.remove("actv")
+        if (b.getAttribute("data-prc") === prc) {
+          b.classList.add("actv")
+        }
       })
-      document.querySelectorAll(`[data-prc="${prc}"]`).forEach((b) => {
-        b.classList.add("actv")
-      })
-
       fltrExps()
     })
   })
 
-  els.vrfSwch.addEventListener("change", () => {
-    st.vrfOnly = els.vrfSwch.checked
-    els.mVrfSwch.checked = st.vrfOnly
-    fltrExps()
-  })
-
-  els.mVrfSwch.addEventListener("change", () => {
-    st.vrfOnly = els.mVrfSwch.checked
-    els.vrfSwch.checked = st.vrfOnly
-    fltrExps()
-  })
-
-  els.srtSel.addEventListener("change", () => {
-    st.srtBy = els.srtSel.value
-    els.mSrtSel.value = st.srtBy
-    fltrExps()
-  })
-
-  els.mSrtSel.addEventListener("change", () => {
-    st.srtBy = els.mSrtSel.value
-    els.srtSel.value = st.srtBy
-    fltrExps()
-  })
-
-  els.rstBtn.addEventListener("click", rstFltrs)
-  els.mRstBtn.addEventListener("click", rstFltrs)
-  els.rstAllBtn.addEventListener("click", rstFltrs)
-  els.tabBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const tab = btn.getAttribute("data-tab")
-      st.view = tab
-      els.tabBtns.forEach((t) => t.classList.remove("actv"))
-      btn.classList.add("actv")
-      els.tabCntnt.forEach((cntnt) => cntnt.classList.remove("actv"))
-      document.getElementById(`${tab}Tab`).classList.add("actv")
-    })
-  })
-
-  if (els.closePopup) {
-    els.closePopup.addEventListener("click", () => {
-      if (els.popup) {
-        els.popup.style.display = "none"
-      }
+  if (els.vrfSwch) {
+    els.vrfSwch.addEventListener("change", () => {
+      st.vrfOnly = els.vrfSwch.checked
+      if (els.mVrfSwch) els.mVrfSwch.checked = st.vrfOnly
+      fltrExps()
     })
   }
+
+  if (els.mVrfSwch) {
+    els.mVrfSwch.addEventListener("change", () => {
+      st.vrfOnly = els.mVrfSwch.checked
+      if (els.vrfSwch) els.vrfSwch.checked = st.vrfOnly
+      fltrExps()
+    })
+  }
+
+  if (els.premSwch) {
+    els.premSwch.addEventListener("change", () => {
+      st.premOnly = els.premSwch.checked
+      if (els.mPremSwch) els.mPremSwch.checked = st.premOnly
+      fltrExps()
+    })
+  }
+
+  if (els.mPremSwch) {
+    els.mPremSwch.addEventListener("change", () => {
+      st.premOnly = els.mPremSwch.checked
+      if (els.premSwch) els.premSwch.checked = st.premOnly
+      fltrExps()
+    })
+  }
+
+  if (els.srtSel) {
+    els.srtSel.addEventListener("change", () => {
+      st.srtBy = els.srtSel.value
+      if (els.mSrtSel) els.mSrtSel.value = st.srtBy
+      fltrExps()
+    })
+  }
+
+  if (els.mSrtSel) {
+    els.mSrtSel.addEventListener("change", () => {
+      st.srtBy = els.mSrtSel.value
+      if (els.srtSel) els.srtSel.value = st.srtBy
+      fltrExps()
+    })
+  }
+
+  if (els.rstBtn) els.rstBtn.addEventListener("click", rstFltrs)
+  if (els.mRstBtn) els.mRstBtn.addEventListener("click", rstFltrs)
+  if (els.rstAllBtn) els.rstAllBtn.addEventListener("click", rstFltrs)
+
+  if (els.tabBtns) {
+    els.tabBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tab = btn.getAttribute("data-tab")
+        st.view = tab
+        els.tabBtns.forEach((t) => t.classList.remove("actv"))
+        btn.classList.add("actv")
+        els.tabCntnt.forEach((cntnt) => cntnt.classList.remove("actv"))
+        document.getElementById(`${tab}Tab`).classList.add("actv")
+      })
+    })
+  }
+
+  if (els.extSwch) {
+    els.extSwch.addEventListener("change", () => {
+      st.extOnly = els.extSwch.checked
+      if (els.mExtSwch) els.mExtSwch.checked = st.extOnly
+      fltrExps()
+    })
+  }
+
+  if (els.mExtSwch) {
+    els.mExtSwch.addEventListener("change", () => {
+      st.extOnly = els.mExtSwch.checked
+      if (els.extSwch) els.extSwch.checked = st.extOnly
+      fltrExps()
+    })
+  }
+
+  if (els.execSwch) {
+    els.execSwch.addEventListener("change", () => {
+      st.execOnly = els.execSwch.checked
+      if (els.mExecSwch) els.mExecSwch.checked = st.execOnly
+      fltrExps()
+    })
+  }
+
+  if (els.mExecSwch) {
+    els.mExecSwch.addEventListener("change", () => {
+      st.execOnly = els.mExecSwch.checked
+      if (els.execSwch) els.execSwch.checked = st.execOnly
+      fltrExps()
+    })
+  }
+
+  document.addEventListener("click", (e) => {
+    const uncBtn = e.target.closest(".unc-btn")
+    if (uncBtn) {
+      const card = uncBtn.closest(".exp-crd") || uncBtn.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit) {
+            opnUncMdl(exploit)
+          }
+        }
+      }
+    }
+  })
 }
 
 function fltrExps() {
@@ -669,11 +1136,14 @@ function fltrExps() {
         const q = st.qry.toLowerCase()
         const nameMtch = exp.name.toLowerCase().includes(q)
         const descMtch = exp.desc.toLowerCase().includes(q)
-        const prosMtch = exp.pros && exp.pros.some((pro) => pro.toLowerCase().includes(q))
-        const consMtch = exp.cons && exp.cons.some((con) => con.toLowerCase().includes(q))
-        const ntrlMtch = exp.neutral && exp.neutral.some((ntrl) => ntrl.toLowerCase().includes(q))
+        const pltfMtch = exp.plat && exp.plat.some((platform) => platform.toLowerCase().includes(q))
+        const uncMtch =
+          exp.pros && exp.pros.some((pro) => pro.toLowerCase().includes("unc") && pro.toLowerCase().includes(q))
+        const uncNtrlMtch =
+          exp.neutral &&
+          exp.neutral.some((ntrl) => ntrl.toLowerCase().includes("unc") && ntrl.toLowerCase().includes(q))
 
-        if (!(nameMtch || descMtch || prosMtch || consMtch || ntrlMtch)) {
+        if (!(nameMtch || descMtch || pltfMtch || uncMtch || uncNtrlMtch)) {
           return false
         }
       }
@@ -701,23 +1171,51 @@ function fltrExps() {
         return false
       }
 
+      if (st.premOnly && !exp.premium) {
+        return false
+      }
+
+      if (st.extOnly) {
+        const isExternal =
+          (exp.pros && exp.pros.some((pro) => pro.toLowerCase().includes("external"))) ||
+          (exp.neutral && exp.neutral.some((ntrl) => ntrl.toLowerCase().includes("external")))
+
+        if (!isExternal) {
+          return false
+        }
+      }
+
+      if (st.execOnly) {
+        const isExecutor =
+          !(exp.pros && exp.pros.some((pro) => pro.toLowerCase().includes("external"))) &&
+          !(exp.neutral && exp.neutral.some((ntrl) => ntrl.toLowerCase().includes("external")))
+
+        if (!isExecutor) {
+          return false
+        }
+      }
+
       return true
     })
     .sort((a, b) => {
       switch (st.srtBy) {
         case "price-asc":
-          const prcA = a.price === "FREE" ? 0 : parseFloat(a.price.replace("$", ""))
-          const prcB = b.price === "FREE" ? 0 : parseFloat(b.price.replace("$", ""))
+          const prcA = a.price === "FREE" ? 0 : Number.parseFloat(a.price.replace("$", ""))
+          const prcB = b.price === "FREE" ? 0 : Number.parseFloat(b.price.replace("$", ""))
           return prcA - prcB
         case "price-desc":
-          const prcC = a.price === "FREE" ? 0 : parseFloat(a.price.replace("$", ""))
-          const prcD = b.price === "FREE" ? 0 : parseFloat(b.price.replace("$", ""))
+          const prcC = a.price === "FREE" ? 0 : Number.parseFloat(a.price.replace("$", ""))
+          const prcD = b.price === "FREE" ? 0 : Number.parseFloat(b.price.replace("$", ""))
           return prcD - prcC
         case "level-desc":
           return b.lvl - a.lvl
         case "name-asc":
           return a.name.localeCompare(b.name)
         default:
+          if (a.verified && !b.verified) return -1
+          if (!a.verified && b.verified) return 1
+          if (a.premium && !b.premium) return -1
+          if (!a.premium && b.premium) return 1
           return 0
       }
     })
@@ -727,27 +1225,34 @@ function fltrExps() {
 }
 
 function rndrExps() {
+  if (!els.grid || !els.list) return
+
   els.grid.innerHTML = ""
   els.list.innerHTML = ""
 
   if (st.fltrd.length === 0) {
-    els.noRes.classList.remove("hidden")
+    if (els.noRes) els.noRes.classList.remove("hidden")
   } else {
-    els.noRes.classList.add("hidden")
+    if (els.noRes) els.noRes.classList.add("hidden")
   }
 
-  st.fltrd.forEach((exp) => {
-    els.grid.appendChild(crtCrd(exp))
+  st.fltrd.forEach((exp, index) => {
+    const card = crtCrd(exp)
+    card.style.setProperty("--animation-order", index)
+    els.grid.appendChild(card)
   })
 
-  st.fltrd.forEach((exp) => {
-    els.list.appendChild(crtLstItm(exp))
+  st.fltrd.forEach((exp, index) => {
+    const listItem = crtLstItm(exp)
+    listItem.style.setProperty("--animation-order", index)
+    els.list.appendChild(listItem)
   })
 }
 
 function crtCrd(exp) {
   const crd = document.createElement("div")
   crd.className = "exp-crd"
+  if (exp.premium) crd.classList.add("prem")
 
   const acntClr = exp.premium ? "prem" : exp.accentColor
 
@@ -764,6 +1269,16 @@ function crtCrd(exp) {
               <span class="vrf-bdg">
                 <i class="fas fa-check"></i>
                 Verified
+              </span>
+            `
+                : ""
+            }
+            ${
+              exp.premium
+                ? `
+              <span class="prem-bdg">
+                <i class="fas fa-crown"></i>
+                Premium
               </span>
             `
                 : ""
@@ -793,7 +1308,9 @@ function crtCrd(exp) {
           ${
             exp.plat.includes("android")
               ? `
-            
+            <div class="pltf-bdg" title="Android">
+              <i class="fab fa-android"></i>
+            </div>
           `
               : ""
           }
@@ -870,11 +1387,13 @@ function crtCrd(exp) {
         <button class="crd-btn web-btn">
           Website <i class="fas fa-external-link-alt"></i>
         </button>
-        <button class="crd-btn unc-btn">UNC</button>
+        <button class="crd-btn unc-btn">
+          UNC <i class="fas fa-code"></i>
+        </button>
       </div>
-      <div class="prc-lbl ${exp.price === "FREE" ? "free" : ""}">
-        ${exp.price} ${exp.period ? `<span class="prc-prd">${exp.period}</span>` : ""}
-      </div>
+      <button class="crd-btn prc-btn-new ${exp.price === "FREE" ? "free" : ""}">
+        <i class="fas fa-tag"></i> ${exp.price} ${exp.period ? `<span class="prc-prd">${exp.period}</span>` : ""}
+      </button>
     </div>
   `
 
@@ -884,127 +1403,176 @@ function crtCrd(exp) {
 function crtLstItm(exp) {
   const itm = document.createElement("div")
   itm.className = "exp-lst-itm"
+  if (exp.premium) itm.classList.add("prem")
+
   const acntClr = exp.premium ? "prem" : exp.accentColor
+
+  let uncScore = "Unknown"
+  for (const pro of exp.pros || []) {
+    if (pro.includes("UNC") || pro.includes("sUNC")) {
+      uncScore = pro.match(/\d+%/) ? pro.match(/\d+%/)[0] : "Unknown"
+      break
+    }
+  }
+
+  if (uncScore === "Unknown") {
+    for (const neutral of exp.neutral || []) {
+      if (neutral.includes("UNC") || neutral.includes("sUNC")) {
+        uncScore = neutral.match(/\d+%/) ? neutral.match(/\d+%/)[0] : "Unknown"
+        break
+      }
+    }
+  }
+
   itm.innerHTML = `
     <div class="lst-itm-acnt ${acntClr}"></div>
     <div class="lst-itm-cntnt">
       <div class="lst-itm-hdr">
-        <h3 class="lst-itm-ttl">${exp.name}</h3>
-        ${
-          exp.verified
-            ? `
-          <span class="vrf-bdg">
-            <i class="fas fa-check"></i>
-            Verified
-          </span>
-        `
-            : ""
-        }
-        <div class="lst-itm-lvl ${exp.txtColor}">Level ${exp.lvl}</div>
+        <div class="lst-itm-main-info">
+          <h3 class="lst-itm-ttl">${exp.name}</h3>
+          <div class="lst-itm-badges">
+            ${
+              exp.verified
+                ? `
+              <span class="vrf-bdg">
+                <i class="fas fa-check"></i>
+                Verified
+              </span>
+            `
+                : ""
+            }
+            ${
+              exp.premium
+                ? `
+              <span class="prem-bdg">
+                <i class="fas fa-crown"></i>
+                Premium
+              </span>
+            `
+                : ""
+            }
+          </div>
+        </div>
+        <div class="lst-itm-meta">
+          <div class="lst-itm-lvl ${exp.txtColor}">Level ${exp.lvl}</div>
+          <div class="lst-itm-unc-score">UNC: <span>${uncScore}</span></div>
+        </div>
       </div>
-      <p class="lst-itm-desc">${exp.desc}</p>
-      <div class="lst-itm-pltfs">
-        ${exp.plat
-          .slice(0, 3)
-          .map(
-            (pltf) => `
-          <div class="lst-itm-pltf">${pltf.charAt(0).toUpperCase() + pltf.slice(1)}</div>
-        `,
-          )
-          .join("")}
-        ${
-          exp.plat.length > 3
-            ? `
-          <div class="lst-itm-pltf">+${exp.plat.length - 3} more</div>
-        `
-            : ""
-        }
+      
+      <div class="lst-itm-details">
+        <div class="lst-itm-desc-container">
+          <p class="lst-itm-desc">${exp.desc}</p>
+          <div class="lst-itm-pltfs">
+            ${exp.plat
+              .map(
+                (pltf) => `
+              <div class="lst-itm-pltf" title="${pltf.charAt(0).toUpperCase() + pltf.slice(1)}">
+                <i class="fab fa-${pltf === "ios" ? "apple" : pltf}"></i>
+                <span>${pltf.charAt(0).toUpperCase() + pltf.slice(1)}</span>
+              </div>
+            `,
+              )
+              .join("")}
+          </div>
+        </div>
+        
+        <div class="lst-itm-feats">
+          ${
+            exp.pros && exp.pros.length > 0
+              ? `
+            <div class="lst-itm-feat-sec pros">
+              <h4 class="feat-hdng">
+                <span class="feat-ico">+</span>
+                Pros
+              </h4>
+              <ul class="lst-itm-feat-lst">
+                ${exp.pros
+                  .slice(0, 3)
+                  .map((pro) => `<li class="lst-itm-feat-itm">${pro}</li>`)
+                  .join("")}
+                ${exp.pros.length > 3 ? `<li class="lst-itm-feat-more">+${exp.pros.length - 3} more</li>` : ""}
+              </ul>
+            </div>
+          `
+              : ""
+          }
+          
+          ${
+            exp.neutral && exp.neutral.length > 0
+              ? `
+            <div class="lst-itm-feat-sec ntrl">
+              <h4 class="feat-hdng">
+                <span class="feat-ico">•</span>
+                Neutral
+              </h4>
+              <ul class="lst-itm-feat-lst">
+                ${exp.neutral
+                  .slice(0, 2)
+                  .map((itm) => `<li class="lst-itm-feat-itm">${itm}</li>`)
+                  .join("")}
+                ${exp.neutral.length > 2 ? `<li class="lst-itm-feat-more">+${exp.neutral.length - 2} more</li>` : ""}
+              </ul>
+            </div>
+          `
+              : ""
+          }
+          
+          ${
+            exp.cons && exp.cons.length > 0
+              ? `
+            <div class="lst-itm-feat-sec cons">
+              <h4 class="feat-hdng">
+                <span class="feat-ico">-</span>
+                Cons
+              </h4>
+              <ul class="lst-itm-feat-lst">
+                ${exp.cons
+                  .slice(0, 2)
+                  .map((con) => `<li class="lst-itm-feat-itm">${con}</li>`)
+                  .join("")}
+                ${exp.cons.length > 2 ? `<li class="lst-itm-feat-more">+${exp.cons.length - 2} more</li>` : ""}
+              </ul>
+            </div>
+          `
+              : ""
+          }
+        </div>
       </div>
-      <div class="lst-itm-feats">
-        ${
-          exp.pros && exp.pros.length > 0
-            ? `
-          <div class="lst-itm-feat-sec pros">
-            <h4 class="feat-hdng">
-              <span class="feat-ico">+</span>
-              Pros
-            </h4>
-            <ul class="lst-itm-feat-lst">
-              ${exp.pros
-                .slice(0, 2)
-                .map((pro) => `<li class="lst-itm-feat-itm">${pro}</li>`)
-                .join("")}
-              ${exp.pros.length > 2 ? `<li class="lst-itm-feat-more">+${exp.pros.length - 2} more</li>` : ""}
-            </ul>
-          </div>
-        `
-            : ""
-        }
-        
-        ${
-          exp.neutral && exp.neutral.length > 0
-            ? `
-          <div class="lst-itm-feat-sec ntrl">
-            <h4 class="feat-hdng">
-              <span class="feat-ico">•</span>
-              Neutral
-            </h4>
-            <ul class="lst-itm-feat-lst">
-              ${exp.neutral
-                .slice(0, 2)
-                .map((itm) => `<li class="lst-itm-feat-itm">${itm}</li>`)
-                .join("")}
-              ${exp.neutral.length > 2 ? `<li class="lst-itm-feat-more">+${exp.neutral.length - 2} more</li>` : ""}
-            </ul>
-          </div>
-        `
-            : ""
-        }
-        
-        ${
-          exp.cons && exp.cons.length > 0
-            ? `
-          <div class="lst-itm-feat-sec cons">
-            <h4 class="feat-hdng">
-              <span class="feat-ico">-</span>
-              Cons
-            </h4>
-            <ul class="lst-itm-feat-lst">
-              ${exp.cons
-                .slice(0, 2)
-                .map((con) => `<li class="lst-itm-feat-itm">${con}</li>`)
-                .join("")}
-              ${exp.cons.length > 2 ? `<li class="lst-itm-feat-more">+${exp.cons.length - 2} more</li>` : ""}
-            </ul>
-          </div>
-        `
-            : ""
-        }
+      
+      <div class="lst-itm-footer">
+        <div class="lst-itm-edr">Edited by ${exp.editor}</div>
       </div>
     </div>
     <div class="lst-itm-acts">
+      <div class="lst-itm-price ${exp.price === "FREE" ? "free" : ""}">
+        <i class="fas fa-tag"></i>
+        <span class="lst-itm-price-value">${exp.price}</span>
+        ${exp.period ? `<span class="lst-itm-price-period">${exp.period}</span>` : ""}
+      </div>
       <div class="lst-itm-btns">
         <button class="lst-itm-btn web-btn">
-          Website <i class="fas fa-external-link-alt"></i>
+          <i class="fas fa-external-link-alt"></i>
+          <span>Website</span>
         </button>
-        <button class="lst-itm-btn unc-btn">UNC</button>
+        <button class="lst-itm-btn unc-btn">
+          <i class="fas fa-code"></i>
+          <span>UNC</span>
+        </button>
       </div>
-      <div class="prc-lbl ${exp.price === "FREE" ? "free" : ""}">
-        ${exp.price}
-        ${exp.period ? `<span class="prc-prd">${exp.period}</span>` : ""}
-      </div>
-      <div class="lst-itm-edr">Edited by ${exp.editor}</div>
     </div>
   `
+
   return itm
 }
 
 function updCnts() {
+  if (!els.fltCnt || !els.ttlCnt) return
   els.fltCnt.textContent = st.fltrd.length
   els.ttlCnt.textContent = expData.length
 }
 
 function updLvlSldr() {
+  if (!els.lvlFill) return
   const pct = (st.lvlFlt[1] / 8) * 100
   els.lvlFill.style.width = `${pct}%`
 
@@ -1018,6 +1586,7 @@ function updLvlSldr() {
 }
 
 function updMLvlSldr() {
+  if (!els.mLvlFill) return
   const pct = (st.lvlFlt[1] / 8) * 100
   els.mLvlFill.style.width = `${pct}%`
 
@@ -1038,10 +1607,10 @@ function rstFltrs() {
   els.mClrBtn.classList.add("hidden")
 
   st.lvlFlt = [0, 0]
-  els.lvlSldr.value = 0
-  els.mLvlSldr.value = 0
-  els.lvlVal.textContent = "ALL"
-  els.mLvlVal.textContent = "ALL"
+  if (els.lvlSldr) els.lvlSldr.value = 0
+  if (els.mLvlSldr) els.mLvlSldr.value = 0
+  if (els.lvlVal) els.lvlVal.textContent = "ALL"
+  if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
   updLvlSldr()
   updMLvlSldr()
 
@@ -1059,19 +1628,30 @@ function rstFltrs() {
   })
 
   st.vrfOnly = false
-  els.vrfSwch.checked = false
-  els.mVrfSwch.checked = false
+  if (els.vrfSwch) els.vrfSwch.checked = false
+  if (els.mVrfSwch) els.mVrfSwch.checked = false
+
+  st.premOnly = false
+  if (els.premSwch) els.premSwch.checked = false
+  if (els.mPremSwch) els.mPremSwch.checked = false
+
+  st.extOnly = false
+  if (els.extSwch) els.extSwch.checked = false
+  if (els.mExtSwch) els.mExtSwch.checked = false
+
+  st.execOnly = false
+  if (els.execSwch) els.execSwch.checked = false
+  if (els.mExecSwch) els.mExecSwch.checked = false
 
   st.srtBy = "recommended"
-  els.srtSel.value = "recommended"
-  els.mSrtSel.value = "recommended"
+  if (els.srtSel) els.srtSel.value = "recommended"
+  if (els.mSrtSel) els.mSrtSel.value = "recommended"
 
   fltrExps()
 }
 
 function initStrs() {
   if (!els.cnv) return
-
   const ctx = els.cnv.getContext("2d")
   if (!ctx) return
 
@@ -1123,17 +1703,82 @@ function initStrs() {
 
   const anmt = () => {
     ctx.clearRect(0, 0, els.cnv.width, els.cnv.height)
-
     strs.forEach((str) => {
       str.upd()
       str.drw()
     })
-
     requestAnimationFrame(anmt)
   }
 
   rszCnv()
   anmt()
-
   window.addEventListener("resize", rszCnv)
+}
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault()
+    const target = document.querySelector(this.getAttribute("href"))
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop - 80,
+        behavior: "smooth",
+      })
+    }
+  })
+})
+
+window.addEventListener("resize", adjSrchBar)
+window.addEventListener("load", adjSrchBar)
+
+function adjSrchBar() {
+  const srchCont = document.querySelector(".hdr-ctr")
+  const hdrCont = document.querySelector(".hdr-cntr")
+  const fltrBtn = document.getElementById("fltrBtn")
+  const logoSec = document.querySelector(".hdr-lft")
+  const srchInp = document.querySelector(".srch-inp")
+  const srchIco = document.querySelector(".srch-ico")
+  const clrBtn = document.querySelector(".clr-srch-btn")
+
+  if (!srchCont || !hdrCont || !fltrBtn || !logoSec || !srchInp || !srchIco) return
+
+  const windowWidth = window.innerWidth
+
+  if (windowWidth <= 768) {
+    srchCont.style.display = "none"
+    return
+  }
+
+  srchCont.style.display = "block"
+  srchCont.style.transition = "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+  srchCont.style.left = "50%"
+  srchCont.style.transform = "translateX(-50%)"
+  srchCont.style.right = "auto"
+
+  let idealWidth
+  if (windowWidth > 1400) {
+    idealWidth = 400
+  } else if (windowWidth > 1200) {
+    idealWidth = 350
+  } else if (windowWidth > 1024) {
+    idealWidth = 300
+  } else if (windowWidth > 900) {
+    idealWidth = 250
+  } else if (windowWidth > 800) {
+    idealWidth = 200
+  } else {
+    idealWidth = 180
+  }
+
+  srchCont.style.width = `${idealWidth}px`
+  srchInp.style.width = "100%"
+
+  srchCont.classList.remove("icon-only-mode")
+  srchInp.style.opacity = "1"
+  srchInp.style.padding = "0.5rem 0.75rem 0.5rem 2.5rem"
+  if (clrBtn) clrBtn.style.display = ""
+
+  srchIco.style.left = "0.75rem"
+  srchIco.style.transform = "translateY(-50%)"
+  srchIco.style.fontSize = "0.875rem"
 }
