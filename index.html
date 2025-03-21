@@ -18,40 +18,42 @@
   </div>
 
   <header id="hdr" class="hdr">
-    <div class="cntr hdr-cntr">
-      <div class="hdr-lft">
-        <button id="mobMenuTgl" class="mob-menu-tgl">
-          <i class="fas fa-bars"></i>
-        </button>
-        <a href="/" class="logo-lnk">
-          <div class="logo-bar"></div>
-          <span class="logo-txt-lt">WWW.</span>
-          <span class="logo-txt-grd">VOXLIS</span>
-          <span class="logo-txt-lt">.NET</span>
-        </a>
-      </div>
-
-      <div class="hdr-ctr">
-        <div class="srch-cntr">
-          <div class="srch-ico">
-            <i class="fas fa-search"></i>
-          </div>
-          <input type="text" id="srchInp" class="srch-inp" placeholder="Search exploits by name, features, or compatibility...">
-          <button id="clrSrch" class="clr-srch-btn hidden">
-            <i class="fas fa-times"></i>
+    <div class="cntr">
+      <div class="hdr-cntr">
+        <div class="hdr-lft">
+          <button id="mobMenuTgl" class="mob-menu-tgl">
+            <i class="fas fa-bars"></i>
           </button>
+          <a href="/" class="logo-lnk">
+            <div class="logo-bar"></div>
+            <span class="logo-txt-lt">WWW.</span>
+            <span class="logo-txt-grd">VOXLIS</span>
+            <span class="logo-txt-lt">.NET</span>
+          </a>
         </div>
-      </div>
 
-      <nav class="hdr-nav">
-        <button id="fltrBtn" class="nav-btn grd">
-          <i class="fas fa-sliders-h"></i>
-          Filter
-        </button>
-        <a href="/" class="nav-lnk">Home</a>
-        <a href="/" class="nav-lnk">Discord</a>
-        <a href="/" class="nav-btn grd">Contribute</a>
-      </nav>
+        <div class="hdr-ctr">
+          <div class="srch-cntr">
+            <div class="srch-ico">
+              <i class="fas fa-search"></i>
+            </div>
+            <input type="text" id="srchInp" class="srch-inp" placeholder="Search exploits by name, platform, or UNC...">
+            <button id="clrSrch" class="clr-srch-btn hidden">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+        <nav class="hdr-nav">
+          <button id="fltrBtn" class="nav-btn grd">
+            <i class="fas fa-sliders-h"></i>
+            Filter
+          </button>
+          <a href="/" class="nav-lnk">Home</a>
+          <a href="/" class="nav-lnk">Discord</a>
+          <a href="/" class="nav-btn grd">Contribute</a>
+        </nav>
+      </div>
     </div>
 
     <div id="mobMenu" class="mob-menu hidden">
@@ -60,7 +62,7 @@
           <div class="srch-ico">
             <i class="fas fa-search"></i>
           </div>
-          <input type="text" id="mobSrchInp" class="srch-inp" placeholder="Search exploits...">
+          <input type="text" id="mobSrchInp" class="srch-inp" placeholder="Search exploits by name, platform, or UNC...">
           <button id="mobClrSrch" class="clr-srch-btn hidden">
             <i class="fas fa-times"></i>
           </button>
@@ -71,8 +73,8 @@
         </button>
         <nav class="mob-nav">
           <a href="/" class="mob-nav-lnk">Home</a>
-          <a href="/discord" class="mob-nav-lnk">Discord</a>
-          <a href="/contribute" class="mob-nav-lnk cntb">Contribute</a>
+          <a href="/" class="mob-nav-lnk">Discord</a>
+          <a href="/" class="mob-nav-lnk cntb">Contribute</a>
         </nav>
       </div>
     </div>
@@ -161,6 +163,30 @@
             </label>
           </div>
 
+          <div class="prem-fltr-cntr">
+            <label class="cstm-chkbx prem">
+              <input type="checkbox" id="premSwch">
+              <span class="chkmrk"></span>
+              <span class="chkbx-lbl">Show premium only</span>
+            </label>
+          </div>
+
+          <div class="ext-fltr-cntr">
+            <label class="cstm-chkbx ext">
+              <input type="checkbox" id="extSwch">
+              <span class="chkmrk"></span>
+              <span class="chkbx-lbl">Show external only</span>
+            </label>
+          </div>
+
+          <div class="exec-fltr-cntr">
+            <label class="cstm-chkbx exec">
+              <input type="checkbox" id="execSwch">
+              <span class="chkmrk"></span>
+              <span class="chkbx-lbl">Show executor only</span>
+            </label>
+          </div>
+
           <div class="srt-fltr-cntr">
             <h3 class="fltr-sec-ttl">
               <span class="fltr-dot"></span>
@@ -187,14 +213,14 @@
             <div class="ad-img">
               <div class="ad-bdg">HOT DEAL</div>
               <div class="ad-dscnt">-50%</div>
-              <img src="https://cdn.discordapp.com/attachments/1107289272979030156/1349794601082552381/9b804a677304cffdc4e9e5b20df6dce2.png?ex=67d465ae&is=67d3142e&hm=90e8d842e8c09ce397e4d3054250b360b32c83c126036593fa3c4b25ee3553cd&" alt="Advertisement">
+              <img src="https://cdn.discordapp.com/attachments/1351970656992104590/1352349130143563887/9b804a677304cffdc4e9e5b20df6dce2.png?ex=67ddb0c6&is=67dc5f46&hm=fb4e7a08cac53967b69ac6e39900c5d4c53c3b6bc85ccf6798b4384db9c0baab&" alt="Advertisement">
             </div>
             <div class="ad-cntnt">
               <div class="ad-ttl">x4v made this</div>
               <p class="ad-desc">
                 Limited time offer! Get premium sigma cat for -50% :3
               </p>
-              <a href="https://bloxflip.com/a/intel" class="ad-cta">
+              <a href="" class="ad-cta">
                 Claim Now
               </a>
             </div>
@@ -273,14 +299,14 @@
             <div class="ad-img">
               <div class="ad-bdg">HOT DEAL</div>
               <div class="ad-dscnt">-50%</div>
-              <img src="https://cdn.discordapp.com/attachments/1107289272979030156/1349794601082552381/9b804a677304cffdc4e9e5b20df6dce2.png?ex=67d465ae&is=67d3142e&hm=90e8d842e8c09ce397e4d3054250b360b32c83c126036593fa3c4b25ee3553cd&" alt="Advertisement">
+              <img src="https://cdn.discordapp.com/attachments/1351970656992104590/1352349130143563887/9b804a677304cffdc4e9e5b20df6dce2.png?ex=67ddb0c6&is=67dc5f46&hm=fb4e7a08cac53967b69ac6e39900c5d4c53c3b6bc85ccf6798b4384db9c0baab&" alt="Advertisement">
             </div>
             <div class="ad-cntnt">
               <div class="ad-ttl">x4v made this</div>
               <p class="ad-desc">
                 Limited time offer! Get premium sigma cat for -50% :3
               </p>
-              <a href="https://bloxflip.com/a/intel" class="ad-cta">
+              <a href="" class="ad-cta">
                 Claim Now
               </a>
             </div>
@@ -368,6 +394,30 @@
             <input type="checkbox" id="mobVrfSwch">
             <span class="chkmrk"></span>
             <span class="chkbx-lbl">Show verified only</span>
+          </label>
+        </div>
+
+        <div class="mob-prem-fltr-cntr">
+          <label class="cstm-chkbx prem">
+            <input type="checkbox" id="mobPremSwch">
+            <span class="chkmrk"></span>
+            <span class="chkbx-lbl">Show premium only</span>
+          </label>
+        </div>
+
+        <div class="mob-ext-fltr-cntr">
+          <label class="cstm-chkbx ext">
+            <input type="checkbox" id="mobExtSwch">
+            <span class="chkmrk"></span>
+            <span class="chkbx-lbl">Show external only</span>
+          </label>
+        </div>
+
+        <div class="mob-exec-fltr-cntr">
+          <label class="cstm-chkbx exec">
+            <input type="checkbox" id="mobExecSwch">
+            <span class="chkmrk"></span>
+            <span class="chkbx-lbl">Show executor only</span>
           </label>
         </div>
 
