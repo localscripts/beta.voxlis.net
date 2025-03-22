@@ -1,460 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>voxlis.NET</title>
-  <link rel="stylesheet" href="design.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanta Script - Premium PS2 Script</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <canvas id="strCnv" class="str-cnv"></canvas>
-
-  <div id="loadingScreen" class="loading-screen">
-    <div class="loading-logo">
-      <div class="logo-bar"></div>
-      <span class="logo-txt-lt">WWW.</span>
-      <span class="logo-txt-grd">VOXLIS</span>
-      <span class="logo-txt-lt">.NET</span>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
-    <div class="loading-bar-container">
-      <div class="loading-bar" id="loadingBar"></div>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">FANTA SCRIPT</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#script">Script</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id="home" class="hero fullscreen">
+        <div class="container">
+            <div class="hero-content">
+                <h1>THE BEST <span class="highlight">SCRIPT FOR PET SIMULATOR 2</span></h1>
+                <p>Experience Fanta Script – packed with the best features for Pet Simulator 2.</p>
+                <div class="cta-buttons">
+                    <button id="get-script-btn" class="btn primary-btn">GET FANTA NOW!</button>
+                    <a href="#features" class="btn secondary-btn">EXPLORE FEATURES</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="terminal-btn close"></span>
+                            <span class="terminal-btn minimize"></span>
+                            <span class="terminal-btn maximize"></span>
+                        </div>
+                        <div class="terminal-title">fanta-script.lua</div>
+                    </div>
+                    <div class="terminal-body">
+                        <pre><code>--[[
+
+     ⚠️ You need to join this group in order to use this script - Fanta.
+     ⚠️ Debes unirte a este grupo para poder usar este script - Fanta.
+     ⚠️ Вы должны присоединиться к этой группе, чтобы использовать этот скрипт — Fanta.
+
+     https://roblox.com/communities/35623787
+     
+]]
+
+loadstring(game:HttpGet('https://fanta.voxlis.net/main.lua'))()</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">FEATURES</span></h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>FARMING</h3>
+                    <ul class="feature-list">
+                        <li><span class="feature-highlight">Autofarm</span> - Automatic resource collection</li>
+                        <li><span class="feature-highlight">Auto Drops</span> - Never miss valuable items</li>
+                        <li><span class="feature-highlight">Damage Multiplier</span> - Increase your damage output</li>
+                        <li><span class="feature-highlight">Exclusions</span> - Customize what to farm</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3>MACHINES</h3>
+                    <ul class="feature-list">
+                        <li><span class="feature-highlight">Golden Machine</span> - Auto-convert pets to golden</li>
+                        <li><span class="feature-highlight">Rainbow Machine</span> - Transform pets to rainbow</li>
+                        <li><span class="feature-highlight">Magic Machine</span> - Enchant pets with special abilities</li>
+                        <li><span class="feature-highlight">Auto Mode</span> - Set and forget automation</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3>EGGS</h3>
+                    <ul class="feature-list">
+                        <li><span class="feature-highlight">Remove Animation</span> - Speed up egg opening</li>
+                        <li><span class="feature-highlight">Auto Eggs</span> - Open eggs automatically</li>
+                        <li><span class="feature-highlight">Auto-delete</span> - Remove unwanted pets</li>
+                        <li><span class="feature-highlight">Batch Opening</span> - Open multiple eggs at once</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>TRADING</h3>
+                    <ul class="feature-list">
+                        <li><span class="feature-highlight">Pet Selection</span> - Choose which pets to trade</li>
+                        <li><span class="feature-highlight">Batch Trading</span> - Trade multiple pets at once</li>
+                        <li><span class="feature-highlight">Auto Accept</span> - Automatically accept good trades</li>
+                        <li><span class="feature-highlight">Trade Scanning</span> - Find the best deals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="script" class="script-section">
+        <div class="container">
+            <h2 class="section-title">GET THE SCRIPT</span></h2>
+            <div class="script-container">
+                <div class="script-editor">
+                    <div class="editor-header">
+                        <div class="editor-tabs">
+                            <div class="editor-tab active">fanta-script.lua</div>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="copy-btn" id="copy-script-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="editor-body">
+                        <pre><code>--[[
+
+     ⚠️ You need to join this group in order to use this script - Fanta.
+     ⚠️ Debes unirte a este grupo para poder usar este script - Fanta.
+     ⚠️ Вы должны присоединиться к этой группе, чтобы использовать этот скрипт — Fanta.
+
+     https://roblox.com/communities/35623787
+     
+]]
+
+loadstring(game:HttpGet('https://fanta.voxlis.net/main.lua'))()</code></pre>
+                    </div>
+                </div>
+                
+                <div class="script-instructions">
+                    <h3>HOW TO USE</h3>
+                    <ol>
+                        <li>Join the required group: <a href="https://roblox.com/communities/35623787" target="_blank">Fanta Group</a></li>
+                        <li>Copy the script using the copy button</li>
+                        <li>Paste the script into your executor</li>
+                        <li>Execute the script and enjoy!</li>
+                    </ol>
+                    <div class="script-cta">
+                        <button id="get-script-btn2" class="btn primary-btn">GET FANTA NOW!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</span></h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is Fanta Script safe to use?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Fanta Script is designed with security as a top priority. Our script uses techniques to avoid detection by anti-cheat system. However, as with any script, we recommend using an alt account for maximum safety.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Why do I need to join the group?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Joining our group allows us to verify users and provide updates about the script. It also helps us maintain a community of users who can share tips and report any issues.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Which games does Fanta Script support?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Fanta only supports Pet Simulator 2.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I get banned for using Fanta Script?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While we implement anti-detection measures, there's always a risk when using our script . We recommend using alt accounts and avoiding excessive or obvious cheating behaviors to minimize the risk.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">FANTA SCRIPT</div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>NAVIGATION</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#script">Script</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>COMMUNITY</h4>
+                        <ul>
+                            <li><a href="https://roblox.com/communities/35623787" target="_blank">Roblox Group</a></li>
+                            <li><a href="https://discord.gg/robloxcheese" target="_blank">Discord Server</a></li>
+                        </ul>
+                    </div>
+                </div>           
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 Fanta Script. All rights reserved.</p>
+                </div>
+                <div class="disclaimer">
+                    <p>Fanta Script is not affiliated with Roblox Corporation. Use at your own risk.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="modal" id="script-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>FANTA SCRIPT</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="script-code">
+                    <pre><code>--[[
+
+     ⚠️ You need to join this group in order to use this script - Fanta.
+     ⚠️ Debes unirte a este grupo para poder usar este script - Fanta.
+     ⚠️ Вы должны присоединиться к этой группе, чтобы использовать этот скрипт — Fanta.
+
+     https://roblox.com/communities/35623787
+     
+]]
+
+loadstring(game:HttpGet('https://fanta.voxlis.net/main.lua'))()</code></pre>
+                </div>
+                <div class="modal-instructions">
+                    <p> Join the required group: <a href="https://roblox.com/communities/35623787" target="_blank">Fanta Group</a></p>
+                    <p> Copy the script above</p>
+                    <p> Paste into your executor and run</p>
+                </div>
+                <button id="modal-copy-btn" class="btn primary-btn">COPY SCRIPT</button>
+            </div>
+        </div>
     </div>
-    <div class="loading-text">Loading resources...</div>
-  </div>
 
-  <div class="bg-els">
-    <div class="grd-ovl"></div>
-    <div class="top-acnt"></div>
-    <div class="glw-eff glw-eff-1"></div>
-    <div class="glw-eff glw-eff-2"></div>
-  </div>
-
-  <header id="hdr" class="hdr">
-    <div class="cntr">
-      <div class="hdr-cntr">
-        <div class="hdr-lft">
-          <button id="mobMenuTgl" class="mob-menu-tgl">
-            <i class="fas fa-bars"></i>
-          </button>
-          <a href="/" class="logo-lnk">
-            <div class="logo-bar"></div>
-            <span class="logo-txt-lt">WWW.</span>
-            <span class="logo-txt-grd">VOXLIS</span>
-            <span class="logo-txt-lt">.NET</span>
-          </a>
-        </div>
-
-        <div class="hdr-ctr">
-          <div class="srch-cntr">
-            <div class="srch-ico">
-              <i class="fas fa-search"></i>
-            </div>
-            <input type="text" id="srchInp" class="srch-inp" placeholder="Search exploits by name, platform, or UNC...">
-            <button id="clrSrch" class="clr-srch-btn hidden">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div>
-
-        <nav class="hdr-nav">
-          <button id="fltrBtn" class="nav-btn grd">
-            <i class="fas fa-sliders-h"></i>
-            Filter
-          </button>
-          <a href="/" class="nav-lnk">Home</a>
-          <a href="/" class="nav-lnk">Discord</a>
-          <a href="/" class="nav-btn grd">Contribute</a>
-        </nav>
-      </div>
-    </div>
-
-    <div id="mobMenu" class="mob-menu hidden">
-      <div class="cntr mob-menu-cntr">
-        <div class="mob-srch-cntr">
-          <div class="srch-ico">
-            <i class="fas fa-search"></i>
-          </div>
-          <input type="text" id="mobSrchInp" class="srch-inp" placeholder="Search exploits by name, platform, or UNC...">
-          <button id="mobClrSrch" class="clr-srch-btn hidden">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <button id="mobFltrBtn" class="mob-fltr-btn">
-          <i class="fas fa-sliders-h"></i>
-          Filter
-        </button>
-        <nav class="mob-nav">
-          <a href="/" class="mob-nav-lnk">Home</a>
-          <a href="/" class="mob-nav-lnk">Discord</a>
-          <a href="/" class="mob-nav-lnk cntb">Contribute</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main class="cntr main-cntr">
-    <div class="main-lyt">
-      <div class="lft-sdbr">
-        <div class="fltr-crd">
-          <h2 class="fltr-ttl">Filters</h2>
-
-          <div class="lvl-sldr-cntr">
-            <h3 class="fltr-sec-ttl">
-              <span class="fltr-dot"></span>
-              Level (Power)
-            </h3>
-            <div class="lvl-sldr-wrp">
-              <div class="lvl-lbls">
-                <div class="lvl-min-lbl">ALL</div>
-                <div class="lvl-max-lbl">LEVEL: <span id="lvlMaxVal">ALL</span></div>
-              </div>
-              <div class="lvl-trk">
-                <div id="lvlTrkFill" class="lvl-trk-fill"></div>
-              </div>
-              <input type="range" id="lvlSldr" class="lvl-sldr" min="0" max="8" value="0" step="1">
-              <div class="lvl-mrkrs">
-                <span class="lvl-mrkr actv">0</span>
-                <span class="lvl-mrkr actv">1</span>
-                <span class="lvl-mrkr actv">2</span>
-                <span class="lvl-mrkr actv">3</span>
-                <span class="lvl-mrkr actv">4</span>
-                <span class="lvl-mrkr actv">5</span>
-                <span class="lvl-mrkr actv">6</span>
-                <span class="lvl-mrkr actv">7</span>
-                <span class="lvl-mrkr actv">8</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="pltf-fltr-cntr">
-            <h3 class="fltr-sec-ttl">
-              <span class="fltr-dot"></span>
-              Platform
-            </h3>
-            <div class="pltf-chkbxs">
-              <label class="cstm-chkbx">
-                <input type="checkbox" data-pltf="windows">
-                <span class="chkmrk"></span>
-                <span class="chkbx-lbl">windows</span>
-              </label>
-              <label class="cstm-chkbx">
-                <input type="checkbox" data-pltf="macos">
-                <span class="chkmrk"></span>
-                <span class="chkbx-lbl">macos</span>
-              </label>
-              <label class="cstm-chkbx">
-                <input type="checkbox" data-pltf="android">
-                <span class="chkmrk"></span>
-                <span class="chkbx-lbl">android</span>
-              </label>
-              <label class="cstm-chkbx">
-                <input type="checkbox" data-pltf="ios">
-                <span class="chkmrk"></span>
-                <span class="chkbx-lbl">ios</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="prc-fltr-cntr">
-            <h3 class="fltr-sec-ttl">
-              <span class="fltr-dot"></span>
-              Price
-            </h3>
-            <div class="prc-btns">
-              <button class="prc-btn actv" data-prc="all">All</button>
-              <button class="prc-btn" data-prc="free">Free</button>
-              <button class="prc-btn" data-prc="paid">Paid</button>
-            </div>
-          </div>
-
-          <div class="vrf-fltr-cntr">
-            <label class="cstm-chkbx vrf">
-              <input type="checkbox" id="vrfSwch">
-              <span class="chkmrk"></span>
-              <span class="chkbx-lbl">Show verified only</span>
-            </label>
-          </div>
-
-          <div class="prem-fltr-cntr">
-            <label class="cstm-chkbx prem">
-              <input type="checkbox" id="premSwch">
-              <span class="chkmrk"></span>
-              <span class="chkbx-lbl">Show premium only</span>
-            </label>
-          </div>
-
-          <div class="ext-fltr-cntr">
-            <label class="cstm-chkbx ext">
-              <input type="checkbox" id="extSwch">
-              <span class="chkmrk"></span>
-              <span class="chkbx-lbl">Show external only</span>
-            </label>
-          </div>
-
-          <div class="exec-fltr-cntr">
-            <label class="cstm-chkbx exec">
-              <input type="checkbox" id="execSwch">
-              <span class="chkmrk"></span>
-              <span class="chkbx-lbl">Show executor only</span>
-            </label>
-          </div>
-
-          <div class="srt-fltr-cntr">
-            <h3 class="fltr-sec-ttl">
-              <span class="fltr-dot"></span>
-              Sort by
-            </h3>
-            <select id="srtSel" class="srt-sel">
-              <option value="recommended">Recommended</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="level-desc">Level: High to Low</option>
-              <option value="name-asc">Name: A to Z</option>
-            </select>
-          </div>
-
-          <button id="rstFltrs" class="rst-fltrs-btn">Reset Filters</button>
-        </div>
-
-        <div class="ad-cntr lft-ad-spc">
-          <div class="ad-hdr">
-            <h3>Featured</h3>
-            <span class="ad-spnsr">Sponsored</span>
-          </div>
-          <div class="ad-bdy">
-            <div class="ad-img">
-              <div class="ad-bdg">HOT DEAL</div>
-              <div class="ad-dscnt">-50%</div>
-              <img src="https://cdn.discordapp.com/attachments/1351970656992104590/1352349130143563887/9b804a677304cffdc4e9e5b20df6dce2.png?ex=67ddb0c6&is=67dc5f46&hm=fb4e7a08cac53967b69ac6e39900c5d4c53c3b6bc85ccf6798b4384db9c0baab&" alt="Advertisement">
-            </div>
-            <div class="ad-cntnt">
-              <div class="ad-ttl">x4v made this</div>
-              <p class="ad-desc">
-                Limited time offer! Get premium sigma cat for -50% :3
-              </p>
-              <a href="" class="ad-cta">
-                Claim Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cntnt-area">
-        <div id="heroSec" class="hero-sec">
-          <div class="hero-crd">
-            <div class="hero-grd"></div>
-            <div class="hero-glw"></div>
-            <div class="hero-cntnt">
-              <div class="hero-acnt-bar"></div>
-              <div class="hero-txt">
-                <h1 class="hero-ttl">
-                  Installing exploits on <span class="hero-ttl-grd">Android & PC</span>
-                </h1>
-                <p class="hero-desc">
-                  Get started with our comprehensive guide to installing and using exploits safely and effectively.
-                </p>
-                <button class="hero-btn">
-                  <span class="hero-btn-ico">▶</span>
-                  <span>Watch the YouTube tutorial</span>
-                  <i class="fas fa-chevron-right hero-btn-arr"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sts-row">
-          <div class="sts-txt">
-            Showing <span id="fltrdCnt" class="fltrd-cnt">0</span> of <span id="ttlCnt" class="ttl-cnt">0</span> exploits
-          </div>
-
-          <div class="view-tabs">
-            <div class="tabs-lst">
-              <button class="tab-trgr actv" data-tab="grid">Grid</button>
-              <button class="tab-trgr" data-tab="list">List</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="tabs-cntnt">
-          <div id="gridTab" class="tab-cntnt actv">
-            <div id="expsGrid" class="crds-grid">
-            </div>
-          </div>
-
-          <div id="listTab" class="tab-cntnt">
-            <div id="expsList" class="lst-cntr">
-            </div>
-          </div>
-
-          <div id="noRes" class="no-res hidden">
-            <div class="no-res-ico">
-              <i class="fas fa-search"></i>
-            </div>
-            <h3 class="no-res-ttl">No exploits found</h3>
-            <p class="no-res-desc">
-              We couldn't find any exploits that match your current filters. Try adjusting your filters or search query.
-            </p>
-            <button id="rstAllFltrs" class="rst-all-btn">Reset All Filters</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="rght-sdbr">
-        <div class="ad-cntr rght-ad-spc">
-          <div class="ad-hdr">
-            <h3>Featured</h3>
-            <span class="ad-spnsr">Sponsored</span>
-          </div>
-          <div class="ad-bdy">
-            <div class="ad-img">
-              <div class="ad-bdg">HOT DEAL</div>
-              <div class="ad-dscnt">-50%</div>
-              <img src="https://cdn.discordapp.com/attachments/1351970656992104590/1352349130143563887/9b804a677304cffdc4e9e5b20df6dce2.png?ex=67ddb0c6&is=67dc5f46&hm=fb4e7a08cac53967b69ac6e39900c5d4c53c3b6bc85ccf6798b4384db9c0baab&" alt="Advertisement">
-            </div>
-            <div class="ad-cntnt">
-              <div class="ad-ttl">x4v made this</div>
-              <p class="ad-desc">
-                Limited time offer! Get premium sigma cat for -50% :3
-              </p>
-              <a href="" class="ad-cta">
-                Claim Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <div id="fltrDrwr" class="fltr-drwr">
-    <div class="fltr-drwr-ovl"></div>
-    <div class="fltr-drwr-cntnt">
-      <div class="fltr-drwr-hdr">
-        <h2 class="fltr-drwr-ttl">Filters</h2>
-        <p class="fltr-drwr-desc">Adjust your search criteria to find the perfect exploit.</p>
-      </div>
-      <div class="fltr-drwr-bdy">
-        <div class="mob-lvl-sldr-cntr">
-          <h3 class="fltr-sec-ttl">
-            <span class="fltr-dot"></span>
-            Level (Power)
-          </h3>
-          <div class="lvl-sldr-wrp">
-            <div class="lvl-lbls">
-              <div class="lvl-min-lbl">ALL</div>
-              <div class="lvl-max-lbl">LEVEL: <span id="mobLvlMaxVal">ALL</span></div>
-            </div>
-            <div class="lvl-trk">
-              <div id="mobLvlTrkFill" class="lvl-trk-fill"></div>
-            </div>
-            <input type="range" id="mobLvlSldr" class="lvl-sldr" min="0" max="8" value="0" step="1">
-            <div class="lvl-mrkrs">
-              <span class="lvl-mrkr actv">0</span>
-              <span class="lvl-mrkr actv">1</span>
-              <span class="lvl-mrkr actv">2</span>
-              <span class="lvl-mrkr actv">3</span>
-              <span class="lvl-mrkr actv">4</span>
-              <span class="lvl-mrkr actv">5</span>
-              <span class="lvl-mrkr actv">6</span>
-              <span class="lvl-mrkr actv">7</span>
-              <span class="lvl-mrkr actv">8</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mob-pltf-fltr-cntr">
-          <h3 class="fltr-sec-ttl">
-            <span class="fltr-dot"></span>
-            Platform
-          </h3>
-          <div class="mob-pltf-grid">
-            <div class="mob-pltf-chkbx">
-              <input type="checkbox" id="mobWin" data-pltf="windows">
-              <label for="mobWin">windows</label>
-            </div>
-            <div class="mob-pltf-chkbx">
-              <input type="checkbox" id="mobMac" data-pltf="macos">
-              <label for="mobMac">macos</label>
-            </div>
-            <div class="mob-pltf-chkbx">
-              <input type="checkbox" id="mobAnd" data-pltf="android">
-              <label for="mobAnd">android</label>
-            </div>
-            <div class="mob-pltf-chkbx">
-              <input type="checkbox" id="mobIos" data-pltf="ios">
-              <label for="mobIos">ios</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="mob-prc-fltr-cntr">
-          <h3 class="fltr-sec-ttl">
-            <span class="fltr-dot"></span>
-            Price
-          </h3>
-          <div class="mob-prc-btns">
-            <button class="mob-prc-btn actv" data-prc="all">All</button>
-            <button class="mob-prc-btn" data-prc="free">Free</button>
-            <button class="mob-prc-btn" data-prc="paid">Paid</button>
-          </div>
-        </div>
-
-        <div class="mob-vrf-fltr-cntr">
-          <label class="cstm-chkbx vrf">
-            <input type="checkbox" id="mobVrfSwch">
-            <span class="chkmrk"></span>
-            <span class="chkbx-lbl">Show verified only</span>
-          </label>
-        </div>
-
-        <div class="mob-prem-fltr-cntr">
-          <label class="cstm-chkbx prem">
-            <input type="checkbox" id="mobPremSwch">
-            <span class="chkmrk"></span>
-            <span class="chkbx-lbl">Show premium only</span>
-          </label>
-        </div>
-
-        <div class="mob-ext-fltr-cntr">
-          <label class="cstm-chkbx ext">
-            <input type="checkbox" id="mobExtSwch">
-            <span class="chkmrk"></span>
-            <span class="chkbx-lbl">Show external only</span>
-          </label>
-        </div>
-
-        <div class="mob-exec-fltr-cntr">
-          <label class="cstm-chkbx exec">
-            <input type="checkbox" id="mobExecSwch">
-            <span class="chkmrk"></span>
-            <span class="chkbx-lbl">Show executor only</span>
-          </label>
-        </div>
-
-        <div class="mob-srt-fltr-cntr">
-          <h3 class="fltr-sec-ttl">
-            <span class="fltr-dot"></span>
-            Sort by
-          </h3>
-          <select id="mobSrtSel" class="mob-srt-sel">
-            <option value="recommended">Recommended</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="level-desc">Level: High to Low</option>
-            <option value="name-asc">Name: A to Z</option>
-          </select>
-        </div>
-      </div>
-      <div class="fltr-drwr-ftr">
-        <button id="mobRstFltrs" class="mob-rst-fltrs-btn">Reset Filters</button>
-        <button id="applyFltrs" class="apply-fltrs-btn">Apply Filters</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="funcs.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
