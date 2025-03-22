@@ -1730,4 +1730,3 @@ function adjSrchBar() {
   srchCont.style.width = "auto";
   srchCont.style.zIndex = "5";
 }
-
