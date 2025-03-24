@@ -14,6 +14,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-yellow-500",
     accentColor: "from-purple-600 to-purple-700",
+    info: "# Zenith Exploit\n\nZenith is a powerful exploit with **amazing uptime** and stability.\n\n## Features\n- Level 8 execution\n- 100% sUNC\n- Decompiler included\n\n> Best overall value for your money",
     premium: true,
   },
   {
@@ -770,6 +771,85 @@ function clsUncMdl() {
   }
 }
 
+function updateUncModalColors() {
+  const theme = document.documentElement.getAttribute("data-theme") || "red"
+  let bgColor, textColor, borderColor
+
+  switch (theme) {
+    case "red":
+      bgColor = "#371616"
+      textColor = "#f87171"
+      borderColor = "#f8717166"
+      break
+    case "blue":
+      bgColor = "#1e3a8a"
+      textColor = "#60a5fa"
+      borderColor = "#60a5fa66"
+      break
+    case "green":
+      bgColor = "#1a2e21"
+      textColor = "#86efac"
+      borderColor = "#86efac66"
+      break
+    case "yellow":
+      bgColor = "#332618"
+      textColor = "#fde047"
+      borderColor = "#fde04766"
+      break
+    case "purple":
+      bgColor = "#28183c"
+      textColor = "#c084fc"
+      borderColor = "#c084fc66"
+      break
+    default:
+      bgColor = "#371616"
+      textColor = "#f87171"
+      borderColor = "#f8717166"
+  }
+
+  const modal = document.querySelector(".unc-modal")
+  if (modal) {
+    modal.style.backgroundColor = bgColor
+    modal.style.color = textColor
+    modal.style.border = `1px solid ${borderColor}`
+
+    const modalHeader = modal.querySelector(".unc-modal-header")
+    if (modalHeader) {
+      modalHeader.style.borderBottom = `1px solid ${borderColor}`
+    }
+
+    const modalFooter = modal.querySelector(".unc-modal-footer")
+    if (modalFooter) {
+      modalFooter.style.borderTop = `1px solid ${borderColor}`
+    }
+  }
+}
+
+function updateThemeElements() {
+  updateUncModalColors()
+  const webButtons = document.querySelectorAll(".web-btn")
+  webButtons.forEach((btn) => {
+    btn.style.backgroundColor = ""
+    btn.style.borderColor = ""
+    btn.style.color = ""
+  })
+  const heroElements = document.querySelectorAll(
+    ".hero-acnt-bar, .hero-ttl strong, .hero-ttl b, .hero-ttl em, .yt-tutorial-btn",
+  )
+  heroElements.forEach((el) => {
+    el.style.background = ""
+    el.style.color = ""
+  })
+
+  const checkboxes = document.querySelectorAll(
+    ".cstm-chkbx.ext input:checked ~ .chkmrk, .cstm-chkbx.exec input:checked ~ .chkmrk",
+  )
+  checkboxes.forEach((cb) => {
+    cb.style.backgroundColor = ""
+    cb.style.borderColor = ""
+  })
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("voxlis-theme") || "red"
   document.documentElement.setAttribute("data-theme", savedTheme)
@@ -782,7 +862,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <span>${themeName} Theme</span>
         <i class="fas fa-chevron-down"></i>
       `
-
       const options = els.themeDropdownOptions.querySelectorAll(".theme-dropdown-option")
       options.forEach((option) => {
         option.classList.remove("selected")
@@ -790,6 +869,7 @@ document.addEventListener("DOMContentLoaded", () => {
           option.classList.add("selected")
         }
       })
+      updateThemeElements()
     }
 
     updateSelectedTheme(savedTheme)
@@ -800,31 +880,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobSortOptions = document.getElementById("mobSortDropdownOptions")
 
     if (sortDropdown && sortOptions) {
-      sortDropdown.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const dropdown = sortDropdown.parentElement;
-        dropdown.classList.toggle('active');
-        
-        document.querySelectorAll('.custom-dropdown').forEach(d => {
-          if (d !== dropdown && d.classList.contains('active')) {
-            d.classList.remove('active');
+      sortDropdown.addEventListener("click", (e) => {
+        e.stopPropagation()
+        const dropdown = sortDropdown.parentElement
+        dropdown.classList.toggle("active")
+
+        document.querySelectorAll(".custom-dropdown").forEach((d) => {
+          if (d !== dropdown && d.classList.contains("active")) {
+            d.classList.remove("active")
           }
-        });
-      });
+        })
+      })
     }
 
     if (mobSortDropdown && mobSortOptions) {
-      mobSortDropdown.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const dropdown = mobSortDropdown.parentElement;
-        dropdown.classList.toggle('active');
-        
-        document.querySelectorAll('.custom-dropdown').forEach(d => {
-          if (d !== dropdown && d.classList.contains('active')) {
-            d.classList.remove('active');
+      mobSortDropdown.addEventListener("click", (e) => {
+        e.stopPropagation()
+        const dropdown = mobSortDropdown.parentElement
+        dropdown.classList.toggle("active")
+
+        document.querySelectorAll(".custom-dropdown").forEach((d) => {
+          if (d !== dropdown && d.classList.contains("active")) {
+            d.classList.remove("active")
           }
-        });
-      });
+        })
+      })
     }
 
     document.addEventListener("click", (e) => {
@@ -853,8 +933,17 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSelectedTheme(theme)
         localStorage.setItem("voxlis-theme", theme)
         els.themeDropdown.classList.remove("active")
-
         createThemeChangeEffect(theme)
+        setTimeout(updateThemeElements, 100)
+      })
+    })
+  }
+
+  const themeOptions = document.querySelectorAll(".theme-dropdown-option")
+  if (themeOptions) {
+    themeOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        setTimeout(updateUncModalColors, 100)
       })
     })
   }
@@ -897,6 +986,67 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   }
+  
+  function openInfoModal(exploit) {
+    const modalContainer = document.getElementById("infoModalContainer");
+    const modalTitle = document.getElementById("infoModalTitle");
+    const modalExploitName = document.getElementById("infoModalExploitName");
+    const modalExploitDesc = document.getElementById("infoModalExploitDesc");
+    const modalMarkdown = document.getElementById("infoModalMarkdown");
+  
+    modalContainer.style.display = "flex";
+    modalTitle.textContent = `${exploit.name} Information`;
+    modalExploitName.textContent = exploit.name;
+    modalExploitDesc.textContent = exploit.desc;
+    
+    if (exploit.info) {
+      modalMarkdown.innerHTML = marked.parse(exploit.info);
+
+      if (window.hljs) {
+        document.querySelectorAll('#infoModalMarkdown pre code').forEach((block) => {
+          window.hljs.highlightElement(block);
+        });
+      }
+    } else {
+      modalMarkdown.innerHTML = "<p>No additional information available for this exploit.</p>";
+    }
+    setTimeout(() => {
+      document.querySelector(".info-modal").classList.add("show");
+    }, 10);
+  
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeInfoModal() {
+    const modal = document.querySelector(".info-modal");
+    if (modal) {
+      modal.classList.remove("show");
+      setTimeout(() => {
+        const container = document.getElementById("infoModalContainer");
+        if (container) {
+          container.style.display = "none";
+        }
+        document.body.style.overflow = "";
+      }, 300);
+    }
+  }
+  
+  document.addEventListener("click", (e) => {
+    const infoBtn = e.target.closest(".info-btn");
+    if (infoBtn) {
+      const card = infoBtn.closest(".exp-crd") || infoBtn.closest(".exp-lst-itm");
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl");
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0];
+          const exploit = expData.find((exp) => exp.name === name);
+          if (exploit) {
+            openInfoModal(exploit);
+          }
+        }
+      }
+    }
+  });
 
   if (els.logoTxtGrd && els.logoTxtLt.length) {
     const fontSize = window.getComputedStyle(els.logoTxtLt[0]).fontSize
@@ -1211,6 +1361,52 @@ function stpEvts() {
     })
   }
 
+  const rstFltrs = () => {
+    st.pltFlt = []
+    st.lvlFlt = [0, 0]
+    st.prcFlt = "all"
+    st.vrfOnly = false
+    st.premOnly = false
+    st.extOnly = false
+    st.execOnly = false
+
+    document.querySelectorAll(".cstm-chkbx input").forEach((cb) => {
+      cb.checked = false
+    })
+
+    document.querySelectorAll(".mob-pltf-chkbx input").forEach((cb) => {
+      cb.checked = false
+    })
+
+    document.querySelectorAll(".prc-btn, .mob-prc-btn").forEach((b) => {
+      b.classList.remove("actv")
+      if (b.getAttribute("data-prc") === "all") {
+        b.classList.add("actv")
+      }
+    })
+
+    if (els.lvlSldr) els.lvlSldr.value = 0
+    if (els.mLvlSldr) els.mLvlSldr.value = 0
+    if (els.lvlVal) els.lvlVal.textContent = "ALL"
+    if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
+    updLvlSldr()
+    updMLvlSldr()
+
+    if (els.vrfSwch) els.vrfSwch.checked = false
+    if (els.mVrfSwch) els.mVrfSwch.checked = false
+
+    if (els.premSwch) els.premSwch.checked = false
+    if (els.mPremSwch) els.mPremSwch.checked = false
+
+    if (els.extSwch) els.extSwch.checked = false
+    if (els.mExtSwch) els.mExtSwch.checked = false
+
+    if (els.execSwch) els.execSwch.checked = false
+    if (els.mExecSwch) els.mExecSwch.checked = false
+
+    fltrExps()
+  }
+
   if (els.rstBtn) els.rstBtn.addEventListener("click", rstFltrs)
   if (els.mRstBtn) els.mRstBtn.addEventListener("click", rstFltrs)
   if (els.rstAllBtn) els.rstAllBtn.addEventListener("click", rstFltrs)
@@ -1396,6 +1592,37 @@ function rndrExps() {
   })
 }
 
+function initTextSwitching() {
+  document.querySelectorAll(".info-btn .text-container").forEach((container) => {
+    const texts = container.querySelectorAll(".text-switch");
+    texts.forEach((text) => {
+      text.style.opacity = text.classList.contains("visible") ? "1" : "0";
+      text.style.transition = "opacity 0.5s ease-in-out";
+      text.style.position = "absolute";
+    });
+    container.style.position = "relative";
+  });
+  setInterval(() => {
+    document.querySelectorAll(".info-btn .text-container").forEach((container) => {
+      const visibleText = container.querySelector(".text-switch.visible");
+      const hiddenText = container.querySelector(".text-switch.hidden");
+      if (visibleText && hiddenText) {
+        visibleText.style.opacity = "0";
+        setTimeout(() => {
+          visibleText.classList.remove("visible");
+          visibleText.classList.add("hidden");
+          hiddenText.classList.remove("hidden");
+          hiddenText.classList.add("visible");
+          hiddenText.style.opacity = "0";
+          setTimeout(() => {
+            hiddenText.style.opacity = "1";
+          }, 50);
+        }, 500);
+      }
+    });
+  }, 1500);
+}
+
 function crtCrd(exp) {
   const crd = document.createElement("div")
   crd.className = "exp-crd"
@@ -1535,6 +1762,13 @@ function crtCrd(exp) {
         <button class="crd-btn unc-btn">
           UNC <i class="fas fa-code"></i>
         </button>
+        <button class="crd-btn info-btn">
+          <div class="text-container">
+            <span class="text-switch visible" data-text="info">INFO</span>
+            <span class="text-switch hidden" data-text="more">MORE</span>
+          </div>
+          <i class="fas fa-info-circle"></i>
+        </button>
       </div>
       <button class="crd-btn prc-btn-new ${exp.price === "FREE" ? "free" : ""}">
         <div class="default-text">
@@ -1549,6 +1783,7 @@ function crtCrd(exp) {
 
   return crd
 }
+
 function crtLstItm(exp) {
   const itm = document.createElement("div")
   itm.className = "exp-lst-itm"
@@ -1557,7 +1792,7 @@ function crtLstItm(exp) {
   let uncScore = "Unknown"
   for (const pro of exp.pros || []) {
     if (pro.includes("UNC") || pro.includes("sUNC")) {
-      uncScore = pro.match(/\d+%/)[0] || "Unknown";
+      uncScore = pro.match(/\d+%/)[0] || "Unknown"
       break
     }
   }
@@ -1565,7 +1800,7 @@ function crtLstItm(exp) {
     for (const neutral of exp.neutral || []) {
       if (neutral.includes("UNC") || neutral.includes("sUNC")) {
         uncScore = neutral.match(/\d+%/)[0]
-        ; "Unknown"
+        ;("Unknown")
         break
       }
     }
@@ -1704,6 +1939,13 @@ function crtLstItm(exp) {
           <i class="fas fa-code"></i>
           <span>UNC</span>
         </button>
+        <button class="lst-itm-btn info-btn">
+          <div class="text-container">
+            <span class="text-switch visible" data-text="info">INFO</span>
+            <span class="text-switch hidden" data-text="more">MORE</span>
+          </div>
+          <i class="fas fa-info-circle"></i>
+        </button>
       </div>
     </div>
   `
@@ -1711,187 +1953,234 @@ function crtLstItm(exp) {
   return itm
 }
 
-function updCnts() {
-  if (!els.fltCnt || !els.ttlCnt) return;
-  const currentFilteredCount = parseInt(els.fltCnt.textContent) || 0;
-  const newFilteredCount = st.fltrd.length;
-  const totalCount = expData.length;
-  els.ttlCnt.textContent = totalCount;
-  if (currentFilteredCount !== newFilteredCount) {
-    animateCountChange(els.fltCnt, currentFilteredCount, newFilteredCount);
-  }
-}
+function setupDropdowns() {
+  const pageOverlay = document.getElementById("pageOverlay")
+  const dropdowns = document.querySelectorAll(".custom-dropdown")
 
-function animateCountChange(element, startValue, endValue) {
-  if (element.countAnimation) {
-    cancelAnimationFrame(element.countAnimation);
-  }
-  const duration = 1000;
-  const startTime = performance.now();
-  const difference = endValue - startValue;
-  function updateCount(timestamp) {
-    const elapsed = timestamp - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-    let currentValue;
-    if (difference > 0) {
-      currentValue = Math.floor(startValue + difference * easeOutQuart);
-    } else {
-      currentValue = Math.ceil(startValue + difference * easeOutQuart);
-    }
-    element.textContent = currentValue;
-    if (progress < 1) {
-      element.countAnimation = requestAnimationFrame(updateCount);
-    } else {
-      element.textContent = endValue;
-    }
-  }
-  element.countAnimation = requestAnimationFrame(updateCount);
-}
+  dropdowns.forEach((dropdown) => {
+    const selected = dropdown.querySelector(".custom-dropdown-selected")
+    const options = dropdown.querySelector(".custom-dropdown-options")
+    const optionItems = dropdown.querySelectorAll(".custom-dropdown-option")
 
-function updLvlSldr() {
-  if (!els.lvlFill) return
-  const pct = (st.lvlFlt[1] / 8) * 100
-  els.lvlFill.style.width = `${pct}%`
-
-  document.querySelectorAll(".lvl-mrkr").forEach((mrkr, idx) => {
-    if (st.lvlFlt[1] === 0) {
-      mrkr.classList.add("actv")
-    } else {
-      mrkr.classList.toggle("actv", idx <= st.lvlFlt[1])
-    }
+    selected.addEventListener("click", (e) => {
+      e.stopPropagation()
+      dropdowns.forEach((d) => {
+        if (d !== dropdown && d.classList.contains("active")) {
+          d.classList.remove("active")
+        }
+      })
+      dropdown.classList.toggle("active")
+      if (dropdown.classList.contains("active")) {
+        pageOverlay.classList.add("active")
+      } else {
+        pageOverlay.classList.remove("active")
+      }
+    })
+    optionItems.forEach((option) => {
+      option.addEventListener("click", () => {
+        const value = option.getAttribute("data-value")
+        const text = option.textContent
+        selected.querySelector("span").textContent = text
+        optionItems.forEach((opt) => opt.classList.remove("selected"))
+        option.classList.add("selected")
+        dropdown.classList.remove("active")
+        pageOverlay.classList.remove("active")
+        if (dropdown.closest(".srt-fltr-cntr") || dropdown.closest(".mob-srt-fltr-cntr")) {
+          st.srtBy = value
+          fltrExps()
+        }
+      })
+    })
+  })
+  pageOverlay.addEventListener("click", () => {
+    dropdowns.forEach((dropdown) => {
+      dropdown.classList.remove("active")
+    })
+    pageOverlay.classList.remove("active")
   })
 }
 
-function updMLvlSldr() {
-  if (!els.mLvlFill) return
-  const pct = (st.lvlFlt[1] / 8) * 100
-  els.mLvlFill.style.width = `${pct}%`
-
-  document.querySelectorAll("#fltrDrwr .lvl-mrkr").forEach((mrkr, idx) => {
-    if (st.lvlFlt[1] === 0) {
-      mrkr.classList.add("actv")
-    } else {
-      mrkr.classList.toggle("actv", idx <= st.lvlFlt[1])
-    }
-  })
-}
-
-function rstFltrs() {
-  st.qry = ""
-  els.srch.value = ""
-  els.mSrch.value = ""
-  els.clrBtn.classList.add("hidden")
-  els.mClrBtn.classList.add("hidden")
-
-  st.lvlFlt = [0, 0]
-  if (els.lvlSldr) els.lvlSldr.value = 0
-  if (els.mLvlSldr) els.mLvlSldr.value = 0
+document.addEventListener("DOMContentLoaded", () => {
   if (els.lvlVal) els.lvlVal.textContent = "ALL"
   if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
-  updLvlSldr()
-  updMLvlSldr()
+  updCnts()
+  rndrExps()
+  initStrs()
+  stpEvts()
+  crtUncMdl()
+  setupPriceButtons()
+  createInfoModal();
+  initTextSwitching()
+  setupDropdowns()
+  const themeOptions = document.querySelectorAll(".theme-dropdown-option")
+  if (themeOptions) {
+    themeOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        setTimeout(updateThemeElements, 100)
+      })
+    })
+  }
+})
 
-  st.pltFlt = []
-  document.querySelectorAll(".cstm-chkbx input, .mob-pltf-chkbx input").forEach((cb) => {
-    cb.checked = false
-  })
-
-  st.prcFlt = "all"
-  document.querySelectorAll(".prc-btn, .mob-prc-btn").forEach((btn) => {
-    btn.classList.remove("actv")
-    if (btn.getAttribute("data-prc") === "all") {
-      btn.classList.add("actv")
-    }
-  })
-
-  st.vrfOnly = false
-  if (els.vrfSwch) els.vrfSwch.checked = false
-  if (els.mVrfSwch) els.mVrfSwch.checked = false
-
-  st.premOnly = false
-  if (els.premSwch) els.premSwch.checked = false
-  if (els.mPremSwch) els.mPremSwch.checked = false
-
-  st.extOnly = false
-  if (els.extSwch) els.extSwch.checked = false
-  if (els.mExtSwch) els.mExtSwch.checked = false
-
-  st.execOnly = false
-  if (els.execSwch) els.execSwch.checked = false
-  if (els.mExecSwch) els.mExecSwch.checked = false
-
-  st.srtBy = "recommended"
-  if (els.srtSel) els.srtSel.value = "recommended"
-  if (els.mSrtSel) els.mSrtSel.value = "recommended"
-
-  fltrExps()
+const updCnts = () => {
+  if (els.fltCnt) els.fltCnt.textContent = st.fltrd.length
+  if (els.ttlCnt) els.ttlCnt.textContent = expData.length
 }
 
-function initStrs() {
-  if (!els.cnv) return
-  const ctx = els.cnv.getContext("2d")
-  if (!ctx) return
+const initStrs = () => {
+  const savedTheme = localStorage.getItem("voxlis-theme") || "red"
+  document.documentElement.setAttribute("data-theme", savedTheme)
+}
 
-  let strs = []
+const updLvlSldr = () => {
+  if (!els.lvlSldr || !els.lvlFill) return
+  const val = els.lvlSldr.value
+  const pct = (val / els.lvlSldr.max) * 100
+  els.lvlFill.style.width = `${pct}%`
+}
 
-  class Str {
-    constructor() {
-      this.rst()
+const updMLvlSldr = () => {
+  if (!els.mLvlSldr || !els.mLvlFill) return
+  const val = els.mLvlSldr.value
+  const pct = (val / els.mLvlSldr.max) * 100
+  els.mLvlFill.style.width = `${pct}%`
+}
+
+function createInfoModal() {
+  document.getElementById("infoModalOverlay").addEventListener("click", closeInfoModal);
+  document.getElementById("infoModalCloseBtn").addEventListener("click", closeInfoModal);
+  const footerCloseBtn = document.getElementById("infoModalFooterCloseBtn");
+  if (footerCloseBtn) {
+    footerCloseBtn.addEventListener("click", closeInfoModal);
+  }
+}
+
+function openInfoModal(exploit) {
+  const modalContainer = document.getElementById("infoModalContainer");
+  const modalTitle = document.getElementById("infoModalTitle");
+  const modalExploitName = document.getElementById("infoModalExploitName");
+  const modalExploitDesc = document.getElementById("infoModalExploitDesc");
+  const modalMarkdown = document.getElementById("infoModalMarkdown");
+  modalContainer.style.display = "flex";
+  modalTitle.textContent = `${exploit.name} Information`;
+  modalExploitName.textContent = exploit.name;
+  modalExploitDesc.textContent = exploit.desc;
+  if (exploit.info) {
+    modalMarkdown.innerHTML = marked.parse(exploit.info);
+    if (window.hljs) {
+      document.querySelectorAll('#infoModalMarkdown pre code').forEach((block) => {
+        window.hljs.highlightElement(block);
+      });
     }
+  } else {
+    modalMarkdown.innerHTML = "<p>No additional information available for this exploit.</p>";
+  }
+  setTimeout(() => {
+    document.querySelector(".info-modal").classList.add("show");
+  }, 10);
 
-    rst() {
-      this.x = Math.random() * els.cnv.width
-      this.y = Math.random() * els.cnv.height
-      this.z = Math.random() * 2
-      this.size = Math.random() * 2
-      this.opacity = Math.random() * 0.5 + 0.5
-      this.speed = Math.random() * 0.5 + 0.5
-      this.angle = Math.random() * Math.PI * 2
+  document.body.style.overflow = "hidden";
+}
+
+function closeInfoModal() {
+  const modal = document.querySelector(".info-modal");
+  if (modal) {
+    modal.classList.remove("show");
+    setTimeout(() => {
+      const container = document.getElementById("infoModalContainer");
+      if (container) {
+        container.style.display = "none";
+      }
+      document.body.style.overflow = "";
+    }, 300);
+  }
+}
+
+function updateThemeElements() {
+  updateInfoModalColors();
+  const webButtons = document.querySelectorAll(".web-btn");
+  webButtons.forEach((btn) => {
+    btn.style.backgroundColor = "";
+    btn.style.borderColor = "";
+    btn.style.color = "";
+  });
+
+  const heroElements = document.querySelectorAll(
+    ".hero-acnt-bar, .hero-ttl strong, .hero-ttl b, .hero-ttl em, .yt-tutorial-btn",
+  );
+  heroElements.forEach((el) => {
+    el.style.background = "";
+    el.style.color = "";
+  });
+  const checkboxes = document.querySelectorAll(
+    ".cstm-chkbx.ext input:checked ~ .chkmrk, .cstm-chkbx.exec input:checked ~ .chkmrk",
+  );
+  checkboxes.forEach((cb) => {
+    cb.style.backgroundColor = "";
+    cb.style.borderColor = "";
+  });
+}
+
+function updateInfoModalColors() {
+  const theme = document.documentElement.getAttribute("data-theme") || "red";
+
+  const modal = document.querySelector(".info-modal");
+  if (modal) {
+    const header = modal.querySelector(".info-modal-header");
+    if (header) {
+      header.style.background = "";
+      header.style.borderBottom = "";
     }
+    
+    const exploitName = modal.querySelector(".info-modal-exploit-name");
+    if (exploitName) {
+      exploitName.style.background = "";
+    }
+    
+    const closeBtn = modal.querySelector(".info-modal-close-btn");
+    if (closeBtn) {
+      closeBtn.style.backgroundColor = "";
+    }
+    
+    const links = modal.querySelectorAll(".info-modal-markdown a");
+    links.forEach(link => {
+      link.style.color = "";
+    });
+    
+    const blockquotes = modal.querySelectorAll(".info-modal-markdown blockquote");
+    blockquotes.forEach(blockquote => {
+      blockquote.style.borderLeft = "";
+    });
+  }
+}
 
-    upd() {
-      this.angle += 0.001 * this.speed
-      this.x += Math.cos(this.angle) * 0.1
-      this.y += Math.sin(this.angle) * 0.1
-      this.opacity += Math.sin(Date.now() * 0.001 * this.speed) * 0.02
-      this.opacity = Math.max(0.3, Math.min(1, this.opacity))
-      if (this.x < 0 || this.x > els.cnv.width || this.x > els.cnv.width || this.y < 0 || this.y > els.cnv.height) {
-        this.rst()
+document.addEventListener("DOMContentLoaded", function() {
+  createInfoModal();
+  document.addEventListener("click", (e) => {
+    const infoBtn = e.target.closest(".info-btn");
+    if (infoBtn) {
+      const card = infoBtn.closest(".exp-crd") || infoBtn.closest(".exp-lst-itm");
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl");
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0];
+          const exploit = expData.find((exp) => exp.name === name);
+          if (exploit) {
+            openInfoModal(exploit);
+          }
+        }
       }
     }
-
-    drw() {
-      ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`
-      ctx.beginPath()
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-      ctx.fill()
-    }
+  });
+  const themeOptions = document.querySelectorAll(".theme-dropdown-option");
+  if (themeOptions) {
+    themeOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        setTimeout(updateInfoModalColors, 100);
+      });
+    });
   }
-
-  const crtStrs = () => {
-    strs = Array.from({ length: 100 }, () => new Str())
-  }
-
-  const rszCnv = () => {
-    els.cnv.width = window.innerWidth
-    els.cnv.height = window.innerHeight
-    crtStrs()
-  }
-
-  const anmt = () => {
-    ctx.clearRect(0, 0, els.cnv.width, els.cnv.height)
-    strs.forEach((str) => {
-      str.upd()
-      str.drw()
-    })
-    requestAnimationFrame(anmt)
-  }
-
-  rszCnv()
-  anmt()
-  window.addEventListener("resize", rszCnv)
-}
+});
 
 window.addEventListener("resize", adjSrchBar)
 window.addEventListener("load", adjSrchBar)
