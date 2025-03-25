@@ -1716,9 +1716,7 @@ button {
 }
 
 .cons .feat-ico {
-  background-color: rgba(239,
-68,
-68, 0.2);
+  background-color: rgba(239, 68, 68, 0.2);
   color: rgba(239, 68, 68, 1);
 }
 
@@ -2183,7 +2181,6 @@ button {
 .rst-all-btn:hover {
   border-color: var(--sec-hvr-bdr);
   color: var(--prim);
-  transform: translateY(-2px);
 }
 
 @media (min-width: 768px) {
@@ -3506,21 +3503,31 @@ button {
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--prim);
-  border-radius: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  border: none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--prim-hvr);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--prim) rgba(0, 0, 0, 0.2);
 }
 
 .unc-modal-code::-webkit-scrollbar {
@@ -3570,9 +3577,13 @@ button {
   z-index: 50;
 }
 
+.custom-dropdown.active {
+  z-index: 100;
+}
+
 .custom-dropdown-options {
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.95);
@@ -3584,7 +3595,7 @@ button {
   opacity: 0;
   visibility: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .custom-dropdown.active .custom-dropdown-options {
@@ -4100,7 +4111,12 @@ h6:not(.hero-ttl-grd):not(.fltr-ttl),
   opacity: 1;
 }
 
-.web-btn, .web-btn i, .unc-btn, .unc-btn i, .price-info-btn, .price-info-btn i {
+.web-btn,
+.web-btn i,
+.unc-btn,
+.unc-btn i,
+.price-info-btn,
+.price-info-btn i {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -4199,7 +4215,7 @@ h6:not(.hero-ttl-grd):not(.fltr-ttl),
 
 .custom-dropdown-options {
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.95);
@@ -4211,7 +4227,7 @@ h6:not(.hero-ttl-grd):not(.fltr-ttl),
   opacity: 0;
   visibility: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .custom-dropdown.active .custom-dropdown-options {
@@ -4533,3 +4549,4 @@ h6:not(.hero-ttl-grd):not(.fltr-ttl),
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background-color: rgba(0, 0, 0, 0.2);
 }
+
