@@ -16,6 +16,9 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     info: "# Zenith Exploit\n\nZenith is a powerful exploit with **amazing uptime** and stability.\n\n## Features\n- Level 8 execution\n- 100% sUNC\n- Decompiler included\n\n> Best overall value for your money",
     premium: true,
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "awp",
@@ -33,6 +36,9 @@ const expData = [
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
     premium: true,
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "wave",
@@ -50,6 +56,9 @@ const expData = [
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
     premium: true,
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "macsploit",
@@ -66,6 +75,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "seliware",
@@ -83,6 +95,9 @@ const expData = [
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
     premium: false,
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "cryptic",
@@ -99,6 +114,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-purple-500",
     accentColor: "from-purple-600 to-purple-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "codex",
@@ -115,6 +133,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-yellow-500",
     accentColor: "from-yellow-600 to-yellow-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "matcha",
@@ -131,6 +152,9 @@ const expData = [
     editor: "sk337",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "solara",
@@ -146,6 +170,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "xeno",
@@ -161,6 +188,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "krnl",
@@ -176,6 +206,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "delta",
@@ -191,6 +224,9 @@ const expData = [
     editor: "imveryh4ppy",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "zorara",
@@ -206,6 +242,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-purple-500",
     accentColor: "from-purple-600 to-purple-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "dx9ware",
@@ -222,6 +261,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "velocity",
@@ -237,6 +279,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "apple-ware",
@@ -252,6 +297,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "jjsploit",
@@ -267,6 +315,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "vegax",
@@ -282,6 +333,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-purple-500",
     accentColor: "from-purple-600 to-purple-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "ronix",
@@ -297,6 +351,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "aimmy",
@@ -312,6 +369,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "df",
@@ -327,6 +387,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "arceusx",
@@ -342,6 +405,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-yellow-500",
     accentColor: "from-yellow-600 to-yellow-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "nezur",
@@ -357,6 +423,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-purple-500",
     accentColor: "from-purple-600 to-purple-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "argon",
@@ -372,6 +441,9 @@ const expData = [
     editor: "Requested",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "mint",
@@ -387,6 +459,9 @@ const expData = [
     editor: "Console",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
   {
     id: "ratware",
@@ -402,6 +477,9 @@ const expData = [
     editor: "Mr. Ratter",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    hide: false
   },
 ]
 
@@ -1472,11 +1550,47 @@ function stpEvts() {
       }
     }
   })
+
+  document.addEventListener("click", (e) => {
+    const webBtn = e.target.closest(".web-btn")
+    if (webBtn) {
+      const card = webBtn.closest(".exp-crd") || webBtn.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit && exploit.href) {
+            window.open(exploit.href, "_blank")
+          }
+        }
+      }
+    }
+  })
+
+  document.addEventListener("click", (e) => {
+    const priceBtn = e.target.closest(".prc-btn-new")
+    if (priceBtn) {
+      const card = priceBtn.closest(".exp-crd") || priceBtn.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit && exploit.priceHref) {
+            window.open(exploit.priceHref, "_blank")
+          }
+        }
+      }
+    }
+  })
 }
 
 function fltrExps() {
   st.fltrd = expData
     .filter((exp) => {
+      if (exp.hide === true) return false;
+
       if (st.qry) {
         const q = st.qry.toLowerCase()
         const nameMtch = exp.name.toLowerCase().includes(q)
@@ -2066,6 +2180,7 @@ function openInfoModal(exploit) {
   modalExploitName.textContent = exploit.name;
   modalExploitDesc.textContent = exploit.desc;
   if (exploit.info) {
+    const marked = window.marked;
     modalMarkdown.innerHTML = marked.parse(exploit.info);
     if (window.hljs) {
       document.querySelectorAll('#infoModalMarkdown pre code').forEach((block) => {
@@ -2094,31 +2209,6 @@ function closeInfoModal() {
       document.body.style.overflow = "";
     }, 300);
   }
-}
-
-function updateThemeElements() {
-  updateInfoModalColors();
-  const webButtons = document.querySelectorAll(".web-btn");
-  webButtons.forEach((btn) => {
-    btn.style.backgroundColor = "";
-    btn.style.borderColor = "";
-    btn.style.color = "";
-  });
-
-  const heroElements = document.querySelectorAll(
-    ".hero-acnt-bar, .hero-ttl strong, .hero-ttl b, .hero-ttl em, .yt-tutorial-btn",
-  );
-  heroElements.forEach((el) => {
-    el.style.background = "";
-    el.style.color = "";
-  });
-  const checkboxes = document.querySelectorAll(
-    ".cstm-chkbx.ext input:checked ~ .chkmrk, .cstm-chkbx.exec input:checked ~ .chkmrk",
-  );
-  checkboxes.forEach((cb) => {
-    cb.style.backgroundColor = "";
-    cb.style.borderColor = "";
-  });
 }
 
 function updateInfoModalColors() {
@@ -2181,6 +2271,87 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupSortDropdowns()
+
+  document.addEventListener("click", (e) => {
+    const dropdowns = document.querySelectorAll(".custom-dropdown")
+    dropdowns.forEach((dropdown) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("active")
+      }
+    })
+  })
+})
+
+function setupSortDropdowns() {
+  const sortDropdown = document.getElementById("sortDropdownSelected")
+  const sortOptions = document.getElementById("sortDropdownOptions")
+  const mobSortDropdown = document.getElementById("mobSortDropdownSelected")
+  const mobSortOptions = document.getElementById("mobSortDropdownOptions")
+
+  if (sortDropdown && sortOptions) {
+    sortDropdown.addEventListener("click", (e) => {
+      e.stopPropagation()
+      const dropdown = sortDropdown.parentElement
+      dropdown.classList.toggle("active")
+
+      document.querySelectorAll(".custom-dropdown").forEach((d) => {
+        if (d !== dropdown && d.classList.contains("active")) {
+          d.classList.remove("active")
+        }
+      })
+    })
+
+    const options = sortOptions.querySelectorAll(".custom-dropdown-option")
+    options.forEach((option) => {
+      option.addEventListener("click", function () {
+        const value = this.getAttribute("data-value")
+        sortDropdown.querySelector("span").textContent = this.textContent
+        sortDropdown.parentElement.classList.remove("active")
+
+        if (window.st) {
+          window.st.srtBy = value
+          if (typeof window.fltrExps === "function") {
+            window.fltrExps()
+          }
+        }
+      })
+    })
+  }
+
+  if (mobSortDropdown && mobSortOptions) {
+    mobSortDropdown.addEventListener("click", (e) => {
+      e.stopPropagation()
+      const dropdown = mobSortDropdown.parentElement
+      dropdown.classList.toggle("active")
+
+      document.querySelectorAll(".custom-dropdown").forEach((d) => {
+        if (d !== dropdown && d.classList.contains("active")) {
+          d.classList.remove("active")
+        }
+      })
+    })
+
+    const options = mobSortOptions.querySelectorAll(".custom-dropdown-option")
+    options.forEach((option) => {
+      option.addEventListener("click", function () {
+        const value = this.getAttribute("data-value")
+        mobSortDropdown.querySelector("span").textContent = this.textContent
+        mobSortDropdown.parentElement.classList.remove("active")
+
+        if (window.st) {
+          window.st.srtBy = value
+          if (typeof window.fltrExps === "function") {
+            window.fltrExps()
+          }
+        }
+      })
+    })
+  }
+}
+const marked = window.marked;
 
 window.addEventListener("resize", adjSrchBar)
 window.addEventListener("load", adjSrchBar)
