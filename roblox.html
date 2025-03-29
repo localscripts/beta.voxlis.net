@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="text-rendering" content="optimizeLegibility">
   <title>voxlis.NET</title>
-  <link rel="stylesheet" href="design.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Orbitron:wght@700&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="design.css">
 </head>
 <body>
   <div id="pageOverlay" class="page-overlay"></div>
@@ -18,9 +18,9 @@
   <div id="loadingScreen" class="loading-screen">
     <div class="loading-logo">
       <div class="logo-bar"></div>
-      <span class="logo-txt-lt">BETA.</span>
+      <span class="logo-txt-lt">WWW.</span>
       <span class="logo-txt-grd">VOXLIS</span>
-      <span class="logo-txt-lt">.NET!</span>
+      <span class="logo-txt-lt">.NET</span>
     </div>
     <div class="loading-bar-container">
       <div class="loading-bar" id="loadingBar"></div>
@@ -97,7 +97,6 @@
       <div class="lft-sdbr">
         <div class="fltr-crd">
           <h2 class="fltr-ttl">Filters</h2>
-
           <div class="lvl-sldr-cntr">
             <h3 class="fltr-sec-ttl">
               <span class="fltr-dot"></span>
@@ -263,7 +262,6 @@
           <div class="sts-txt">
             Showing <span id="fltrdCnt" class="fltrd-cnt">0</span> of <span id="ttlCnt" class="ttl-cnt">0</span> exploits
           </div>
-
           <div class="view-tabs">
             <div class="tabs-lst">
               <button class="tab-trgr actv" data-tab="grid">Grid</button>
@@ -273,12 +271,10 @@
         </div>
         <div class="tabs-cntnt">
           <div id="gridTab" class="tab-cntnt actv">
-            <div id="expsGrid" class="crds-grid">
-            </div>
+            <div id="expsGrid" class="crds-grid"></div>
           </div>
           <div id="listTab" class="tab-cntnt">
-            <div id="expsList" class="lst-cntr">
-            </div>
+            <div id="expsList" class="lst-cntr"></div>
           </div>
           <div id="noRes" class="no-res hidden">
             <div class="no-res-ico">
@@ -462,6 +458,7 @@
       </div>
     </div>
   </div>
+  
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-top">
@@ -514,7 +511,7 @@
       <div class="footer-bottom">
         <div class="footer-info">
           <div class="copyright">© 2025 voxlis.NET. All rights reserved.</div>
-          <div class="credits">Redesign by nuvq (x4v)</div>
+          <div class="credits">Designed with ♥ by <span class="designer-credit">x4v (@nuvq)</span></div>
           <div class="theme-credit">Theme Selector by sk337 &lt;3</div>
         </div>
         <div class="footer-social">
