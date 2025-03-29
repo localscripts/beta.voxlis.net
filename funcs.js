@@ -1065,67 +1065,68 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   }
-  
+
   function openInfoModal(exploit) {
-    const modalContainer = document.getElementById("infoModalContainer");
-    const modalTitle = document.getElementById("infoModalTitle");
-    const modalExploitName = document.getElementById("infoModalExploitName");
-    const modalExploitDesc = document.getElementById("infoModalExploitDesc");
-    const modalMarkdown = document.getElementById("infoModalMarkdown");
-  
-    modalContainer.style.display = "flex";
-    modalTitle.textContent = `${exploit.name} Information`;
-    modalExploitName.textContent = exploit.name;
-    modalExploitDesc.textContent = exploit.desc;
-    
+    const modalContainer = document.getElementById("infoModalContainer")
+    const modalTitle = document.getElementById("infoModalTitle")
+    const modalExploitName = document.getElementById("infoModalExploitName")
+    const modalExploitDesc = document.getElementById("infoModalExploitDesc")
+    const modalMarkdown = document.getElementById("infoModalMarkdown")
+
+    modalContainer.style.display = "flex"
+    modalTitle.textContent = `${exploit.name} Information`
+    modalExploitName.textContent = exploit.name
+    modalExploitDesc.textContent = exploit.desc
+
     if (exploit.info) {
-      modalMarkdown.innerHTML = marked.parse(exploit.info);
+      const marked = window.marked
+      modalMarkdown.innerHTML = marked.parse(exploit.info)
 
       if (window.hljs) {
-        document.querySelectorAll('#infoModalMarkdown pre code').forEach((block) => {
-          window.hljs.highlightElement(block);
-        });
+        document.querySelectorAll("#infoModalMarkdown pre code").forEach((block) => {
+          window.hljs.highlightElement(block)
+        })
       }
     } else {
-      modalMarkdown.innerHTML = "<p>No additional information available for this exploit.</p>";
+      modalMarkdown.innerHTML = "<p>No additional information available for this exploit.</p>"
     }
     setTimeout(() => {
-      document.querySelector(".info-modal").classList.add("show");
-    }, 10);
-  
-    document.body.style.overflow = "hidden";
+      document.querySelector(".info-modal").classList.add("show")
+    }, 10)
+
+    document.body.style.overflow = "hidden"
   }
 
   function closeInfoModal() {
-    const modal = document.querySelector(".info-modal");
+    const modal = document.querySelector(".info-modal")
     if (modal) {
-      modal.classList.remove("show");
+      modal.classList.remove("show")
       setTimeout(() => {
-        const container = document.getElementById("infoModalContainer");
+        const container = document.getElementById("infoModalContainer")
         if (container) {
-          container.style.display = "none";
+          container.style.display = "none"
         }
-        document.body.style.overflow = "";
-      }, 300);
+        document.body.style.overflow = ""
+      }, 300)
     }
   }
-  
+
   document.addEventListener("click", (e) => {
-    const infoBtn = e.target.closest(".info-btn");
+    const infoBtn = e.target.closest(".info-btn")
     if (infoBtn) {
-      const card = infoBtn.closest(".exp-crd") || infoBtn.closest(".exp-lst-itm");
+      const card = infoBtn.closest(".exp-crd") || infoBtn.closest(".exp-lst-itm")
       if (card) {
-        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl");
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
         if (nameElement) {
-          const name = nameElement.textContent.trim().split(/\s+/)[0];
-          const exploit = expData.find((exp) => exp.name === name);
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
           if (exploit) {
-            openInfoModal(exploit);
+            openInfoModal(exploit)
           }
         }
       }
     }
-  });
+  })
 
   if (els.logoTxtGrd && els.logoTxtLt.length) {
     const fontSize = window.getComputedStyle(els.logoTxtLt[0]).fontSize
@@ -1187,6 +1188,58 @@ document.addEventListener("DOMContentLoaded", () => {
   stpEvts()
   crtUncMdl()
   setupPriceButtons()
+  function fixFreeCardButtons() {
+    document.querySelectorAll(".unc-btn").forEach((btn) => {
+      btn.onclick = function (e) {
+        e.stopPropagation()
+        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+        if (card) {
+          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+          if (nameElement) {
+            const name = nameElement.textContent.trim().split(/\s+/)[0]
+            const exploit = expData.find((exp) => exp.name === name)
+            if (exploit) {
+              opnUncMdl(exploit)
+            }
+          }
+        }
+      }
+    })
+    document.querySelectorAll(".info-btn").forEach((btn) => {
+      btn.onclick = function (e) {
+        e.stopPropagation()
+        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+        if (card) {
+          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+          if (nameElement) {
+            const name = nameElement.textContent.trim().split(/\s+/)[0]
+            const exploit = expData.find((exp) => exp.name === name)
+            if (exploit) {
+              openInfoModal(exploit)
+            }
+          }
+        }
+      }
+    })
+    document.querySelectorAll(".web-btn").forEach((btn) => {
+      btn.onclick = function (e) {
+        e.stopPropagation()
+        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+        if (card) {
+          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+          if (nameElement) {
+            const name = nameElement.textContent.trim().split(/\s+/)[0]
+            const exploit = expData.find((exp) => exp.name === name)
+            if (exploit && exploit.href) {
+              window.open(exploit.href, "_blank")
+            }
+          }
+        }
+      }
+    })
+  }
+  fixFreeCardButtons()
+  setTimeout(fixFreeCardButtons, 500)
 })
 
 function setupPriceButtons() {
@@ -1536,8 +1589,8 @@ function stpEvts() {
   }
 
   document.addEventListener("click", (e) => {
-    const uncBtn = e.target.closest(".unc-btn")
-    if (uncBtn) {
+    if (e.target.closest(".unc-btn")) {
+      const uncBtn = e.target.closest(".unc-btn")
       const card = uncBtn.closest(".exp-crd") || uncBtn.closest(".exp-lst-itm")
       if (card) {
         const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
@@ -1550,11 +1603,24 @@ function stpEvts() {
         }
       }
     }
-  })
 
-  document.addEventListener("click", (e) => {
-    const webBtn = e.target.closest(".web-btn")
-    if (webBtn) {
+    if (e.target.closest(".info-btn")) {
+      const infoBtn = e.target.closest(".info-btn")
+      const card = infoBtn.closest(".exp-crd") || infoBtn.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit) {
+            openInfoModal(exploit)
+          }
+        }
+      }
+    }
+
+    if (e.target.closest(".web-btn")) {
+      const webBtn = e.target.closest(".web-btn")
       const card = webBtn.closest(".exp-crd") || webBtn.closest(".exp-lst-itm")
       if (card) {
         const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
@@ -1564,22 +1630,8 @@ function stpEvts() {
           if (exploit && exploit.href) {
             window.open(exploit.href, "_blank")
           }
-        }
-      }
-    }
-  })
-
-  document.addEventListener("click", (e) => {
-    const priceBtn = e.target.closest(".prc-btn-new")
-    if (priceBtn) {
-      const card = priceBtn.closest(".exp-crd") || priceBtn.closest(".exp-lst-itm")
-      if (card) {
-        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-        if (nameElement) {
-          const name = nameElement.textContent.trim().split(/\s+/)[0]
-          const exploit = expData.find((exp) => exp.name === name)
-          if (exploit && exploit.priceHref) {
-            window.open(exploit.priceHref, "_blank")
+          if (exploit && exploit.href) {
+            window.open(exploit.href, "_blank")
           }
         }
       }
@@ -1590,7 +1642,7 @@ function stpEvts() {
 function fltrExps() {
   st.fltrd = expData
     .filter((exp) => {
-      if (exp.hide === true) return false;
+      if (exp.hide === true) return false
 
       if (st.qry) {
         const q = st.qry.toLowerCase()
@@ -1612,6 +1664,10 @@ function fltrExps() {
         if (!st.pltFlt.some((pltf) => exp.plat.includes(pltf))) {
           return false
         }
+      }
+
+      if (st.lvlFlt[1] !== 0 && exp.lvl !== st.lvlFlt[1]) {
+        return false
       }
 
       if (st.lvlFlt[1] !== 0 && exp.lvl !== st.lvlFlt[1]) {
@@ -1705,38 +1761,143 @@ function rndrExps() {
     const listItem = crtLstItm(exp)
     els.list.appendChild(listItem)
   })
+  function addButtonEventListeners() {
+    document.querySelectorAll(".unc-btn").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+        if (card) {
+          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+          if (nameElement) {
+            const name = nameElement.textContent.trim().split(/\s+/)[0]
+            const exploit = expData.find((exp) => exp.name === name)
+            if (exploit) {
+              opnUncMdl(exploit)
+            }
+          }
+        }
+      })
+    })
+    document.querySelectorAll(".info-btn").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+        if (card) {
+          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+          if (nameElement) {
+            const name = nameElement.textContent.trim().split(/\s+/)[0]
+            const exploit = expData.find((exp) => exp.name === name)
+            if (exploit) {
+              openInfoModal(exploit)
+            }
+          }
+        }
+      })
+    })
+    document.querySelectorAll(".web-btn").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+        if (card) {
+          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+          if (nameElement) {
+            const name = nameElement.textContent.trim().split(/\s+/)[0]
+            const exploit = expData.find((exp) => exp.name === name)
+            if (exploit && exploit.href) {
+              window.open(exploit.href, "_blank")
+            }
+          }
+        }
+      })
+    })
+  }
+  addButtonEventListeners()
+}
+function initTextSwitching() {
+  document
+    .querySelectorAll(".info-btn .text-container, .price-info-btn .text-container, .more-info-btn .text-container")
+    .forEach((container) => {
+      const texts = container.querySelectorAll(".text-switch")
+      texts.forEach((text) => {
+        text.style.opacity = text.classList.contains("visible") ? "1" : "0"
+        text.style.transition = "opacity 0.5s ease-in-out"
+        text.style.position = "absolute"
+        text.style.width = "100%"
+        text.style.height = "100%"
+        text.style.display = "flex"
+        text.style.alignItems = "center"
+        text.style.justifyContent = "center"
+      })
+      container.style.position = "relative"
+      container.style.display = "inline-flex"
+      container.style.alignItems = "center"
+      container.style.justifyContent = "center"
+    })
+
+  setInterval(() => {
+    document
+      .querySelectorAll(".info-btn .text-container, .price-info-btn .text-container, .more-info-btn .text-container")
+      .forEach((container) => {
+        const visibleText = container.querySelector(".text-switch.visible")
+        const hiddenText = container.querySelector(".text-switch.hidden")
+        if (visibleText && hiddenText) {
+          visibleText.style.opacity = "0"
+          setTimeout(() => {
+            visibleText.classList.remove("visible")
+            visibleText.classList.add("hidden")
+            hiddenText.classList.remove("hidden")
+            hiddenText.classList.add("visible")
+            hiddenText.style.opacity = "0"
+            void hiddenText.offsetWidth
+            setTimeout(() => {
+              hiddenText.style.opacity = "1"
+            }, 50)
+          }, 500)
+        }
+      })
+  }, 3000)
 }
 
-function initTextSwitching() {
-  document.querySelectorAll(".info-btn .text-container").forEach((container) => {
-    const texts = container.querySelectorAll(".text-switch");
-    texts.forEach((text) => {
-      text.style.opacity = text.classList.contains("visible") ? "1" : "0";
-      text.style.transition = "opacity 0.5s ease-in-out";
-      text.style.position = "absolute";
-    });
-    container.style.position = "relative";
-  });
-  setInterval(() => {
-    document.querySelectorAll(".info-btn .text-container").forEach((container) => {
-      const visibleText = container.querySelector(".text-switch.visible");
-      const hiddenText = container.querySelector(".text-switch.hidden");
-      if (visibleText && hiddenText) {
-        visibleText.style.opacity = "0";
-        setTimeout(() => {
-          visibleText.classList.remove("visible");
-          visibleText.classList.add("hidden");
-          hiddenText.classList.remove("hidden");
-          hiddenText.classList.add("visible");
-          hiddenText.style.opacity = "0";
-          setTimeout(() => {
-            hiddenText.style.opacity = "1";
-          }, 50);
-        }, 500);
-      }
-    });
-  }, 1500);
+function updateScrollbarStyles() {
+  const scrollableElements = [
+    ".crd-cntnt",
+    ".unc-modal-code",
+    ".unc-modal-content",
+    ".info-modal-content",
+    ".info-modal-markdown",
+    ".fltr-drwr-bdy",
+  ]
+
+  scrollableElements.forEach((selector) => {
+    const elements = document.querySelectorAll(selector)
+    elements.forEach((el) => {
+      el.style.overflow = "hidden"
+      void el.offsetHeight
+      el.style.overflow = ""
+    })
+  })
 }
+document.addEventListener("DOMContentLoaded", () => {
+  if (els.lvlVal) els.lvlVal.textContent = "ALL"
+  if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
+  updCnts()
+  rndrExps()
+  initStrs()
+  stpEvts()
+  crtUncMdl()
+  setupPriceButtons()
+  createInfoModal()
+  initTextSwitching()
+  setupDropdowns()
+  updateScrollbarStyles()
+  const contentObserver = new MutationObserver(updateScrollbarStyles)
+  const config = { childList: true, subtree: true }
+  document.querySelectorAll(".crd-cntnt, .unc-modal-content, .info-modal-content").forEach((el) => {
+    contentObserver.observe(el, config)
+  })
+  fixFreeCardButtons()
+  setTimeout(fixFreeCardButtons, 500)
+  setTimeout(updateScrollbarStyles, 1000)
+})
+
+initTextSwitching()
 
 function crtCrd(exp) {
   const crd = document.createElement("div")
@@ -1870,32 +2031,81 @@ function crtCrd(exp) {
       </div>
     </div>
     <div class="crd-ftr">
-      <div class="btn-grid">
-        <button class="crd-btn web-btn">
+      ${
+        exp.price === "FREE"
+          ? `<div class="btn-grid free-program-grid">
+          <button class="crd-btn unc-btn expanded">
+            UNC <i class="fas fa-code"></i>
+          </button>
+          <button class="crd-btn info-btn expanded">
+            <div class="text-container">
+              <span class="text-switch visible" data-text="info">INFO</span>
+              <span class="text-switch hidden" data-text="more">MORE</span>
+            </div>
+            <i class="fas fa-info-circle"></i>
+          </button>
+        </div>
+        <button class="crd-btn web-btn full-width">
           Website <i class="fas fa-external-link-alt"></i>
-        </button>
-        <button class="crd-btn unc-btn">
-          UNC <i class="fas fa-code"></i>
-        </button>
-        <button class="crd-btn info-btn">
-          <div class="text-container">
-            <span class="text-switch visible" data-text="info">INFO</span>
-            <span class="text-switch hidden" data-text="more">MORE</span>
+        </button>`
+          : `<div class="btn-grid">
+          <button class="crd-btn web-btn">
+            Website <i class="fas fa-external-link-alt"></i>
+          </button>
+          <button class="crd-btn unc-btn">
+            UNC <i class="fas fa-code"></i>
+          </button>
+          <button class="crd-btn info-btn">
+            <div class="text-container">
+              <span class="text-switch visible" data-text="info">INFO</span>
+              <span class="text-switch hidden" data-text="more">MORE</span>
+            </div>
+            <i class="fas fa-info-circle"></i>
+          </button>
+        </div>
+        <button class="crd-btn prc-btn-new ${exp.price === "FREE" ? "free" : ""}">
+          <div class="default-text">
+            <i class="fas fa-tag"></i> ${exp.price === "FREE" ? "FREE" : "BUY"}
           </div>
-          <i class="fas fa-info-circle"></i>
-        </button>
-      </div>
-      <button class="crd-btn prc-btn-new ${exp.price === "FREE" ? "free" : ""}">
-        <div class="default-text">
-          <i class="fas fa-tag"></i> ${exp.price === "FREE" ? "FREE" : "BUY"}
-        </div>
-        <div class="price-text">
-          <i class="fas fa-tag"></i> ${exp.price} ${exp.period ? `<span class="prc-prd">${exp.period}</span>` : ""}
-        </div>
-      </button>
+          <div class="price-text">
+            <i class="fas fa-tag"></i> ${exp.price} ${exp.period ? `<span class="prc-prd">${exp.period}</span>` : ""}
+          </div>
+        </button>`
+      }
     </div>
   `
 
+  setTimeout(() => {
+    const card = document.querySelector(`.exp-crd[data-id="${exp.id}"]`)
+    if (card) {
+      const uncBtn = card.querySelector(".unc-btn")
+      if (uncBtn) {
+        uncBtn.onclick = (e) => {
+          e.stopPropagation()
+          opnUncMdl(exp)
+        }
+      }
+
+      const infoBtn = card.querySelector(".info-btn")
+      if (infoBtn) {
+        infoBtn.onclick = (e) => {
+          e.stopPropagation()
+          openInfoModal(exp)
+        }
+      }
+
+      const webBtn = card.querySelector(".web-btn")
+      if (webBtn) {
+        webBtn.onclick = (e) => {
+          e.stopPropagation()
+          if (exp.href) {
+            window.open(exp.href, "_blank")
+          }
+        }
+      }
+    }
+  }, 100)
+  crd.setAttribute("data-id", exp.id)
   return crd
 }
 
@@ -1914,8 +2124,7 @@ function crtLstItm(exp) {
   if (uncScore === "Unknown") {
     for (const neutral of exp.neutral || []) {
       if (neutral.includes("UNC") || neutral.includes("sUNC")) {
-        uncScore = neutral.match(/\d+%/)[0]
-        ;("Unknown")
+        uncScore = neutral.match(/\d+%/)[0] || "Unknown"
         break
       }
     }
@@ -2124,7 +2333,7 @@ document.addEventListener("DOMContentLoaded", () => {
   stpEvts()
   crtUncMdl()
   setupPriceButtons()
-  createInfoModal();
+  createInfoModal()
   initTextSwitching()
   setupDropdowns()
   const themeOptions = document.querySelectorAll(".theme-dropdown-option")
@@ -2162,116 +2371,124 @@ const updMLvlSldr = () => {
 }
 
 function createInfoModal() {
-  document.getElementById("infoModalOverlay").addEventListener("click", closeInfoModal);
-  document.getElementById("infoModalCloseBtn").addEventListener("click", closeInfoModal);
-  const footerCloseBtn = document.getElementById("infoModalFooterCloseBtn");
+  document.getElementById("infoModalOverlay").addEventListener("click", closeInfoModal)
+  document.getElementById("infoModalCloseBtn").addEventListener("click", closeInfoModal)
+  const footerCloseBtn = document.getElementById("infoModalFooterCloseBtn")
   if (footerCloseBtn) {
-    footerCloseBtn.addEventListener("click", closeInfoModal);
+    footerCloseBtn.addEventListener("click", closeInfoModal)
   }
 }
 
 function openInfoModal(exploit) {
-  const modalContainer = document.getElementById("infoModalContainer");
-  const modalTitle = document.getElementById("infoModalTitle");
-  const modalExploitName = document.getElementById("infoModalExploitName");
-  const modalExploitDesc = document.getElementById("infoModalExploitDesc");
-  const modalMarkdown = document.getElementById("infoModalMarkdown");
-  modalContainer.style.display = "flex";
-  modalTitle.textContent = `${exploit.name} Information`;
-  modalExploitName.textContent = exploit.name;
-  modalExploitDesc.textContent = exploit.desc;
+  const modalContainer = document.getElementById("infoModalContainer")
+  const modalTitle = document.getElementById("infoModalTitle")
+  const modalExploitName = document.getElementById("infoModalExploitName")
+  const modalExploitDesc = document.getElementById("infoModalExploitDesc")
+  const modalMarkdown = document.getElementById("infoModalMarkdown")
+  modalContainer.style.display = "flex"
+  modalTitle.textContent = `${exploit.name} Information`
+  modalExploitName.textContent = exploit.name
+  modalExploitDesc.textContent = exploit.desc
   if (exploit.info) {
-    const marked = window.marked;
-    modalMarkdown.innerHTML = marked.parse(exploit.info);
+    const marked = window.marked
+    modalMarkdown.innerHTML = marked.parse(exploit.info)
     if (window.hljs) {
-      document.querySelectorAll('#infoModalMarkdown pre code').forEach((block) => {
-        window.hljs.highlightElement(block);
-      });
+      document.querySelectorAll("#infoModalMarkdown pre code").forEach((block) => {
+        window.hljs.highlightElement(block)
+      })
     }
   } else {
-    modalMarkdown.innerHTML = "<p>No additional information available for this exploit.</p>";
+    modalMarkdown.innerHTML = "<p>No additional information available for this exploit.</p>"
   }
   setTimeout(() => {
-    document.querySelector(".info-modal").classList.add("show");
-  }, 10);
+    document.querySelector(".info-modal").classList.add("show")
+  }, 10)
 
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden"
 }
 
 function closeInfoModal() {
-  const modal = document.querySelector(".info-modal");
+  const modal = document.querySelector(".info-modal")
   if (modal) {
-    modal.classList.remove("show");
+    modal.classList.remove("show")
     setTimeout(() => {
-      const container = document.getElementById("infoModalContainer");
+      const container = document.getElementById("infoModalContainer")
       if (container) {
-        container.style.display = "none";
+        container.style.display = "none"
       }
-      document.body.style.overflow = "";
-    }, 300);
+      document.body.style.overflow = ""
+    }, 300)
   }
 }
 
 function updateInfoModalColors() {
-  const theme = document.documentElement.getAttribute("data-theme") || "red";
+  const theme = document.documentElement.getAttribute("data-theme") || "red"
 
-  const modal = document.querySelector(".info-modal");
+  const modal = document.querySelector(".info-modal")
   if (modal) {
-    const header = modal.querySelector(".info-modal-header");
+    const header = modal.querySelector(".info-modal-header")
     if (header) {
-      header.style.background = "";
-      header.style.borderBottom = "";
+      header.style.background = ""
+      header.style.borderBottom = ""
     }
-    
-    const exploitName = modal.querySelector(".info-modal-exploit-name");
+
+    const exploitName = modal.querySelector(".info-modal-exploit-name")
     if (exploitName) {
-      exploitName.style.background = "";
+      exploitName.style.background = ""
     }
-    
-    const closeBtn = modal.querySelector(".info-modal-close-btn");
+
+    const closeBtn = modal.querySelector(".info-modal-close-btn")
     if (closeBtn) {
-      closeBtn.style.backgroundColor = "";
+      closeBtn.style.backgroundColor = ""
     }
-    
-    const links = modal.querySelectorAll(".info-modal-markdown a");
-    links.forEach(link => {
-      link.style.color = "";
-    });
-    
-    const blockquotes = modal.querySelectorAll(".info-modal-markdown blockquote");
-    blockquotes.forEach(blockquote => {
-      blockquote.style.borderLeft = "";
-    });
+
+    const links = modal.querySelectorAll(".info-modal-markdown a")
+    links.forEach((link) => {
+      link.style.color = ""
+    })
+
+    const blockquote = modal.querySelectorAll(".info-modal-markdown blockquote")
+    blockquote.forEach((bq) => {
+      bq.style.backgroundColor = ""
+      bq.style.borderColor = ""
+      bq.style.color = ""
+    })
+
+    const codeBlocks = modal.querySelectorAll(".info-modal-markdown pre code")
+    codeBlocks.forEach((codeBlock) => {
+      codeBlock.style.background = ""
+      codeBlock.style.color = ""
+    })
   }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  createInfoModal();
+document.addEventListener("DOMContentLoaded", () => {
+  createInfoModal()
   document.addEventListener("click", (e) => {
-    const infoBtn = e.target.closest(".info-btn");
+    const infoBtn = e.target.closest(".info-btn")
     if (infoBtn) {
-      const card = infoBtn.closest(".exp-crd") || infoBtn.closest(".exp-lst-itm");
+      const card = infoBtn.closest(".exp-crd") || infoBtn.closest(".exp-lst-itm")
       if (card) {
-        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl");
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
         if (nameElement) {
-          const name = nameElement.textContent.trim().split(/\s+/)[0];
-          const exploit = expData.find((exp) => exp.name === name);
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
           if (exploit) {
-            openInfoModal(exploit);
+            openInfoModal(exploit)
           }
         }
       }
     }
-  });
-  const themeOptions = document.querySelectorAll(".theme-dropdown-option");
+  })
+  const themeOptions = document.querySelectorAll(".theme-dropdown-option")
   if (themeOptions) {
     themeOptions.forEach((option) => {
       option.addEventListener("click", () => {
-        setTimeout(updateInfoModalColors, 100);
-      });
-    });
+        setTimeout(updateInfoModalColors, 100)
+      })
+    })
   }
-});
+})
 
 document.addEventListener("DOMContentLoaded", () => {
   setupSortDropdowns()
@@ -2352,7 +2569,7 @@ function setupSortDropdowns() {
     })
   }
 }
-const marked = window.marked;
+const marked = window.marked
 
 window.addEventListener("resize", adjSrchBar)
 window.addEventListener("load", adjSrchBar)
@@ -2383,3 +2600,4 @@ function adjSrchBar() {
   srchCont.style.width = "auto"
   srchCont.style.zIndex = "5"
 }
+
