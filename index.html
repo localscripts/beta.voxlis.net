@@ -1,1653 +1,325 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="red">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>voxlis.NET</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --prim: #ff4655;
-      --prim-hvr: #ff7b69;
-      --prim-rgb: 255, 70, 85;
-      --prim-grd: linear-gradient(135deg, var(--prim), var(--prim-hvr));
-      --bg: #0a0a0a;
-      --bg-light: #111111;
-      --bg-lighter: #1a1a1a;
-      --bg-rgb: 10, 10, 10;
-      --crd-bg: rgba(26, 26, 26, 0.7);
-      --crd-bdr: rgba(255, 70, 85, 0.15);
-      --txt: #ffffff;
-      --txt-mut: rgba(255, 255, 255, 0.7);
-      --txt-dim: rgba(255, 255, 255, 0.5);
-      --rad: 0.75rem;
-      --rad-sm: 0.5rem;
-      --rad-lg: 1rem;
-      --shd: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
-      --card-hover: rgba(255, 70, 85, 0.3);
-      --font-main: 'Manrope', sans-serif;
-      --font-alt: 'Open Sans', sans-serif;
-      transition: --prim 0.5s ease, --prim-hvr 0.5s ease, --prim-rgb 0.5s ease, --prim-grd 0.5s ease, --card-hover 0.5s ease;
-    }
-
-    [data-theme="blue"] {
-      --prim: #00a2ff;
-      --prim-hvr: #0073e6;
-      --prim-rgb: 0, 162, 255;
-      --card-hover: rgba(0, 162, 255, 0.3);
-      --crd-bdr: rgba(0, 162, 255, 0.15);
-      --prim-grd: linear-gradient(135deg, var(--prim), var(--prim-hvr));
-    }
-
-    [data-theme="purple"] {
-      --prim: #9333ea;
-      --prim-hvr: #7e22ce;
-      --prim-rgb: 147, 51, 234;
-      --card-hover: rgba(147, 51, 234, 0.3);
-      --crd-bdr: rgba(147, 51, 234, 0.15);
-      --prim-grd: linear-gradient(135deg, var(--prim), var(--prim-hvr));
-    }
-
-    [data-theme="green"] {
-      --prim: #62b455;
-      --prim-hvr: #3f7a37;
-      --prim-rgb: 98, 180, 85;
-      --card-hover: rgba(98, 180, 85, 0.3);
-      --crd-bdr: rgba(98, 180, 85, 0.15);
-      --prim-grd: linear-gradient(135deg, var(--prim), var(--prim-hvr));
-    }
-
-    [data-theme="orange"] {
-      --prim: #ff9900;
-      --prim-hvr: #ff7700;
-      --prim-rgb: 255, 153, 0;
-      --card-hover: rgba(255, 153, 0, 0.3);
-      --crd-bdr: rgba(255, 153, 0, 0.15);
-      --prim-grd: linear-gradient(135deg, var(--prim), var(--prim-hvr));
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: var(--font-main);
-      background-color: var(--bg);
-      color: var(--txt);
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-      min-height: 100vh;
-      text-align: center;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .cntr {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      text-align: center;
-    }
-
-    ::-webkit-scrollbar {
-      width: 10px;
-      background-color: var(--bg);
-    }
-
-    ::-webkit-scrollbar-track {
-      background-color: var(--bg-light);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--prim-grd);
-      border-radius: 5px;
-      transition: background 0.5s ease;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(135deg, var(--prim-hvr), var(--prim));
-    }
-
-    .bg-els {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .grd-ovl {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(10, 10, 10, 0.5) 0%, rgba(10, 10, 10, 0.8) 50%, rgba(10, 10, 10, 1) 100%);
-    }
-
-    .top-acnt {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--prim-grd);
-      transition: background 0.5s ease;
-    }
-
-    .glw-eff {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.15;
-      transition: background-color 0.5s ease;
-    }
-
-    .glw-eff-1 {
-      top: 20%;
-      left: 10%;
-      width: 600px;
-      height: 600px;
-      background-color: var(--prim);
-      animation: float 25s ease-in-out infinite;
-    }
-
-    .glw-eff-2 {
-      bottom: 10%;
-      right: 5%;
-      width: 400px;
-      height: 400px;
-      background-color: var(--prim-hvr);
-      animation: float 20s ease-in-out infinite reverse;
-    }
-
-    .glw-eff-3 {
-      top: 60%;
-      left: 50%;
-      width: 300px;
-      height: 300px;
-      background-color: var(--prim);
-      opacity: 0.1;
-      animation: float 15s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0);
-      }
-      25% {
-        transform: translate(50px, 50px);
-      }
-      50% {
-        transform: translate(25px, -25px);
-      }
-      75% {
-        transform: translate(-50px, 25px);
-      }
-    }
-
-    .particle-network {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      overflow: hidden;
-      opacity: 0.3;
-    }
-
-    .loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .loading-logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 3rem;
-      position: relative;
-    }
-
-    .logo-bar {
-      width: 4px;
-      height: 30px;
-      background: var(--prim-grd);
-      margin-right: 0.5rem;
-      transition: background 0.5s ease;
-      border-radius: 2px;
-      box-shadow: 0 0 15px rgba(var(--prim-rgb), 0.7);
-    }
-
-    .logo-txt-lt {
-      font-size: 1.5rem;
-      font-weight: 300;
-    }
-
-    .logo-txt-grd {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: var(--prim-grd);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      transition: background 0.5s ease;
-      text-shadow: 0 0 20px rgba(var(--prim-rgb), 0.5);
-    }
-
-    .loading-bar-container {
-      width: 300px;
-      height: 6px;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 3px;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
-
-    .loading-bar {
-      height: 100%;
-      width: 0;
-      background: var(--prim-grd);
-      border-radius: 3px;
-      transition: width 0.2s ease, background 0.5s ease;
-      box-shadow: 0 0 10px rgba(var(--prim-rgb), 0.7);
-    }
-
-    .loading-bar::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      animation: loading-shine 1.5s infinite;
-    }
-
-    @keyframes loading-shine {
-      0% {
-        transform: translateX(-100%);
-      }
-      100% {
-        transform: translateX(100%);
-      }
-    }
-
-    .loading-text {
-      font-size: 0.875rem;
-      color: var(--txt-mut);
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-
-    .hdr {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 1.5rem 0;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .hdr.scrolled {
-      background-color: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-      padding: 1rem 0;
-    }
-
-    .hdr-cntr {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .hdr-lft {
-      display: flex;
-      align-items: center;
-    }
-
-    .mob-menu-tgl {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--txt);
-      font-size: 1.25rem;
-      margin-right: 1rem;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-    }
-
-    .mob-menu-tgl:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: scale(1.1);
-    }
-
-    .logo-lnk {
-      display: flex;
-      align-items: center;
-      transition: transform 0.3s ease;
-    }
-
-    .logo-lnk:hover {
-      transform: scale(1.05);
-    }
-
-    .hdr-nav {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    .nav-lnk {
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      position: relative;
-      padding: 0.5rem 0;
-    }
-
-    .nav-lnk:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--prim-grd);
-      transition: width 0.3s ease, background 0.5s ease;
-      border-radius: 1px;
-    }
-
-    .nav-lnk:hover:after {
-      width: 100%;
-    }
-
-    .nav-lnk:hover {
-      color: var(--prim);
-      transform: translateY(-2px);
-    }
-
-    .mob-menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 300px;
-      height: 100vh;
-      background-color: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(15px);
-      z-index: 99;
-      padding: 6rem 0 2rem;
-      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
-      transform: translateX(100%);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow-y: auto;
-      text-align: center;
-    }
-
-    .mob-menu.visible {
-      transform: translateX(0);
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mob-menu-cntr {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      padding: 0 2rem;
-      align-items: center;
-    }
-
-    .mob-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-      width: 100%;
-    }
-
-    .mob-nav-lnk {
-      padding: 1rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: var(--rad);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background-color: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      justify-content: center;
-      width: 100%;
-      text-align: center;
-    }
-
-    .mob-nav-lnk i {
-      color: var(--prim);
-      transition: color 0.5s ease;
-      font-size: 1.25rem;
-    }
-
-    .mob-nav-lnk:hover {
-      background-color: rgba(255, 255, 255, 0.07);
-      transform: translateX(5px);
-      border-color: rgba(var(--prim-rgb), 0.3);
-    }
-    .hero-section {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      padding: 0;
-      margin: 0;
-      text-align: center;
-    }
-
-    .hero-content {
-      width: 100%;
-      max-width: 1000px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      z-index: 1;
-      padding: 0 20px;
-      position: absolute;
-      top: 37%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .hero-title {
-      width: 100%;
-      font-size: 5.5rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-      line-height: 1.1;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-
-    .hero-title .www {
-      font-weight: 300;
-      color: var(--txt);
-    }
-
-    .hero-title .voxlis {
-      background: var(--prim-grd);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      transition: background 0.5s ease;
-      text-shadow: 0 0 30px rgba(var(--prim-rgb), 0.5);
-      font-weight: 800;
-    }
-
-    .hero-title .net {
-      font-weight: 300;
-      color: var(--txt);
-    }
-
-    .hero-subtitle {
-      width: 100%;
-      font-size: 2rem;
-      color: var(--txt-mut);
-      margin-bottom: 3rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 500;
-      text-align: center;
-    }
-
-    .hero-subtitle span {
-      color: var(--prim);
-      font-weight: 700;
-      font-size: 2.2rem;
-      text-shadow: 0 0 15px rgba(var(--prim-rgb), 0.5);
-    }
-
-    .game-icons {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-
-    .game-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 15px;
-      overflow: hidden;
-      position: relative;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .game-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .game-icon:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(var(--prim-rgb), 0.3);
-    }
-
-    .game-icon:hover img {
-      transform: scale(1.1);
-    }
-
-    .game-icon.active {
-      box-shadow: 0 0 20px rgba(var(--prim-rgb), 0.7);
-    }
-
-    .game-icon.active::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 2px solid var(--prim);
-      border-radius: 15px;
-      box-sizing: border-box;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(var(--prim-rgb), 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 10px rgba(var(--prim-rgb), 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(var(--prim-rgb), 0);
-      }
-    }
-
-    .games-section {
-      position: relative;
-      padding: 8rem 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 3.5rem;
-      flex-direction: column;
-    }
-
-    .section-title {
-      font-size: 3rem;
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: var(--prim-grd);
-      border-radius: 2px;
-      transition: background 0.5s ease;
-    }
-
-    .game-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 3rem;
-      justify-items: center;
-      width: 100%;
-    }
-    
-    .game-card {
-      position: relative;
-      border-radius: var(--rad-lg);
-      border: 1px solid var(--crd-bdr);
-      background-color: var(--crd-bg);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      height: 100%;
-      min-height: 450px;
-      display: flex;
-      flex-direction: column;
-      transform: translateY(0);
-      box-shadow: var(--shd);
-      will-change: transform;
-      cursor: pointer;
-      text-align: center;
-      max-width: 400px;
-      width: 100%;
-    }
-    
-    .game-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(var(--prim-rgb), 0.05), transparent);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      z-index: 1;
-    }
-    
-    .game-card:hover::before {
-      opacity: 1;
-    }
-    
-    .game-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 25px 50px -12px var(--card-hover);
-      border-color: rgba(var(--prim-rgb), 0.3);
-      z-index: 20;
-    }
-    
-    .game-card-accent {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: var(--prim-grd);
-      transition: background 0.5s ease;
-      z-index: 2;
-    }
-    
-    .game-card-image-container {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-    }
-    
-    .game-card-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .game-card:hover .game-card-image {
-      transform: scale(1.1);
-    }
-    
-    .game-card-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent 50%, rgba(10, 10, 10, 0.8) 100%);
-      z-index: 2;
-    }
-    
-    .game-card-content {
-      padding: 2rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 2;
-      align-items: center;
-    }
-    
-    .game-card-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      transition: color 0.3s ease;
-      line-height: 1.3;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .game-card:hover .game-card-title {
-      color: var(--prim);
-    }
-    
-    .game-card-description {
-      font-size: 1.1rem;
-      color: var(--txt-mut);
-      margin-bottom: 2rem;
-      flex: 1;
-      line-height: 1.7;
-    }
-
-    .discord-section {
-      margin-top: 5rem;
-      padding: 6rem 0;
-      position: relative;
-      overflow: hidden;
-      background-color: rgba(26, 26, 26, 0.3);
-      border-top: 1px solid rgba(var(--prim-rgb), 0.1);
-      border-bottom: 1px solid rgba(var(--prim-rgb), 0.1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .discord-container {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .discord-title {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      background: var(--prim-grd);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      transition: background 0.5s ease;
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 20px rgba(var(--prim-rgb), 0.3);
-    }
-
-    .discord-text {
-      font-size: 1.5rem;
-      color: var(--txt-mut);
-      margin-bottom: 2rem;
-      line-height: 1.7;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .site-footer {
-      background-color: var(--bg-light);
-      padding: 5rem 0 2rem;
-      border-top: 1px solid rgba(var(--prim-rgb), 0.1);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .site-footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at top right, rgba(var(--prim-rgb), 0.05), transparent 70%);
-      z-index: 0;
-    }
-
-    .footer-container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 4rem;
-    }
-
-    .footer-logo-section {
-      text-align: center;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-tagline {
-      font-size: 1.1rem;
-      color: var(--txt-mut);
-      margin-bottom: 2rem;
-      line-height: 1.7;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .social-icon {
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      font-size: 1.25rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .social-icon:hover {
-      background-color: var(--prim);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px -3px rgba(var(--prim-rgb), 0.3);
-      border-color: transparent;
-    }
-
-    .footer-middle {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 3rem;
-    }
-
-    .theme-switcher {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 1.5rem 2rem;
-      border-radius: var(--rad);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .theme-switcher-label {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .theme-dropdown {
-      position: relative;
-      width: 220px;
-    }
-
-    .theme-dropdown-selected {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1.25rem;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-radius: var(--rad);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .theme-dropdown-selected:hover {
-      background-color: rgba(255, 255, 255, 0.12);
-      transform: translateY(-2px);
-    }
-
-    .theme-color-indicator {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      transition: background 0.5s ease;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .theme-color-indicator.red {
-      background: linear-gradient(135deg, #ff4655, #ff7b69);
-    }
-
-    .theme-color-indicator.blue {
-      background: linear-gradient(135deg, #00a2ff, #0073e6);
-    }
-
-    .theme-color-indicator.purple {
-      background: linear-gradient(135deg, #9333ea, #7e22ce);
-    }
-
-    .theme-color-indicator.green {
-      background: linear-gradient(135deg, #62b455, #3f7a37);
-    }
-
-    .theme-color-indicator.orange {
-      background: linear-gradient(135deg, #ff9900, #ff7700);
-    }
-
-    .theme-dropdown-options {
-      position: absolute;
-      top: calc(100% + 0.75rem);
-      left: 0;
-      width: 100%;
-      background-color: rgba(26, 26, 26, 0.95);
-      border-radius: var(--rad);
-      overflow: hidden;
-      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
-      z-index: 10;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      text-align: center;
-    }
-
-    .theme-dropdown.active .theme-dropdown-options {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .theme-dropdown-option {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1.25rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .theme-dropdown-option:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
-    }
-
-    .theme-dropdown-option.selected {
-      background-color: rgba(var(--prim-rgb), 0.2);
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      width: 100%;
-    }
-
-    .footer-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .copyright {
-      font-size: 0.875rem;
-      color: var(--txt-dim);
-    }
-    
-    .credits {
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: var(--prim-grd);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      transition: background 0.5s ease;
-      letter-spacing: 1px;
-      margin: 1rem 0;
-    }
-    
-    .theme-credit {
-      font-size: 0.875rem;
-      color: var(--txt-dim);
-    }
-
-    @media (max-width: 1200px) {
-      .hero-title {
-        font-size: 4.5rem;
-      }
-      
-      .game-cards-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      }
-      
-      .discord-title {
-        font-size: 3rem;
-      }
-    }
-
-    @media (max-width: 992px) {
-      .hero-title {
-        font-size: 4rem;
-      }
-      
-      .section-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-      
-      .game-cards-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      }
-      
-      .game-icons {
-        gap: 1.5rem;
-      }
-      
-      .game-icon {
-        width: 70px;
-        height: 70px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .cntr {
-        padding: 0 1.5rem;
-      }
-      
-      .mob-menu-tgl {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .hdr-nav {
-        display: none;
-      }
-      
-      .hero-title {
-        font-size: 3.5rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.7rem;
-      }
-      
-      .game-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      
-      .discord-title {
-        font-size: 2.5rem;
-      }
-      
-      .footer-bottom {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-      
-      .game-icons {
-        gap: 1rem;
-      }
-      
-      .game-icon {
-        width: 60px;
-        height: 60px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 2.8rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.5rem;
-      }
-      
-      .theme-switcher {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        width: 100%;
-        padding: 1.5rem;
-      }
-      
-      .theme-dropdown {
-        width: 100%;
-      }
-      
-      .game-icons {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOXLIS.NET - Ready to win?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #background-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 5rem;
+            font-weight: bold;
+            letter-spacing: normal;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .logo {
+                font-size: 6rem;
+            }
+        }
+
+        .text-white {
+            color: #ffffff;
+        }
+
+        .text-red {
+            color: #ff0000;
+        }
+
+        .tagline {
+            margin-top: 0;
+            font-size: 1.25rem;
+        }
+
+        .game-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .icon-container {
+            border-radius: 0.375rem;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-container:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.5);
+        }
+
+        .icon-container:hover .game-icon {
+            filter: brightness(1.2) contrast(1.1);
+        }
+
+        .icon-container::after {
+            content: attr(data-game);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .icon-container:hover::after {
+            opacity: 1;
+        }
+
+        .game-icon {
+            width: 96px;
+            height: 96px;
+            border-radius: 0.375rem;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .roblox {
+            width: 140px;
+            height: 140px;
+        }
+
+        .roblox-glow {
+            box-shadow: 0 0 25px 8px rgba(255, 0, 0, 0.7);
+            border-radius: 0.375rem;
+        }
+
+        .darkened {
+            filter: brightness(0.8) contrast(1.2);
+        }
+
+        .rotate-left {
+            transform: rotate(-5deg);
+        }
+
+        .rotate-right {
+            transform: rotate(5deg);
+        }
+
+        .rotate-left:hover, .rotate-right:hover {
+            transform: translateY(-10px) scale(1.05) rotate(0deg);
+        }
+    </style>
 </head>
 <body>
-  <div class="particle-network" id="particleNetwork"></div>
-  <div id="pageOverlay" class="page-overlay"></div>
-  <canvas id="strCnv" class="str-cnv"></canvas>
-  <div id="loadingScreen" class="loading-screen">
-    <div class="loading-logo">
-      <div class="logo-bar"></div>
-      <span class="logo-txt-lt">WWW.</span>
-      <span class="logo-txt-grd">VOXLIS</span>
-      <span class="logo-txt-lt">.NET</span>
-    </div>
-    <div class="loading-bar-container">
-      <div class="loading-bar" id="loadingBar"></div>
-    </div>
-    <div class="loading-text">Loading resources...</div>
-  </div>
-  <div class="bg-els">
-    <div class="grd-ovl"></div>
-    <div class="top-acnt"></div>
-    <div class="glw-eff glw-eff-1"></div>
-    <div class="glw-eff glw-eff-2"></div>
-    <div class="glw-eff glw-eff-3"></div>
-  </div>
-  <header id="hdr" class="hdr">
-    <div class="cntr">
-      <div class="hdr-cntr">
-        <div class="hdr-lft">
-          <button id="mobMenuTgl" class="mob-menu-tgl">
-            <i class="fas fa-bars"></i>
-          </button>
-          <a href="/" class="logo-lnk">
-            <div class="logo-bar"></div>
-            <span class="logo-txt-lt">WWW.</span>
-            <span class="logo-txt-grd">VOXLIS</span>
-            <span class="logo-txt-lt">.NET</span>
-          </a>
-        </div>
-        <nav class="hdr-nav">
-          <a href="/" class="nav-lnk">Home</a>
-          <a href="/" class="nav-lnk">Discord</a>
-        </nav>
-      </div>
-    </div>
-    <div id="mobMenu" class="mob-menu">
-      <div class="mob-menu-cntr">
-        <nav class="mob-nav">
-          <a href="/" class="mob-nav-lnk">
-            <i class="fas fa-home"></i>
-            Home
-          </a>
-          <a href="/" class="mob-nav-lnk">
-            <i class="fab fa-discord"></i>
-            Discord
-          </a>
-        </nav>
-      </div>
-    </div>
-  </header>
-  <section class="hero-section">
-    <div class="cntr">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="www">WWW.</span><span class="voxlis">VOXLIS</span><span class="net">.NET</span>
+    <canvas id="background-canvas"></canvas>
+    <main class="content">
+        <h1 class="logo">
+            <span class="text-white">WWW.</span><span class="text-red">VOXLIS</span><span class="text-white">.NET</span>
         </h1>
-        <p class="hero-subtitle">Ready to <span>win</span>?</p>
-        
+        <p class="tagline">
+            Ready to <span class="text-red">win</span>?
+        </p>
         <div class="game-icons">
-          <a href="cs2.html" class="game-icon" id="cs2Icon">
-            <img src="cs2.png?height=80&width=80" alt="CS2">
-          </a>
-          <a href="roblox.html" class="game-icon active" id="robloxIcon">
-            <img src="roblox.png?height=80&width=80" alt="Roblox">
-          </a>
-          <a href="minecraft.html" class="game-icon" id="minecraftIcon">
-            <img src="minecraft.png?height=80&width=80" alt="Minecraft">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <main class="cntr">
-    <div class="games-section">
-      <div class="section-header">
-        <h2 class="section-title">Featured Games</h2>
-      </div>      
-      <div class="game-cards-grid">
-        <a href="cs2.html" class="game-card cs2">
-          <div class="game-card-accent"></div>
-          <div class="game-card-image-container">
-            <img src="cs2.png?height=220&width=400" alt="Counter-Strike 2" class="game-card-image">
-            <div class="game-card-overlay"></div>
-          </div>
-          <div class="game-card-content">
-            <h2 class="game-card-title">Counter-Strike 2</h2>
-            <p class="game-card-description">
-              Enhance your CS2 experience with our premium exploits. Gain access to aimbots, wallhacks, and more to dominate the competition.
-            </p>
-          </div>
-        </a>
-        <a href="roblox.html" class="game-card roblox">
-          <div class="game-card-accent"></div>
-          <div class="game-card-image-container">
-            <img src="roblox.png?height=220&width=400" alt="Roblox" class="game-card-image">
-            <div class="game-card-overlay"></div>
-          </div>
-          <div class="game-card-content">
-            <h2 class="game-card-title">Roblox</h2>
-            <p class="game-card-description">
-              Unlock the full potential of Roblox with our powerful exploits. Script execution, teleportation, and more features to enhance your gameplay.
-            </p>
-          </div>
-        </a>
-        <a href="minecraft.html" class="game-card minecraft">
-          <div class="game-card-accent"></div>
-          <div class="game-card-image-container">
-            <img src="minecraft.png?height=220&width=400" alt="Minecraft" class="game-card-image">
-            <div class="game-card-overlay"></div>
-          </div>
-          <div class="game-card-content">
-            <h2 class="game-card-title">Minecraft</h2>
-            <p class="game-card-description">
-              Take your Minecraft experience to the next level with our collection of hacks and utilities. Fly, X-ray, auto-mine and more.
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </main>
-  <div class="discord-section">
-    <div class="discord-container">
-      <h2 class="discord-title">Join Our Community</h2>
-      <p class="discord-text">Connect with fellow gamers, get support, and stay updated on the latest exploits and features.</p>
-    </div>
-  </div>
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-top">
-        <div class="footer-logo-section">
-          <div class="footer-logo">
-            <div class="logo-bar"></div>
-            <span class="logo-txt-lt">WWW.</span>
-            <span class="logo-txt-grd">VOXLIS</span>
-            <span class="logo-txt-lt">.NET</span>
-          </div>
-          <p class="footer-tagline">
-            Your ultimate destination for game exploits and tools. Enhance your gaming experience with our premium solutions.
-          </p>
-          <div class="footer-social">
-            <a href="/" class="social-icon" aria-label="Discord">
-              <i class="fab fa-discord"></i>
+            <a href="https://beta.voxlis.net/" class="icon-container darkened rotate-left" data-game="Counter-Strike 2">
+                <img src="cs2.png" alt="Counter-Strike" class="game-icon">
             </a>
-            <a href="/" class="social-icon" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="/" class="social-icon" aria-label="YouTube">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-middle">
-        <div class="theme-switcher">
-          <div class="theme-switcher-label">Theme</div>
-          <div class="theme-dropdown" id="themeDropdown">
-            <div class="theme-dropdown-selected" id="themeDropdownSelected">
-              <div class="theme-color-indicator red"></div>
-              <span>Red Theme</span>
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="theme-dropdown-options" id="themeDropdownOptions">
-              <div class="theme-dropdown-option" data-theme="red">
-                <div class="theme-color-indicator red"></div>
-                <span>Red Theme</span>
-              </div>
-              <div class="theme-dropdown-option" data-theme="blue">
-                <div class="theme-color-indicator blue"></div>
-                <span>Blue Theme</span>
-              </div>
-              <div class="theme-dropdown-option" data-theme="purple">
-                <div class="theme-color-indicator purple"></div>
-                <span>Purple Theme</span>
-              </div>
-              <div class="theme-dropdown-option" data-theme="green">
-                <div class="theme-color-indicator green"></div>
-                <span>Green Theme</span>
-              </div>
-              <div class="theme-dropdown-option" data-theme="orange">
-                <div class="theme-color-indicator orange"></div>
-                <span>Orange Theme</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-info">
-          <div class="copyright">© 2025 voxlis.NET. All rights reserved.</div>
-          <div class="credits">Redesign by nuvq (x4v)</div>
-          <div class="theme-credit">Theme Selector by sk337 &lt;3</div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
-  <script>
-    function createParticleNetwork() {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const container = document.getElementById('particleNetwork');
-      
-      container.appendChild(canvas);
-      
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      
-      const particles = [];
-      const particleCount = 100;
-      const maxDistance = 150;
-      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--prim').trim();
-      
-      class Particle {
-        constructor() {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height;
-          this.vx = Math.random() * 0.5 - 0.25;
-          this.vy = Math.random() * 0.5 - 0.25;
-          this.size = Math.random() * 2 + 1;
-        }
-        
-        update() {
-          this.x += this.vx;
-          this.y += this.vy;
-          
-          if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-          if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-        }
-        
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = primaryColor;
-          ctx.fill();
-        }
-      }
-      
-      function init() {
-        for (let i = 0; i < particleCount; i++) {
-          particles.push(new Particle());
-        }
-      }
-      
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        for (let i = 0; i < particles.length; i++) {
-          particles[i].update();
-          particles[i].draw();
-          
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
             
-            if (distance < maxDistance) {
-              ctx.beginPath();
-              ctx.strokeStyle = `rgba(${getComputedStyle(document.documentElement).getPropertyValue('--prim-rgb').trim()}, ${1 - distance / maxDistance})`;
-              ctx.lineWidth = 0.5;
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
+            <a href="roblox.html" class="icon-container roblox-glow" data-game="Roblox">
+                <img src="roblox.png" alt="Roblox" class="game-icon roblox">
+            </a>
+            
+            <a href="https://beta.voxlis.net/" class="icon-container darkened rotate-right" data-game="Minecraft">
+                <img src="minecraft.png" alt="Minecraft" class="game-icon">
+            </a>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('background-canvas');
+            const ctx = canvas.getContext('2d');
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                init();
             }
-          }
-        }
-        
-        requestAnimationFrame(animate);
-      }
-      
-      window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      });
-      
-      init();
-      animate();
-    }
+            const particlesArray = [];
+            const numberOfParticles = 200;
+            let mouse = {
+                x: null,
+                y: null,
+                radius: 150
+            };
 
-    document.addEventListener("DOMContentLoaded", () => {
-      createParticleNetwork();
-      
-      const loadingBar = document.getElementById("loadingBar");
-      let progress = 0;
-      const startTime = performance.now();
-      const isSlowDevice = () => performance.now() - startTime > 300;
-
-      const loadingInterval = setInterval(
-        () => {
-          if (progress < 100) {
-            const increment = isSlowDevice() ? 5 : 10;
-            progress += increment;
-            if (progress > 100) progress = 100;
-            requestAnimationFrame(() => {
-              loadingBar.style.width = `${progress}%`;
+            window.addEventListener('mousemove', function(event) {
+                mouse.x = event.x;
+                mouse.y = event.y;
             });
-            const loadingText = document.querySelector(".loading-text");
-            if (progress < 30) {
-              loadingText.textContent = "Loading resources...";
-            } else if (progress < 60) {
-              loadingText.textContent = "Preparing exploits...";
-            } else if (progress < 90) {
-              loadingText.textContent = "Almost ready...";
-            } else {
-              loadingText.textContent = "Welcome to voxlis.NET";
-            }
-          } else {
-            clearInterval(loadingInterval);
-            setTimeout(
-              () => {
-                const loadingScreen = document.getElementById("loadingScreen");
-                loadingScreen.style.transition = "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
-                loadingScreen.style.opacity = "0";
-                loadingScreen.style.visibility = "hidden";
 
-                setTimeout(() => {
-                  loadingScreen.remove();
-                  document.querySelectorAll('.game-card').forEach((card, index) => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(30px)';
-                    setTimeout(() => {
-                      card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-                      card.style.opacity = '1';
-                      card.style.transform = 'translateY(0)';
-                    }, 100 + (index * 150));
-                  });
-                }, 800);
-              },
-              isSlowDevice() ? 500 : 200,
-            );
-          }
-        },
-        isSlowDevice() ? 100 : 50,
-      );
-      
-      const menuToggle = document.getElementById("mobMenuTgl");
-      const mobileMenu = document.getElementById("mobMenu");
-      
-      if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener("click", () => {
-          mobileMenu.classList.toggle("visible");
-          menuToggle.innerHTML = mobileMenu.classList.contains("visible")
-            ? '<i class="fas fa-times"></i>'
-            : '<i class="fas fa-bars"></i>';
-        });
-      }
-      
-      const themeDropdown = document.getElementById("themeDropdown");
-      const themeDropdownSelected = document.getElementById("themeDropdownSelected");
-      const themeDropdownOptions = document.getElementById("themeDropdownOptions");
-      
-      if (themeDropdown && themeDropdownSelected && themeDropdownOptions) {
-        const savedTheme = localStorage.getItem("voxlis-theme") || "red";
-        document.documentElement.setAttribute("data-theme", savedTheme);
-        
-        function updateSelectedTheme(theme) {
-          const themeName = theme.charAt(0).toUpperCase() + theme.slice(1);
-          themeDropdownSelected.innerHTML = `
-            <div class="theme-color-indicator ${theme}"></div>
-            <span>${themeName} Theme</span>
-            <i class="fas fa-chevron-down"></i>
-          `;
-          const options = themeDropdownOptions.querySelectorAll(".theme-dropdown-option");
-          options.forEach((option) => {
-            option.classList.remove("selected");
-            if (option.getAttribute("data-theme") === theme) {
-              option.classList.add("selected");
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.baseX = this.x;
+                    this.baseY = this.y;
+                    this.size = Math.random() * 3 + 1;
+                    this.density = (Math.random() * 30) + 1;
+                    const r = Math.floor(Math.random() * 100) + 155;
+                    const opacity = Math.random() * 0.4 + 0.4;
+                    this.color = `rgba(${r}, ${Math.floor(r/8)}, ${Math.floor(r/8)}, ${opacity})`;
+                }
+                
+                update() {
+                    if (mouse.x && mouse.y) {
+                        const dx = mouse.x - this.x;
+                        const dy = mouse.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < mouse.radius) {
+                            const forceDirectionX = dx / distance;
+                            const forceDirectionY = dy / distance;
+                            const force = (mouse.radius - distance) / mouse.radius;
+                            const directionX = forceDirectionX * force * this.density;
+                            const directionY = forceDirectionY * force * this.density;
+                            
+                            this.x -= directionX;
+                            this.y -= directionY;
+                        }
+                    }
+                    
+                    const dx = this.baseX - this.x;
+                    const dy = this.baseY - this.y;
+                    this.x += dx * 0.05;
+                    this.y += dy * 0.05;
+                    
+                    if (Math.random() > 0.98) {
+                        this.baseX += (Math.random() - 0.5) * 2;
+                        this.baseY += (Math.random() - 0.5) * 2;
+                    }
+                }
+                
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
             }
-          });
-        }
-        
-        updateSelectedTheme(savedTheme);
-        
-        themeDropdownSelected.addEventListener("click", () => {
-          themeDropdown.classList.toggle("active");
-        });
-        
-        document.addEventListener("click", (e) => {
-          if (!themeDropdown.contains(e.target)) {
-            themeDropdown.classList.remove("active");
-          }
-        });
-        
-        const themeOptions = themeDropdownOptions.querySelectorAll(".theme-dropdown-option");
-        themeOptions.forEach((option) => {
-          option.addEventListener("click", () => {
-            const theme = option.getAttribute("data-theme");      
-            document.body.style.transition = "background-color 0.5s ease";           
-            document.documentElement.setAttribute("data-theme", theme);
-            updateSelectedTheme(theme);
-            localStorage.setItem("voxlis-theme", theme);
-            themeDropdown.classList.remove("active");
-
-            const themeElements = document.querySelectorAll('[style*="--prim"]');
-            themeElements.forEach(el => {
-              el.style.transition = "all 0.5s ease";
+            
+            function connect() {
+                let opacityValue = 1;
+                
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        const dx = particlesArray[a].x - particlesArray[b].x;
+                        const dy = particlesArray[a].y - particlesArray[b].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 180) {
+                            opacityValue = 1 - (distance / 180);
+                            const gradient = ctx.createLinearGradient(
+                                particlesArray[a].x, 
+                                particlesArray[a].y, 
+                                particlesArray[b].x, 
+                                particlesArray[b].y
+                            );
+                            
+                            gradient.addColorStop(0, `rgba(255, 20, 20, ${opacityValue * 0.25})`);
+                            gradient.addColorStop(0.5, `rgba(200, 10, 10, ${opacityValue * 0.2})`);
+                            gradient.addColorStop(1, `rgba(150, 0, 0, ${opacityValue * 0.25})`);
+                            
+                            ctx.strokeStyle = gradient;
+                            ctx.lineWidth = opacityValue * 1.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            
+            function init() {
+                particlesArray.length = 0;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const bgGradient = ctx.createRadialGradient(
+                    canvas.width / 2, 
+                    canvas.height / 2, 
+                    0, 
+                    canvas.width / 2, 
+                    canvas.height / 2, 
+                    canvas.width
+                );
+                bgGradient.addColorStop(0, 'rgba(30, 0, 0, 0.4)');
+                bgGradient.addColorStop(0.5, 'rgba(15, 0, 0, 0.2)');
+                bgGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                
+                ctx.fillStyle = bgGradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                const time = Date.now() * 0.001;
+                const pulse = Math.sin(time) * 0.5 + 0.5;
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                }
+                ctx.globalAlpha = 0.7 + pulse * 0.3;
+                connect();
+                ctx.globalAlpha = 1; 
+                requestAnimationFrame(animate);
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            animate();
+            const gameIcons = document.querySelectorAll('.icon-container');
+            gameIcons.forEach(icon => {
+                icon.addEventListener('click', function(e) {
+                    const game = this.getAttribute('data-game');
+                    console.log(`User clicked on ${game} icon`);
+                });
             });
-            createParticleNetwork();
-          });
         });
-      }
-
-      window.addEventListener("scroll", () => {
-        const header = document.getElementById("hdr");
-        if (header) {
-          if (window.scrollY > 50) {
-            header.classList.add("scrolled");
-          } else {
-            header.classList.remove("scrolled");
-          }
-        }
-      });
-
-      const gameCards = document.querySelectorAll('.game-card');
-      gameCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-          card.style.transform = 'translateY(-15px) scale(1.02)';
-          const image = card.querySelector('.game-card-image');
-          if (image) {
-            image.style.transform = 'scale(1.1)';
-          }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'translateY(0) scale(1)';
-          const image = card.querySelector('.game-card-image');
-          if (image) {
-            image.style.transform = 'scale(1)';
-          }
-        });
-      });
-
-      const cs2Icon = document.getElementById('cs2Icon');
-      const robloxIcon = document.getElementById('robloxIcon');
-      const minecraftIcon = document.getElementById('minecraftIcon');
-      
-      function setActiveIcon(activeIcon) {
-        [cs2Icon, robloxIcon, minecraftIcon].forEach(icon => {
-          icon.classList.remove('active');
-        });
-        activeIcon.classList.add('active');
-      }
-      
-      if (cs2Icon && robloxIcon && minecraftIcon) {
-        cs2Icon.addEventListener('click', () => {
-          setActiveIcon(cs2Icon);
-        });
-        
-        robloxIcon.addEventListener('click', () => {
-          setActiveIcon(robloxIcon);
-        });
-        
-        minecraftIcon.addEventListener('click', () => {
-          setActiveIcon(minecraftIcon);
-        });
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>
-
