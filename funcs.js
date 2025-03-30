@@ -18,7 +18,7 @@ const expData = [
     premium: true,
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "awp",
@@ -35,11 +35,11 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
-    info: "## Exploit Performance  \n- Despite its association with [Krampus](/), the exploit functions smoothly. The developers prioritize avoiding detection and ban waves by emulating Roblox. However, running the official Roblox client remains inconvenient, as reinstalling it is necessary, and users still experience occasional bans with [AWP.gg](/). \n> \n\n## Background Information  \n- There is speculation that [AWP.gg](/) is connected to [Krampus](/), an exploit that abruptly shut down on May 11, 2024, following the release of Hyperion 4.0. The developers abandoned the project without updates or refunds, leaving long-term license holders at a loss. The shutdown was likely due to the difficulty of bypassing the update. While [Krampus](/) did not distribute malware, they provided a misleading \"official explanation,\" claiming their developers were \"raided\" and fabricating fake images as evidence in their Discord.  \n\n- After months of inactivity, the [Krampus](/) Discord began promoting a Robux gambling site. Whether they own the site or were paid for sponsorship remains unclear.\n\n## Evidence and Links  \n- [ [Link](https://www.reddit.com/r/robloxhackers/comments/1h0ktng/awp_exploit_is_created_by_the_krampus_development/)  ] AWP.gg and Krampus share the same Cloudflare-routed name servers, adding to speculation.\n- [ [Link](https://www.reddit.com/r/robloxhackers/search/?q=krampus&cId=) ] Search \"Krampus\" in r/robloxhackers.\n\n\n> Sources: Reddit.com/r/robloxhackers, WeAreDevs.NET",
+    info: '## Exploit Performance  \n- Despite its association with [Krampus](/), the exploit functions smoothly. The developers prioritize avoiding detection and ban waves by emulating Roblox. However, running the official Roblox client remains inconvenient, as reinstalling it is necessary, and users still experience occasional bans with [AWP.gg](/). \n> \n\n## Background Information  \n- There is speculation that [AWP.gg](/) is connected to [Krampus](/), an exploit that abruptly shut down on May 11, 2024, following the release of Hyperion 4.0. The developers abandoned the project without updates or refunds, leaving long-term license holders at a loss. The shutdown was likely due to the difficulty of bypassing the update. While [Krampus](/) did not distribute malware, they provided a misleading "official explanation," claiming their developers were "raided" and fabricating fake images as evidence in their Discord.  \n\n- After months of inactivity, the [Krampus](/) Discord began promoting a Robux gambling site. Whether they own the site or were paid for sponsorship remains unclear.\n\n## Evidence and Links  \n- [ [Link](https://www.reddit.com/r/robloxhackers/comments/1h0ktng/awp_exploit_is_created_by_the_krampus_development/)  ] AWP.gg and Krampus share the same Cloudflare-routed name servers, adding to speculation.\n- [ [Link](https://www.reddit.com/r/robloxhackers/search/?q=krampus&cId=) ] Search "Krampus" in r/robloxhackers.\n\n\n> Sources: Reddit.com/r/robloxhackers, WeAreDevs.NET',
     premium: true,
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "wave",
@@ -59,7 +59,7 @@ const expData = [
     premium: true,
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "macsploit",
@@ -78,7 +78,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "seliware",
@@ -98,7 +98,7 @@ const expData = [
     premium: false,
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "cryptic",
@@ -117,7 +117,7 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "codex",
@@ -136,7 +136,7 @@ const expData = [
     accentColor: "from-yellow-600 to-yellow-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "matcha",
@@ -155,7 +155,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "solara",
@@ -173,7 +173,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "xeno",
@@ -191,7 +191,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "krnl",
@@ -209,7 +209,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "delta",
@@ -227,7 +227,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "zorara",
@@ -245,7 +245,7 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "dx9ware",
@@ -264,7 +264,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "velocity",
@@ -282,7 +282,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "apple-ware",
@@ -300,7 +300,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "jjsploit",
@@ -318,7 +318,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "vegax",
@@ -336,7 +336,7 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "ronix",
@@ -354,7 +354,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "aimmy",
@@ -372,7 +372,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "df",
@@ -390,7 +390,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "arceusx",
@@ -408,7 +408,7 @@ const expData = [
     accentColor: "from-yellow-600 to-yellow-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "nezur",
@@ -426,7 +426,7 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "argon",
@@ -444,7 +444,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "mint",
@@ -462,7 +462,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
   {
     id: "ratware",
@@ -480,7 +480,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false
+    hide: false,
   },
 ]
 
@@ -1188,87 +1188,38 @@ document.addEventListener("DOMContentLoaded", () => {
   stpEvts()
   crtUncMdl()
   setupPriceButtons()
-  function fixFreeCardButtons() {
-    document.querySelectorAll(".unc-btn").forEach((btn) => {
-      btn.onclick = function (e) {
-        e.stopPropagation()
-        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
-        if (card) {
-          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-          if (nameElement) {
-            const name = nameElement.textContent.trim().split(/\s+/)[0]
-            const exploit = expData.find((exp) => exp.name === name)
-            if (exploit) {
-              opnUncMdl(exploit)
-            }
-          }
-        }
-      }
-    })
-    document.querySelectorAll(".info-btn").forEach((btn) => {
-      btn.onclick = function (e) {
-        e.stopPropagation()
-        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
-        if (card) {
-          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-          if (nameElement) {
-            const name = nameElement.textContent.trim().split(/\s+/)[0]
-            const exploit = expData.find((exp) => exp.name === name)
-            if (exploit) {
-              openInfoModal(exploit)
-            }
-          }
-        }
-      }
-    })
-    document.querySelectorAll(".web-btn").forEach((btn) => {
-      btn.onclick = function (e) {
-        e.stopPropagation()
-        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
-        if (card) {
-          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-          if (nameElement) {
-            const name = nameElement.textContent.trim().split(/\s+/)[0]
-            const exploit = expData.find((exp) => exp.name === name)
-            if (exploit && exploit.href) {
-              window.open(exploit.href, "_blank")
-            }
-          }
-        }
-      }
-    })
-  }
+  setupPriceButtonRedirects()
+  createInfoModal()
+  initTextSwitching()
+  setupDropdowns()
+  updateScrollbarStyles()
+  const contentObserver = new MutationObserver(updateScrollbarStyles)
+  const config = { childList: true, subtree: true }
+  document.querySelectorAll(".crd-cntnt, .unc-modal-content, .info-modal-content").forEach((el) => {
+    contentObserver.observe(el, config)
+  })
   fixFreeCardButtons()
   setTimeout(fixFreeCardButtons, 500)
+  setTimeout(updateScrollbarStyles, 1000)
+  handleWindowResize()
 })
 
-function setupPriceButtons() {
-  const priceButtons = document.querySelectorAll(".prc-btn-new")
-
-  priceButtons.forEach((button) => {
-    const originalHTML = button.innerHTML
-    const isFree = button.classList.contains("free")
-    let priceText = ""
-    if (isFree) {
-      priceText = "FREE"
-    } else {
-      const priceMatch = originalHTML.match(/\$[\d.]+/)
-      if (priceMatch) {
-        priceText = priceMatch[0]
-        const periodMatch = originalHTML.match(/<span class="prc-prd">([^<]+)<\/span>/)
-        if (periodMatch) {
-          priceText += " " + periodMatch[1]
+function setupPriceButtonRedirects() {
+  document.querySelectorAll(".prc-btn-new").forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation()
+      const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit && exploit.priceHref) {
+            window.open(exploit.priceHref, "_blank")
+          }
         }
       }
-    }
-    button.innerHTML = `
-      <div class="default-text">
-        <i class="fas fa-tag"></i> ${isFree ? "FREE" : "BUY"}
-      </div>
-      <div class="price-text">
-        <i class="fas fa-tag"></i> ${priceText}
-      </div>
-    `
+    })
   })
 }
 
@@ -1284,9 +1235,46 @@ function stpEvts() {
 
   els.menuTgl.addEventListener("click", () => {
     els.menu.classList.toggle("hidden")
+    document.body.classList.toggle("menu-open")
     els.menuTgl.innerHTML = els.menu.classList.contains("hidden")
       ? '<i class="fas fa-bars"></i>'
       : '<i class="fas fa-times"></i>'
+
+    if (!els.menu.classList.contains("hidden")) {
+      void els.menu.offsetHeight
+
+      els.menu.style.transform = "translateX(0)"
+
+      const menuItems = els.menu.querySelectorAll(".mob-nav-lnk")
+      menuItems.forEach((item, index) => {
+        item.style.opacity = "0"
+        item.style.transform = "translateY(20px)"
+        setTimeout(
+          () => {
+            item.style.transition = "all 0.3s ease"
+            item.style.opacity = "1"
+            item.style.transform = "translateY(0)"
+          },
+          100 + index * 50,
+        )
+      })
+    }
+  })
+
+  document.addEventListener("click", (e) => {
+    if (!els.menu.classList.contains("hidden") && !els.menu.contains(e.target) && !els.menuTgl.contains(e.target)) {
+      els.menu.classList.add("hidden")
+      document.body.classList.remove("menu-open")
+      els.menuTgl.innerHTML = '<i class="fas fa-bars"></i>'
+    }
+  })
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768 && !els.menu.classList.contains("hidden")) {
+      els.menu.classList.add("hidden")
+      document.body.classList.remove("menu-open")
+      els.menuTgl.innerHTML = '<i class="fas fa-bars"></i>'
+    }
   })
 
   els.srch.addEventListener("input", (e) => {
@@ -2277,6 +2265,125 @@ function crtLstItm(exp) {
   return itm
 }
 
+function setupMobileDropdowns() {
+  const mobileDropdowns = document.querySelectorAll(".mob-menu .custom-dropdown")
+  mobileDropdowns.forEach((dropdown) => {
+    const selected = dropdown.querySelector(".custom-dropdown-selected")
+    const options = dropdown.querySelector(".custom-dropdown-options")
+    const optionItems = dropdown.querySelectorAll(".custom-dropdown-option")
+
+    if (selected) {
+      selected.addEventListener("click", (e) => {
+        e.stopPropagation()
+        mobileDropdowns.forEach((d) => {
+          if (d !== dropdown && d.classList.contains("active")) {
+            d.classList.remove("active")
+            d.querySelector(".custom-dropdown-options").style.maxHeight = "0"
+          }
+        })
+        dropdown.classList.toggle("active")
+        if (dropdown.classList.contains("active")) {
+          options.style.maxHeight = options.scrollHeight + "px"
+          options.style.opacity = "1"
+          options.style.visibility = "visible"
+          optionItems.forEach((option, index) => {
+            option.style.opacity = "0"
+            option.style.transform = "translateY(10px)"
+            setTimeout(() => {
+              option.style.transition = "all 0.2s ease"
+              option.style.opacity = "1"
+              option.style.transform = "translateY(0)"
+            }, 50 * index)
+          })
+        } else {
+          options.style.maxHeight = "0"
+          options.style.opacity = "0"
+          setTimeout(() => {
+            options.style.visibility = "hidden"
+          }, 300)
+        }
+      })
+    }
+
+    optionItems.forEach((option) => {
+      option.addEventListener("click", () => {
+        const value = option.getAttribute("data-value")
+        const text = option.textContent.trim()
+        option.style.backgroundColor = "rgba(var(--prim-rgb), 0.2)"
+        setTimeout(() => {
+          option.style.backgroundColor = ""
+
+          selected.querySelector("span").textContent = text
+          optionItems.forEach((opt) => opt.classList.remove("selected"))
+          option.classList.add("selected")
+
+          dropdown.classList.remove("active")
+          options.style.maxHeight = "0"
+          options.style.opacity = "0"
+
+          setTimeout(() => {
+            options.style.visibility = "hidden"
+          }, 300)
+          if (dropdown.closest(".mob-srt-fltr-cntr")) {
+            st.srtBy = value
+            fltrExps()
+          }
+        }, 200)
+      })
+    })
+  })
+}
+
+function enhanceMobileFilterButtons() {
+  const mobileFilterButtons = document.querySelectorAll(".mob-pltf-chkbx input, .mob-prc-btn")
+  mobileFilterButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      if (this.tagName.toLowerCase() === "input") {
+        const label = this.nextElementSibling
+        if (label) {
+          label.style.transform = "scale(0.95)"
+          setTimeout(() => {
+            label.style.transform = ""
+          }, 150)
+        }
+      } else {
+        this.style.transform = "scale(0.95)"
+        setTimeout(() => {
+          this.style.transform = ""
+        }, 150)
+      }
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(50)
+      }
+    })
+  })
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupMobileDropdowns()
+  enhanceMobileFilterButtons()
+  const mobileMenu = document.getElementById("mobMenu")
+  if (mobileMenu) {
+    mobileMenu.addEventListener("touchstart", function (e) {
+      this.allowUp = this.scrollTop > 0
+      this.allowDown = this.scrollTop < this.scrollHeight - this.clientHeight
+      this.lastY = e.touches[0].clientY
+    })
+
+    mobileMenu.addEventListener("touchmove", function (e) {
+      const up = e.touches[0].clientY > this.lastY
+      const down = !up
+      this.lastY = e.touches[0].clientY
+
+      if ((up && this.allowUp) || (down && this.allowDown)) {
+        e.stopPropagation()
+      } else {
+        e.preventDefault()
+      }
+    })
+  }
+})
+
 function setupDropdowns() {
   const pageOverlay = document.getElementById("pageOverlay")
   const dropdowns = document.querySelectorAll(".custom-dropdown")
@@ -2601,3 +2708,20 @@ function adjSrchBar() {
   srchCont.style.zIndex = "5"
 }
 
+function handleWindowResize() {
+  const windowWidth = window.innerWidth
+  if (windowWidth < 640) {
+    els.grid.style.gridTemplateColumns = "1fr"
+  } else if (windowWidth < 1024) {
+    els.grid.style.gridTemplateColumns = "repeat(auto-fill, minmax(280px, 1fr))"
+  } else {
+    els.grid.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))"
+  }
+  if (windowWidth > 768 && els.menu && !els.menu.classList.contains("hidden")) {
+    els.menu.classList.add("hidden")
+    document.body.classList.remove("menu-open")
+    els.menuTgl.innerHTML = '<i class="fas fa-bars"></i>'
+  }
+}
+
+window.addEventListener("resize", handleWindowResize)
