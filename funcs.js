@@ -1239,42 +1239,6 @@ function stpEvts() {
     els.menuTgl.innerHTML = els.menu.classList.contains("hidden")
       ? '<i class="fas fa-bars"></i>'
       : '<i class="fas fa-times"></i>'
-
-    if (!els.menu.classList.contains("hidden")) {
-      void els.menu.offsetHeight
-
-      els.menu.style.transform = "translateX(0)"
-
-      const menuItems = els.menu.querySelectorAll(".mob-nav-lnk")
-      menuItems.forEach((item, index) => {
-        item.style.opacity = "0"
-        item.style.transform = "translateY(20px)"
-        setTimeout(
-          () => {
-            item.style.transition = "all 0.3s ease"
-            item.style.opacity = "1"
-            item.style.transform = "translateY(0)"
-          },
-          100 + index * 50,
-        )
-      })
-    }
-  })
-
-  document.addEventListener("click", (e) => {
-    if (!els.menu.classList.contains("hidden") && !els.menu.contains(e.target) && !els.menuTgl.contains(e.target)) {
-      els.menu.classList.add("hidden")
-      document.body.classList.remove("menu-open")
-      els.menuTgl.innerHTML = '<i class="fas fa-bars"></i>'
-    }
-  })
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768 && !els.menu.classList.contains("hidden")) {
-      els.menu.classList.add("hidden")
-      document.body.classList.remove("menu-open")
-      els.menuTgl.innerHTML = '<i class="fas fa-bars"></i>'
-    }
   })
 
   els.srch.addEventListener("input", (e) => {
@@ -2265,125 +2229,6 @@ function crtLstItm(exp) {
   return itm
 }
 
-function setupMobileDropdowns() {
-  const mobileDropdowns = document.querySelectorAll(".mob-menu .custom-dropdown")
-  mobileDropdowns.forEach((dropdown) => {
-    const selected = dropdown.querySelector(".custom-dropdown-selected")
-    const options = dropdown.querySelector(".custom-dropdown-options")
-    const optionItems = dropdown.querySelectorAll(".custom-dropdown-option")
-
-    if (selected) {
-      selected.addEventListener("click", (e) => {
-        e.stopPropagation()
-        mobileDropdowns.forEach((d) => {
-          if (d !== dropdown && d.classList.contains("active")) {
-            d.classList.remove("active")
-            d.querySelector(".custom-dropdown-options").style.maxHeight = "0"
-          }
-        })
-        dropdown.classList.toggle("active")
-        if (dropdown.classList.contains("active")) {
-          options.style.maxHeight = options.scrollHeight + "px"
-          options.style.opacity = "1"
-          options.style.visibility = "visible"
-          optionItems.forEach((option, index) => {
-            option.style.opacity = "0"
-            option.style.transform = "translateY(10px)"
-            setTimeout(() => {
-              option.style.transition = "all 0.2s ease"
-              option.style.opacity = "1"
-              option.style.transform = "translateY(0)"
-            }, 50 * index)
-          })
-        } else {
-          options.style.maxHeight = "0"
-          options.style.opacity = "0"
-          setTimeout(() => {
-            options.style.visibility = "hidden"
-          }, 300)
-        }
-      })
-    }
-
-    optionItems.forEach((option) => {
-      option.addEventListener("click", () => {
-        const value = option.getAttribute("data-value")
-        const text = option.textContent.trim()
-        option.style.backgroundColor = "rgba(var(--prim-rgb), 0.2)"
-        setTimeout(() => {
-          option.style.backgroundColor = ""
-
-          selected.querySelector("span").textContent = text
-          optionItems.forEach((opt) => opt.classList.remove("selected"))
-          option.classList.add("selected")
-
-          dropdown.classList.remove("active")
-          options.style.maxHeight = "0"
-          options.style.opacity = "0"
-
-          setTimeout(() => {
-            options.style.visibility = "hidden"
-          }, 300)
-          if (dropdown.closest(".mob-srt-fltr-cntr")) {
-            st.srtBy = value
-            fltrExps()
-          }
-        }, 200)
-      })
-    })
-  })
-}
-
-function enhanceMobileFilterButtons() {
-  const mobileFilterButtons = document.querySelectorAll(".mob-pltf-chkbx input, .mob-prc-btn")
-  mobileFilterButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      if (this.tagName.toLowerCase() === "input") {
-        const label = this.nextElementSibling
-        if (label) {
-          label.style.transform = "scale(0.95)"
-          setTimeout(() => {
-            label.style.transform = ""
-          }, 150)
-        }
-      } else {
-        this.style.transform = "scale(0.95)"
-        setTimeout(() => {
-          this.style.transform = ""
-        }, 150)
-      }
-      if (window.navigator && window.navigator.vibrate) {
-        window.navigator.vibrate(50)
-      }
-    })
-  })
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  setupMobileDropdowns()
-  enhanceMobileFilterButtons()
-  const mobileMenu = document.getElementById("mobMenu")
-  if (mobileMenu) {
-    mobileMenu.addEventListener("touchstart", function (e) {
-      this.allowUp = this.scrollTop > 0
-      this.allowDown = this.scrollTop < this.scrollHeight - this.clientHeight
-      this.lastY = e.touches[0].clientY
-    })
-
-    mobileMenu.addEventListener("touchmove", function (e) {
-      const up = e.touches[0].clientY > this.lastY
-      const down = !up
-      this.lastY = e.touches[0].clientY
-
-      if ((up && this.allowUp) || (down && this.allowDown)) {
-        e.stopPropagation()
-      } else {
-        e.preventDefault()
-      }
-    })
-  }
-})
-
 function setupDropdowns() {
   const pageOverlay = document.getElementById("pageOverlay")
   const dropdowns = document.querySelectorAll(".custom-dropdown")
@@ -2723,5 +2568,62 @@ function handleWindowResize() {
     els.menuTgl.innerHTML = '<i class="fas fa-bars"></i>'
   }
 }
-
 window.addEventListener("resize", handleWindowResize)
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("heartRainCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const heartImageSrc = "heart.svg";
+  const numHearts = 25;
+  const hearts = [];
+  let loadedHearts = 0;
+  const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+  const heartImage = new Image();
+  heartImage.src = heartImageSrc;
+  heartImage.onload = () => {
+    for (let i = 0; i < numHearts; i++) hearts.push(createHeart());
+    animate();
+  };
+  heartImage.onerror = () => { console.error(`Failed to load heart image: ${heartImageSrc}`); };
+  function createHeart() {
+    return {
+      img: heartImage, x: Math.random() * canvas.width, y: Math.random() * canvas.height - canvas.height,
+      dx: Math.random() * 0.4 - 0.2, dy: Math.random() * 0.3 + 0.2, size: Math.random() * 15 + 15,
+      rotation: Math.random() * 0.2 - 0.1, rotationSpeed: Math.random() * 0.005 - 0.0025, opacity: Math.random() * 0.3 + 0.7
+    };
+  }
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hearts.forEach(heart => {
+      heart.x += heart.dx;
+      heart.y += heart.dy;
+      heart.rotation += heart.rotationSpeed;
+      if (heart.y > canvas.height + heart.size) {
+        heart.y = -heart.size;
+        heart.x = Math.random() * canvas.width;
+        heart.dy = Math.random() * 0.3 + 0.2;
+      }
+      if (heart.x < -heart.size) heart.x = canvas.width + heart.size;
+      else if (heart.x > canvas.width + heart.size) heart.x = -heart.size;
+      ctx.save();
+      ctx.translate(heart.x, heart.y);
+      ctx.rotate(heart.rotation);
+      ctx.globalAlpha = heart.opacity;
+      ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size);
+      ctx.restore();
+    });
+    requestAnimationFrame(animate);
+  }
+  canvas.addEventListener("click", (e) => {
+    const clickHeartsCount = Math.floor(Math.random() * 3) + 3;
+    for (let i = 0; i < clickHeartsCount; i++) {
+      hearts.push({
+        img: heartImage, x: e.clientX + (Math.random() * 40 - 20), y: e.clientY + (Math.random() * 40 - 20),
+        dx: Math.random() * 1 - 0.5, dy: Math.random() * 0.5 - 1, size: Math.random() * 40 + 60,
+        rotation: Math.random() * 0.2 - 0.1, rotationSpeed: Math.random() * 0.01 - 0.005, opacity: Math.random() * 0.3 + 0.7
+      });
+    }
+  });
+});
