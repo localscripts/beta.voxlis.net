@@ -4703,3 +4703,7 @@ h6:not(.hero-ttl-grd):not(.fltr-ttl),
   z-index: -1;
   pointer-events: none;
 }
+
+.nav-btn i, .web-btn i, .unc-btn i, .info-btn i, .more-info-btn i, .price-info-btn i {
+  transition: color 0.2s ease !important;
+}
