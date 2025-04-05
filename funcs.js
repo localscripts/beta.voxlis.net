@@ -1549,36 +1549,6 @@ function stpEvts() {
         if (nameElement) {
           const name = nameElement.textContent.trim().split(/\s+/)[0]
           const exploit = expData.find((exp) => exp.name === name)
-          if (exploit) {
-            opnUncMdl(exploit)
-          }
-        }
-      }
-    }
-
-    if (e.target.closest(".info-btn")) {
-      const infoBtn = e.target.closest(".info-btn")
-      const card = infoBtn.closest(".exp-crd") || infoBtn.closest(".exp-lst-itm")
-      if (card) {
-        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-        if (nameElement) {
-          const name = nameElement.textContent.trim().split(/\s+/)[0]
-          const exploit = expData.find((exp) => exp.name === name)
-          if (exploit) {
-            openInfoModal(exploit)
-          }
-        }
-      }
-    }
-
-    if (e.target.closest(".web-btn")) {
-      const webBtn = e.target.closest(".web-btn")
-      const card = webBtn.closest(".exp-crd") || webBtn.closest(".exp-lst-itm")
-      if (card) {
-        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-        if (nameElement) {
-          const name = nameElement.textContent.trim().split(/\s+/)[0]
-          const exploit = expData.find((exp) => exp.name === name)
           if (exploit && exploit.href) {
             window.open(exploit.href, "_blank")
           }
@@ -1718,7 +1688,7 @@ function rndrExps() {
       btn.addEventListener("click", function () {
         const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
         if (card) {
-          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+          const nameElement = card.querySelector(".crd-ttl") || this.closest(".exp-lst-itm")
           if (nameElement) {
             const name = nameElement.textContent.trim().split(/\s+/)[0]
             const exploit = expData.find((exp) => exp.name === name)
@@ -2570,60 +2540,77 @@ function handleWindowResize() {
 }
 window.addEventListener("resize", handleWindowResize)
 document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("heartRainCanvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  const heartImageSrc = "heart.svg";
-  const numHearts = 25;
-  const hearts = [];
-  let loadedHearts = 0;
-  const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-  const heartImage = new Image();
-  heartImage.src = heartImageSrc;
+  const canvas = document.getElementById("heartRainCanvas")
+  if (!canvas) return
+  const ctx = canvas.getContext("2d")
+  const heartImageSrc = "heart.svg"
+  const numHearts = 25
+  const hearts = []
+  const loadedHearts = 0
+  const resizeCanvas = () => {
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+  }
+  resizeCanvas()
+  window.addEventListener("resize", resizeCanvas)
+  const heartImage = new Image()
+  heartImage.src = heartImageSrc
   heartImage.onload = () => {
-    for (let i = 0; i < numHearts; i++) hearts.push(createHeart());
-    animate();
-  };
-  heartImage.onerror = () => { console.error(`Failed to load heart image: ${heartImageSrc}`); };
+    for (let i = 0; i < numHearts; i++) hearts.push(createHeart())
+    animate()
+  }
+  heartImage.onerror = () => {
+    console.error(`Failed to load heart image: ${heartImageSrc}`)
+  }
   function createHeart() {
     return {
-      img: heartImage, x: Math.random() * canvas.width, y: Math.random() * canvas.height - canvas.height,
-      dx: Math.random() * 0.4 - 0.2, dy: Math.random() * 0.3 + 0.2, size: Math.random() * 15 + 15,
-      rotation: Math.random() * 0.2 - 0.1, rotationSpeed: Math.random() * 0.005 - 0.0025, opacity: Math.random() * 0.3 + 0.7
-    };
+      img: heartImage,
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      dx: Math.random() * 0.4 - 0.2,
+      dy: Math.random() * 0.3 + 0.2,
+      size: Math.random() * 15 + 15,
+      rotation: Math.random() * 0.2 - 0.1,
+      rotationSpeed: Math.random() * 0.005 - 0.0025,
+      opacity: Math.random() * 0.3 + 0.7,
+    }
   }
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    hearts.forEach(heart => {
-      heart.x += heart.dx;
-      heart.y += heart.dy;
-      heart.rotation += heart.rotationSpeed;
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    hearts.forEach((heart) => {
+      heart.x += heart.dx
+      heart.y += heart.dy
+      heart.rotation += heart.rotationSpeed
       if (heart.y > canvas.height + heart.size) {
-        heart.y = -heart.size;
-        heart.x = Math.random() * canvas.width;
-        heart.dy = Math.random() * 0.3 + 0.2;
+        heart.y = -heart.size
+        heart.x = Math.random() * canvas.width
+        heart.dy = Math.random() * 0.3 + 0.2
       }
-      if (heart.x < -heart.size) heart.x = canvas.width + heart.size;
-      else if (heart.x > canvas.width + heart.size) heart.x = -heart.size;
-      ctx.save();
-      ctx.translate(heart.x, heart.y);
-      ctx.rotate(heart.rotation);
-      ctx.globalAlpha = heart.opacity;
-      ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size);
-      ctx.restore();
-    });
-    requestAnimationFrame(animate);
+      if (heart.x < -heart.size) heart.x = canvas.width + heart.size
+      else if (heart.x > canvas.width + heart.size) heart.x = -heart.size
+      ctx.save()
+      ctx.translate(heart.x, heart.y)
+      ctx.rotate(heart.rotation)
+      ctx.globalAlpha = heart.opacity
+      ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size)
+      ctx.restore()
+    })
+    requestAnimationFrame(animate)
   }
   canvas.addEventListener("click", (e) => {
-    const clickHeartsCount = Math.floor(Math.random() * 3) + 3;
+    const clickHeartsCount = Math.floor(Math.random() * 3) + 3
     for (let i = 0; i < clickHeartsCount; i++) {
       hearts.push({
-        img: heartImage, x: e.clientX + (Math.random() * 40 - 20), y: e.clientY + (Math.random() * 40 - 20),
-        dx: Math.random() * 1 - 0.5, dy: Math.random() * 0.5 - 1, size: Math.random() * 40 + 60,
-        rotation: Math.random() * 0.2 - 0.1, rotationSpeed: Math.random() * 0.01 - 0.005, opacity: Math.random() * 0.3 + 0.7
-      });
+        img: heartImage,
+        x: e.clientX + (Math.random() * 40 - 20),
+        y: e.clientY + (Math.random() * 40 - 20),
+        dx: Math.random() * 1 - 0.5,
+        dy: Math.random() * 0.5 - 1,
+        size: Math.random() * 40 + 60,
+        rotation: Math.random() * 0.2 - 0.1,
+        rotationSpeed: Math.random() * 0.01 - 0.005,
+        opacity: Math.random() * 0.3 + 0.7,
+      })
     }
-  });
-});
+  })
+})
