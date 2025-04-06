@@ -2096,4 +2096,120 @@ let expData = [
   }
   document.addEventListener("DOMContentLoaded", initializeUI)
   
+  document.addEventListener("DOMContentLoaded", () => {
+    // Setup canvas
+    const canvas = document.getElementById("heartRainCanvas")
+    if (!canvas) return
+    const ctx = canvas.getContext("2d")
   
+    // Set canvas to full window size
+    function resizeCanvas() {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+  
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+  
+    // Use local PNG file instead of URL
+    const heartImageSrc = "heart.svg"
+  
+    // Number of hearts - increased for more coverage
+    const numHearts = 25
+  
+    // Array to store heart objects
+    const hearts = []
+    let loadedHearts = 0
+  
+    // Create and initialize hearts
+    for (let i = 0; i < numHearts; i++) {
+      const img = new Image()
+      img.src = heartImageSrc
+  
+      img.onload = () => {
+        loadedHearts++
+        if (loadedHearts === numHearts) {
+          animate() // Start animation only when all images are loaded
+        }
+      }
+  
+      img.onerror = () => {
+        console.error(`Failed to load heart image: ${heartImageSrc}`)
+      }
+  
+      // Create heart with random properties
+      hearts.push({
+        img: img,
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height, // Start above viewport
+        dx: Math.random() * 0.4 - 0.2, // Slight horizontal drift
+        dy: Math.random() * 0.3 + 0.2, // Slow vertical fall
+        size: Math.random() * 15 + 15, // Large size (60-100px)
+        rotation: Math.random() * 0.2 - 0.1, // Initial rotation
+        rotationSpeed: Math.random() * 0.005 - 0.0025, // Very slow rotation
+        opacity: Math.random() * 0.3 + 0.7, // 0.7-1 opacity
+      })
+    }
+  
+    // Function to animate the hearts
+    function animate() {
+      // Instead of filling the background with black, we leave it transparent
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+  
+      hearts.forEach((heart) => {
+        if (!heart.img.complete) return // Ensure the image is loaded
+  
+        // Move heart
+        heart.x += heart.dx
+        heart.y += heart.dy
+        heart.rotation += heart.rotationSpeed
+  
+        // If heart goes off the bottom, reset its position
+        if (heart.y > canvas.height + heart.size) {
+          heart.y = -heart.size
+          heart.x = Math.random() * canvas.width
+          heart.dy = Math.random() * 0.3 + 0.2
+        }
+  
+        // If heart goes off the sides, wrap around
+        if (heart.x < -heart.size) {
+          heart.x = canvas.width + heart.size
+        } else if (heart.x > canvas.width + heart.size) {
+          heart.x = -heart.size
+        }
+  
+        // Draw the heart with rotation
+        ctx.save()
+        ctx.translate(heart.x, heart.y)
+        ctx.rotate(heart.rotation)
+        ctx.globalAlpha = heart.opacity
+        ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size)
+        ctx.restore()
+      })
+  
+      requestAnimationFrame(animate) // Continue animation
+    }
+  
+    // Add hearts on click
+    canvas.addEventListener("click", (e) => {
+      // Add 3-5 hearts on click
+      const clickHearts = Math.floor(Math.random() * 3) + 3
+  
+      for (let i = 0; i < clickHearts; i++) {
+        const img = new Image()
+        img.src = heartImageSrc
+  
+        hearts.push({
+          img: img,
+          x: e.clientX + (Math.random() * 40 - 20), // Spread around click point
+          y: e.clientY + (Math.random() * 40 - 20),
+          dx: Math.random() * 1 - 0.5, // More horizontal movement for click hearts
+          dy: Math.random() * 0.5 - 1, // Initial upward movement
+          size: Math.random() * 40 + 60, // Same size range as other hearts
+          rotation: Math.random() * 0.2 - 0.1,
+          rotationSpeed: Math.random() * 0.01 - 0.005,
+          opacity: Math.random() * 0.3 + 0.7,
+        })
+      }
+    })
+})
