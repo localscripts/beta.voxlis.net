@@ -1,7 +1,7 @@
 const expData = [
   {
       id: "zenith",
-      name: "Zenith",
+      name: "Zenith!",
       desc: "The best overall value exploit.",
       lvl: 8,
       price: "$6.49",
