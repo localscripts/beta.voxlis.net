@@ -22,7 +22,7 @@ const expData = [
     },
   {
       id: "awp",
-      name: "AWP.gg",
+      name: "AWP.gg!",
       desc: "Emulates Hyperion for maximum safety.",
       lvl: 8,
       price: "$6.99",
@@ -60,7 +60,7 @@ const expData = [
       href: "https://link-target.net/1319977/swift",
       priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258",
       hide: false,
-    },
+   },
   {
     id: "wave",
     name: "Wave",
