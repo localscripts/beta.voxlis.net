@@ -98,6 +98,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Written by [@grossarl]() // NOT FINAL // COULD HAVE MISTAKES\nmacploit is a very strong executor for macos, being the only one of its kinda for the operating system after the shutdown of hydrogen, its main rivval competitor. offering 99% UNC, it shows strong performance as a level 8 executor and is able to handle more complex scripts with ease. it also has a beneficial decompiler to handle scripts with more ease while putting less load on the system, with many users claiming that they have no FPS drop while playing.\n\nhowever, updates are frankly late and sometimes come out even a couple days after updating (source - their discord, calculation of the time difference between roblox updating and them releasing a new version.\n\ndeveloper info - \nNexur42, the main developer for the project, frankly doesn't have the best history, being known for using loggers in the past, and the community still hasn't forgiven him for this. There are also other contributors including @atomic @rcloll and @Kohl. (source, raptor development discord) who assist with macsploit",
     hide: false,
   },
   {
@@ -175,6 +176,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "# Written by [@grossarl]() // NOT FINAL // COULD HAVE MISTAKES\nmatcha is a very good external with many features for many games. compared to a regular executor, it has a set amount of features and a very basic executor. supporting many games, it is one of the safest options on your main account due to the fact that features such as esp are merely overlays based on drivers. on that subject, the external is also driver based and has very short updates, with some coming out mere minutes after updating (source, their discord) for the mere price of $10 or 2k robux, it is an executor which buyers say is very much worth it and enjoy using over executors with scripts for the shooter games which matcha supports. matcha also supports set configs for different games and you dont have to load any of them as they automaticlally load by scanning the game id. (source, the actual exploit itself (at the bottom right every time you join a game))\n\nhowever the mods are raacist as fuck and not really supportive.",
     hide: false,
   },
   {
