@@ -1953,7 +1953,7 @@ function crtCrd(exp) {
             ? `
           <div class="feat-sec ntrl">
             <h4 class="feat-hdng">
-              <span class="feat-ico">•</span>
+              <span class="feat-ico">â€¢</span>
               Neutral
             </h4>
             <ul class="feat-lst">
@@ -2158,7 +2158,7 @@ function crtLstItm(exp) {
               ? `
             <div class="lst-itm-feat-sec ntrl">
               <h4 class="feat-hdng">
-                <span class="feat-ico">•</span>
+                <span class="feat-ico">â€¢</span>
                 Neutral
               </h4>
               <ul class="lst-itm-feat-lst">
@@ -2604,65 +2604,83 @@ function handleWindowResize() {
 }
 window.addEventListener("resize", handleWindowResize)
 document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("heartRainCanvas")
-  if (!canvas) return
-  const ctx = canvas.getContext("2d")
-  const heartImageSrc = "heart.svg"
-  const numHearts = 25
-  const hearts = []
-  const loadedHearts = 0
+  const canvas = document.getElementById("heartRainCanvas");
+  const loader = document.getElementById("loader");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const heartImageSrc = "heart.svg";
+  const numHearts = 25;
+  const hearts = [];
+
   const resizeCanvas = () => {
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-  }
-  resizeCanvas()
-  window.addEventListener("resize", resizeCanvas)
-  const heartImage = new Image()
-  heartImage.src = heartImageSrc
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  };
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  const heartImage = new Image();
+  heartImage.src = heartImageSrc;
+
   heartImage.onload = () => {
-    for (let i = 0; i < numHearts; i++) hearts.push(createHeart())
-    animate()
-  }
+    if (loader) {
+      loader.style.display = "none";
+    }
+    for (let i = 0; i < numHearts; i++) {
+      hearts.push(createHeart());
+    }
+    animate();
+  };
+
   heartImage.onerror = () => {
-    console.error(`Failed to load heart image: ${heartImageSrc}`)
-  }
+    console.error(`Failed to load heart image: ${heartImageSrc}`);
+    if (loader) {
+      loader.textContent = "Failed to load animation assets.";
+    }
+  };
+
   function createHeart() {
     return {
       img: heartImage,
       x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height - canvas.height,
+      y: Math.random() * canvas.height,
       dx: Math.random() * 0.4 - 0.2,
       dy: Math.random() * 0.3 + 0.2,
       size: Math.random() * 15 + 15,
       rotation: Math.random() * 0.2 - 0.1,
       rotationSpeed: Math.random() * 0.005 - 0.0025,
       opacity: Math.random() * 0.3 + 0.7,
-    }
+    };
   }
+
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     hearts.forEach((heart) => {
-      heart.x += heart.dx
-      heart.y += heart.dy
-      heart.rotation += heart.rotationSpeed
+      heart.x += heart.dx;
+      heart.y += heart.dy;
+      heart.rotation += heart.rotationSpeed;
       if (heart.y > canvas.height + heart.size) {
-        heart.y = -heart.size
-        heart.x = Math.random() * canvas.width
-        heart.dy = Math.random() * 0.3 + 0.2
+        heart.y = -heart.size;
+        heart.x = Math.random() * canvas.width;
+        heart.dy = Math.random() * 0.3 + 0.2;
       }
-      if (heart.x < -heart.size) heart.x = canvas.width + heart.size
-      else if (heart.x > canvas.width + heart.size) heart.x = -heart.size
-      ctx.save()
-      ctx.translate(heart.x, heart.y)
-      ctx.rotate(heart.rotation)
-      ctx.globalAlpha = heart.opacity
-      ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size)
-      ctx.restore()
-    })
-    requestAnimationFrame(animate)
+      if (heart.x < -heart.size) {
+        heart.x = canvas.width + heart.size;
+      } else if (heart.x > canvas.width + heart.size) {
+        heart.x = -heart.size;
+      }
+      ctx.save();
+      ctx.translate(heart.x, heart.y);
+      ctx.rotate(heart.rotation);
+      ctx.globalAlpha = heart.opacity;
+      ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size);
+      ctx.restore();
+    });
+    requestAnimationFrame(animate);
   }
+
   canvas.addEventListener("click", (e) => {
-    const clickHeartsCount = Math.floor(Math.random() * 3) + 3
+    const clickHeartsCount = Math.floor(Math.random() * 3) + 3;
     for (let i = 0; i < clickHeartsCount; i++) {
       hearts.push({
         img: heartImage,
@@ -2674,10 +2692,10 @@ document.addEventListener("DOMContentLoaded", () => {
         rotation: Math.random() * 0.2 - 0.1,
         rotationSpeed: Math.random() * 0.01 - 0.005,
         opacity: Math.random() * 0.3 + 0.7,
-      })
+      });
     }
-  })
-})
+  });
+});
 
 function setupPriceButtons() {
   document.querySelectorAll(".prc-btn-new").forEach((button) => {
