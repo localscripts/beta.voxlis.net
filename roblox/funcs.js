@@ -22,7 +22,7 @@ const expData = [
   },
   {
     id: "awp",
-    name: "AWP.gg!",
+    name: "AWP.gg",
     desc: "Emulates Hyperion for maximum safety.",
     lvl: 8,
     price: "$6.99",
@@ -44,7 +44,7 @@ const expData = [
   {
     id: "swift",
     name: "Swift",
-    desc: "Has a lifetime subscription",
+    desc: "Has a lifetime subscription.",
     lvl: 8,
     price: "$14.99",
     plat: [],
@@ -119,6 +119,7 @@ const expData = [
     premium: false,
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -138,6 +139,7 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -157,6 +159,7 @@ const expData = [
     accentColor: "from-yellow-600 to-yellow-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -177,6 +180,7 @@ const expData = [
     href: "https://yap.com/",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f3",
     info: "# Written by [@grossarl]() // NOT FINAL // COULD HAVE MISTAKES\nmatcha is a very good external with many features for many games. compared to a regular executor, it has a set amount of features and a very basic executor. supporting many games, it is one of the safest options on your main account due to the fact that features such as esp are merely overlays based on drivers. on that subject, the external is also driver based and has very short updates, with some coming out mere minutes after updating (source, their discord) for the mere price of $10 or 2k robux, it is an executor which buyers say is very much worth it and enjoy using over executors with scripts for the shooter games which matcha supports. matcha also supports set configs for different games and you dont have to load any of them as they automaticlally load by scanning the game id. (source, the actual exploit itself (at the bottom right every time you join a game))\n\nhowever the mods are raacist as fuck and not really supportive.",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -195,6 +199,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -213,6 +218,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -231,6 +237,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -249,6 +256,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -267,6 +275,7 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -286,6 +295,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -304,6 +314,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -322,6 +333,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -340,6 +352,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -358,6 +371,7 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -376,6 +390,7 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -394,6 +409,7 @@ const expData = [
     accentColor: "from-green-600 to-green-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -412,6 +428,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -430,6 +447,7 @@ const expData = [
     accentColor: "from-yellow-600 to-yellow-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
@@ -448,42 +466,7 @@ const expData = [
     accentColor: "from-purple-600 to-purple-700",
     href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    hide: false,
-  },
-  {
-    id: "argon",
-    name: "Argon",
-    desc: "A powerful exploit with 100% UNC.",
-    lvl: 8,
-    price: "FREE",
-    plat: ["windows"],
-    pros: ["Has a decompiler", "100% sUNC", "Level 8"],
-    neutral: [],
-    cons: ["Old owner used to exit scam ALOT", "Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
-    verified: false,
-    editor: "Requested",
-    txtColor: "text-red-500",
-    accentColor: "from-red-600 to-red-700",
-    href: "https://yap.com/",
-    priceHref: "https://yap.com/",
-    hide: false,
-  },
-  {
-    id: "mint",
-    name: "Mint",
-    desc: "A keyless exploit with moderate UNC percentage.",
-    lvl: 3,
-    price: "FREE",
-    plat: ["windows"],
-    pros: ["Free to use", "34% sUNC", "Keyless"],
-    neutral: ["Level 3"],
-    cons: ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
-    verified: false,
-    editor: "Console",
-    txtColor: "text-green-500",
-    accentColor: "from-green-600 to-green-700",
-    href: "https://yap.com/",
-    priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
   },
   {
