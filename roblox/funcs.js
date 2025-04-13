@@ -15,6 +15,8 @@ const expData = [
     txtColor: "text-yellow-500",
     accentColor: "from-purple-600 to-purple-700",
     premium: true,
+    hasKeySystem: false,
+    free: false,
     info: "## Exploit Performance  \n- [Zenith](/) functions similarly to the old [Nihon](/) executor, as it shares the same development team but has been rebranded. The main distinction is that [Zenith](/) is actively maintained, whereas [Nihon](/) is still undergoing redevelopment. [Zenith](/) offers a smooth experience and is bundled into a single `.exe` file, unlike many other exploits that come in `.zip` archives with multiple `.dll` files.\n  \n\n## Background Information  \n- Before [Zenith](/), an executor - [Nihon](/) launched in early 2024 and officially released on October 24, 2024, delivering strong performance.  \n- On February 3, 2025, [Nihon](/) team splited. The [Nihon](/) owner commented on the situation:  \n  *\"A former admin and Sero nuked the server and banned users. We're restoring it—Zenith wasn't involved and even returned our vanity. ❤️\"*. No further details were provided, though the situation is likely more complex.  \n\n## Developers Background Information\n- There is little background information available about the owners, [Immune](/), aside from their primary role in working on the UI for [Nihon](/). The rest of the development team included [@loadnil](/), [@mcgamin1738](/) and [@lendmeyourstrength](), who were primarily responsible for both the back-end and front-end development of Nihon. \n\n- Later, the team was forced to leave [Nihon](/), leading the developers to found [Zenith](/), which has been doing quite well. The current main owners are [@loadnil](/), [@lendmeyourstrength](/), [@mcgamin1738](/), and [@spectraluwu](/).\n\n\n> Sources: Reddit.com/r/robloxhackers, Zenith & Nihon Developers",
     href: "https://direct-link.net/1319977/zenith-level-8-exploit",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f2",
@@ -36,6 +38,8 @@ const expData = [
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
     premium: true,
+    hasKeySystem: true,
+    free: false,
     info: '## Exploit Performance  \n- Although [AWP.gg](/) is associated with [Krampus](/), it operates reliably. The developers focus on avoiding detection and ban waves by using Hyperion emulation techniques. However, running the official Roblox client can still be inconvenient, as it requires reinstallation, and users may occasionally face bans even when using [AWP.gg](/).\n\n> \n\n## Background Information  \n- There is speculation that [AWP.gg](/) is linked to [Krampus](/), an exploit that abruptly shut down on May 11, 2024, shortly after the release of Hyperion 4.0. The developers abandoned the project without offering any updates or refunds, leaving long-term license holders without support. The shutdown was likely due to the challenges in bypassing the new Hyperion 4.0. Although [Krampus](/) did not distribute malware, they issued a misleading "official explanation," falsely claiming their developers were "raided" and even circulating fabricated images as evidence in their Discord server.\n  \n- After months of inactivity, the [Krampus](/) Discord suddenly began promoting a Robux gambling site. It\'s unclear whether the developers are behind the site or were paid for sponsorship, but it\'s most likely that the Discord server was simply sold off.\n\n\n## Developers Background Information\n- Currently managed by [@merkuri6479](/), [@jbhglj7uj](/), and [@etheriut](/), but no additional information is known about them.\n\n\n \n\n> Sources: Reddit.com/r/robloxhackers, WeAreDevs.NET',
     href: "https://link-center.net/1319977/awpgg-level-8-exploit",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f1",
@@ -46,7 +50,7 @@ const expData = [
     name: "Swift",
     desc: "Has a lifetime subscription.",
     lvl: 8,
-    price: "$14.99",
+    price: ["$14.99", "FREE"],
     plat: ["windows"],
     pros: ["Has a lifetime option", "Has a decompiler", "100% sUNC", "Level 8"],
     neutral: [],
@@ -57,6 +61,8 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     info: "## Exploit Performance  \n- [Swift](/) is a high-performance exploit known for rapid updates, full 100% sUNC support, an integrated decompiler, custom functionality, and a distinctive user interface.  \n- In January 2025, [Swift](/) temporarily went offline due to a ROBLOX platform update. It returned in March 2025 with a significant overhaul—introducing 98% sUNC compatibility, a built-in decompiler, and various enhancements.\n\n## Background Information  \n- [Swift](/), originally known as [bunni.lol](/), was launched in May 2024. Despite a challenging start, the project rebranded to [Swift](/) in August 2024 and entered its Beta phase, quickly gaining a positive reputation and offering a premium experience at no cost.\n\n## Developers Background Information  \n- The Swift development team has experienced several changes over time. The current primary owner, [Peyton](/), has a strong track record, having led multiple successful projects in the past.  \n- [Bass](/), a newer addition, is one of the largest cheat resellers in the community and brings experience from previous involvement with the ScriptWare team.  \n- [Swift](/) has also commissioned developers for one-time jobs. Notable examples include Zenith’s team for error handling, and a designer named Blinx for UI development.  \n- The project is maintained by a team of trusted owners and supported by a large, responsive support staff managing over 1,000 tickets daily.\n\n> Sources: Reddit.com/r/robloxhackers, bunni.lol Discord Archives, Swift Discord Archives\n",
     premium: true,
+    hasKeySystem: false,
+    free: false,
     href: "https://link-target.net/1319977/swift",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258",
     hide: false,
@@ -80,6 +86,8 @@ const expData = [
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f0",
     info: "## Exploit Experience\n- [Wave]() works like a normal executor, has good uptime, but has its issues like random crashes, UI not saving tabs, and the workspace folder not saving after updates. [Wave]() offers a smooth experience and is bundled into a single `.exe` file, unlike many other exploits that come in `.zip` archives with multiple `.dll` files.\n\n## General Information\n- In March 2022, [@lxnny]() — the owner of Delta — reposted the CW (community warning) on [WeAreDevs.NET](), exposing ArceusX for ratting users and massively scamming their developers.\n- Originally, [Wave's]() launch was delayed and teased multiple times in their Discord server.\n  It eventually released around April 5–9, but saw very few updates early on.\n  For example, when Roblox updated on a Wednesday, Wave wouldn't get updated until Friday.\n  This pattern continued up until December 2024, sometimes with even bigger delays.\n- Since December, [Wave]() has shown better performance and has been more consistent.\n  However, the UI and other features haven't seen much attention or updates since then.\n\n## Developers Background Information\n- Currently owned by [@Tiahh](), developer information is missing.\n",
     hide: false,
+    hasKeySystem: false,
+    free: false,
   },
   {
     id: "macsploit",
@@ -100,6 +108,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Written by [@grossarl]() // NOT FINAL // COULD HAVE MISTAKES\nmacploit is a very strong executor for macos, being the only one of its kinda for the operating system after the shutdown of hydrogen, its main rivval competitor. offering 99% UNC, it shows strong performance as a level 8 executor and is able to handle more complex scripts with ease. it also has a beneficial decompiler to handle scripts with more ease while putting less load on the system, with many users claiming that they have no FPS drop while playing.\n\nhowever, updates are frankly late and sometimes come out even a couple days after updating (source - their discord, calculation of the time difference between roblox updating and them releasing a new version.\n\ndeveloper info - \nNexur42, the main developer for the project, frankly doesn't have the best history, being known for using loggers in the past, and the community still hasn't forgiven him for this. There are also other contributors including @atomic @rcloll and @Kohl. (source, raptor development discord) who assist with macsploit",
     hide: false,
+    hasKeySystem: false,
+    free: false,
   },
   {
     id: "seliware",
@@ -121,6 +131,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: false,
   },
   {
     id: "cryptic",
@@ -141,6 +153,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: false,
   },
   {
     id: "codex",
@@ -161,6 +175,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: false,
   },
   {
     id: "matcha",
@@ -182,6 +198,8 @@ const expData = [
     info: "# Written by [@grossarl]() // NOT FINAL // COULD HAVE MISTAKES\nmatcha is a very good external with many features for many games. compared to a regular executor, it has a set amount of features and a very basic executor. supporting many games, it is one of the safest options on your main account due to the fact that features such as esp are merely overlays based on drivers. on that subject, the external is also driver based and has very short updates, with some coming out mere minutes after updating (source, their discord) for the mere price of $10 or 2k robux, it is an executor which buyers say is very much worth it and enjoy using over executors with scripts for the shooter games which matcha supports. matcha also supports set configs for different games and you dont have to load any of them as they automaticlally load by scanning the game id. (source, the actual exploit itself (at the bottom right every time you join a game))\n\nhowever the mods are raacist as fuck and not really supportive.",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: false,
   },
   {
     id: "solara",
@@ -201,6 +219,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: true,
   },
   {
     id: "xeno",
@@ -220,6 +240,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: true,
   },
   {
     id: "krnl",
@@ -239,6 +261,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: true,
   },
   {
     id: "delta",
@@ -258,6 +282,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: true,
   },
   {
     id: "zorara",
@@ -277,6 +303,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: true,
   },
   {
     id: "dx9ware",
@@ -297,6 +325,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: false,
   },
   {
     id: "velocity",
@@ -316,6 +346,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: true,
   },
   {
     id: "apple-ware",
@@ -335,6 +367,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: true,
   },
   {
     id: "jjsploit",
@@ -354,6 +388,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: true,
   },
   {
     id: "vegax",
@@ -373,6 +409,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: true,
   },
   {
     id: "ronix",
@@ -392,6 +430,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: true,
   },
   {
     id: "aimmy",
@@ -411,6 +451,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: true,
   },
   {
     id: "df",
@@ -430,6 +472,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: false,
+    free: true,
   },
   {
     id: "arceusx",
@@ -449,6 +493,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: true,
   },
   {
     id: "nezur",
@@ -468,6 +514,8 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
+    hasKeySystem: true,
+    free: true,
   },
   {
     id: "ratware",
@@ -485,9 +533,11 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     info: '## Exploit Performance \n- Users have reported that while using [RatWare](/), their mouse randomly moves. [@sens6222](/) explains this happens because Hyperion detects RatWare for a split second, and it\'s supposedly fine. Also, when downloading the loader, it doesn\'t actually download the exploit — it downloads your user data.\n\n## Background Information\n- Formerly known as [Atlantis](/), it was rebranded to [Ratlantis](/), and after being exposed for making a rat with ChatGPT, it was renamed again to [RatWare](/), then got exposed again for leaving an unprotected WebHook named `UserLogs`, with the webhook using a rat as its avatar.\n- After being exposed, [@sens6222](/) made an announcement saying "Fuck incognito pastes" and changed [RatWare\'s](/) WebHook to continue downloading user data, but it was left unprotected again, allowing skids to delete it.\n\n\n\n\n## Developers Background Information\n- The exploit is made by [@sens6222](/), but users sometimes encounter an "Error Ratting User" message due to [@sens6222](/) using ChatGPT and not bothering to edit the script.\n',
     premium: false,
+    hasKeySystem: false,
     href: "https://www.youtube.com/watch?v=7BqLKGJZ9lI&ab_channel=RoundRodent",
     priceHref: "https://link-hub.net/1319977/ratware",
     hide: false,
+    free: true,
   },
 ]
 
@@ -501,6 +551,8 @@ const st = {
   premOnly: false,
   extOnly: false,
   execOnly: false,
+  keyOnly: false,
+  noKeyOnly: false,
   srtBy: "recommended",
   fltrd: [...expData],
 }
@@ -532,6 +584,10 @@ const els = {
   mExtSwch: document.getElementById("mobExtSwch"),
   execSwch: document.getElementById("execSwch"),
   mExecSwch: document.getElementById("mobExecSwch"),
+  keySwch: document.getElementById("keySwch"),
+  mKeySwch: document.getElementById("mobKeySwch"),
+  noKeySwch: document.getElementById("noKeySwch"),
+  mNoKeySwch: document.getElementById("mobNoKeySwch"),
   srtSel: document.getElementById("srtSel"),
   mSrtSel: document.getElementById("mobSortSel"),
   rstBtn: document.getElementById("rstFltrs"),
@@ -783,7 +839,7 @@ function shwNtf(msg, type = "error") {
 
 async function ftchUncDt(id, name) {
   try {
-    const response = await fetch(`https://voxlis.net/assets/unc/${id}.json`)
+    const response = await fetch(`https://beta.voxlis.net/assets/unc/${id}.json`)
     if (response.status === 404) {
       shwNtf(`UNC/sUNC test for ${name} is unknown`, "error")
       throw new Error("UNC data not found")
@@ -1344,7 +1400,14 @@ function stpEvts() {
   }
 
   document.querySelectorAll(".cstm-chkbx input").forEach((cb) => {
-    if (!cb.hasAttribute("data-pltf") && cb.id !== "vrfSwch" && cb.id !== "premSwch") return
+    if (
+      !cb.hasAttribute("data-pltf") &&
+      cb.id !== "vrfSwch" &&
+      cb.id !== "premSwch" &&
+      cb.id !== "keySwch" &&
+      cb.id !== "noKeySwch"
+    )
+      return
 
     cb.addEventListener("change", () => {
       if (cb.hasAttribute("data-pltf")) {
@@ -1465,6 +1528,8 @@ function stpEvts() {
     st.premOnly = false
     st.extOnly = false
     st.execOnly = false
+    st.keyOnly = false
+    st.noKeyOnly = false
 
     document.querySelectorAll(".cstm-chkbx input").forEach((cb) => {
       cb.checked = false
@@ -1499,6 +1564,11 @@ function stpEvts() {
 
     if (els.execSwch) els.execSwch.checked = false
     if (els.mExecSwch) els.mExecSwch.checked = false
+
+    if (els.keySwch) els.keySwch.checked = false
+    if (els.mKeySwch) els.mKeySwch.checked = false
+    if (els.noKeySwch) els.noKeySwch.checked = false
+    if (els.mNoKeySwch) els.mNoKeySwch.checked = false
 
     fltrExps()
   }
@@ -1571,6 +1641,58 @@ function stpEvts() {
       }
     }
   })
+
+  if (els.keySwch) {
+    els.keySwch.addEventListener("change", () => {
+      st.keyOnly = els.keySwch.checked
+      if (st.keyOnly && els.noKeySwch && els.noKeySwch.checked) {
+        els.noKeySwch.checked = false
+        st.noKeyOnly = false
+      }
+      if (els.mKeySwch) els.mKeySwch.checked = st.keyOnly
+      if (els.mNoKeySwch) els.mNoKeySwch.checked = st.noKeyOnly
+      fltrExps()
+    })
+  }
+
+  if (els.mKeySwch) {
+    els.mKeySwch.addEventListener("change", () => {
+      st.keyOnly = els.mKeySwch.checked
+      if (st.keyOnly && els.mNoKeySwch && els.mNoKeySwch.checked) {
+        els.mNoKeySwch.checked = false
+        st.noKeyOnly = false
+      }
+      if (els.keySwch) els.keySwch.checked = st.keyOnly
+      if (els.noKeySwch) els.noKeySwch.checked = st.noKeyOnly
+      fltrExps()
+    })
+  }
+
+  if (els.noKeySwch) {
+    els.noKeySwch.addEventListener("change", () => {
+      st.noKeyOnly = els.noKeySwch.checked
+      if (st.noKeyOnly && els.keySwch && els.keySwch.checked) {
+        els.keySwch.checked = false
+        st.keyOnly = false
+      }
+      if (els.mNoKeySwch) els.mNoKeySwch.checked = st.noKeyOnly
+      if (els.mKeySwch) els.mKeySwch.checked = st.keyOnly
+      fltrExps()
+    })
+  }
+
+  if (els.mNoKeySwch) {
+    els.mNoKeySwch.addEventListener("change", () => {
+      st.noKeyOnly = els.mNoKeySwch.checked
+      if (st.noKeyOnly && els.mKeySwch && els.mKeySwch.checked) {
+        els.mKeySwch.checked = false
+        st.keyOnly = false
+      }
+      if (els.noKeySwch) els.noKeySwch.checked = st.noKeyOnly
+      if (els.keySwch) els.keySwch.checked = st.keyOnly
+      fltrExps()
+    })
+  }
 }
 
 function fltrExps() {
@@ -1609,10 +1731,10 @@ function fltrExps() {
       }
 
       if (st.prcFlt !== "all") {
-        if (st.prcFlt === "free" && exp.price !== "FREE") {
+        if (st.prcFlt === "free" && exp.price !== "FREE" && !exp.free) {
           return false
         }
-        if (st.prcFlt === "paid" && exp.price === "FREE") {
+        if (st.prcFlt === "paid" && (exp.price === "FREE" || exp.free)) {
           return false
         }
       }
@@ -1643,6 +1765,14 @@ function fltrExps() {
         if (!isExecutor) {
           return false
         }
+      }
+
+      if (st.keyOnly && !exp.hasKeySystem) {
+        return false
+      }
+
+      if (st.noKeyOnly && exp.hasKeySystem) {
+        return false
       }
 
       return true
@@ -1905,6 +2035,15 @@ function crtCrd(exp) {
           `
               : ""
           }
+          ${
+            exp.hasKeySystem
+              ? `
+            <div class="pltf-bdg key-system" title="Key System">
+              <i class="fas fa-key"></i>
+            </div>
+          `
+              : ""
+          }
         </div>
       </div>
     </div>
@@ -1936,7 +2075,7 @@ function crtCrd(exp) {
             ? `
           <div class="feat-sec ntrl">
             <h4 class="feat-hdng">
-              <span class="feat-ico">â€¢</span>
+              <span class="feat-ico">•</span>
               Neutral
             </h4>
             <ul class="feat-lst">
@@ -2112,6 +2251,16 @@ function crtLstItm(exp) {
             `,
               )
               .join("")}
+          ${
+            exp.hasKeySystem
+              ? `
+            <div class="lst-itm-pltf key-system" title="Key System">
+              <i class="fas fa-key"></i>
+              <span>Key System</span>
+            </div>
+          `
+              : ""
+          }
           </div>
         </div>
         
@@ -2141,7 +2290,7 @@ function crtLstItm(exp) {
               ? `
             <div class="lst-itm-feat-sec ntrl">
               <h4 class="feat-hdng">
-                <span class="feat-ico">â€¢</span>
+                <span class="feat-ico">•</span>
                 Neutral
               </h4>
               <ul class="lst-itm-feat-lst">
@@ -2587,40 +2736,40 @@ function handleWindowResize() {
 }
 window.addEventListener("resize", handleWindowResize)
 document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("heartRainCanvas");
-  const loader = document.getElementById("loader");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  const heartImageSrc = "heart.svg";
-  const numHearts = 25;
-  const hearts = [];
+  const canvas = document.getElementById("heartRainCanvas")
+  const loader = document.getElementById("loader")
+  if (!canvas) return
+  const ctx = canvas.getContext("2d")
+  const heartImageSrc = "heart.svg"
+  const numHearts = 25
+  const hearts = []
 
   const resizeCanvas = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  };
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+  }
+  resizeCanvas()
+  window.addEventListener("resize", resizeCanvas)
 
-  const heartImage = new Image();
-  heartImage.src = heartImageSrc;
+  const heartImage = new Image()
+  heartImage.src = heartImageSrc
 
   heartImage.onload = () => {
     if (loader) {
-      loader.style.display = "none";
+      loader.style.display = "none"
     }
     for (let i = 0; i < numHearts; i++) {
-      hearts.push(createHeart());
+      hearts.push(createHeart())
     }
-    animate();
-  };
+    animate()
+  }
 
   heartImage.onerror = () => {
-    console.error(`Failed to load heart image: ${heartImageSrc}`);
+    console.error(`Failed to load heart image: ${heartImageSrc}`)
     if (loader) {
-      loader.textContent = "Failed to load animation assets.";
+      loader.textContent = "Failed to load animation assets."
     }
-  };
+  }
 
   function createHeart() {
     return {
@@ -2633,37 +2782,37 @@ document.addEventListener("DOMContentLoaded", () => {
       rotation: Math.random() * 0.2 - 0.1,
       rotationSpeed: Math.random() * 0.005 - 0.0025,
       opacity: Math.random() * 0.3 + 0.7,
-    };
+    }
   }
 
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     hearts.forEach((heart) => {
-      heart.x += heart.dx;
-      heart.y += heart.dy;
-      heart.rotation += heart.rotationSpeed;
+      heart.x += heart.dx
+      heart.y += heart.dy
+      heart.rotation += heart.rotationSpeed
       if (heart.y > canvas.height + heart.size) {
-        heart.y = -heart.size;
-        heart.x = Math.random() * canvas.width;
-        heart.dy = Math.random() * 0.3 + 0.2;
+        heart.y = -heart.size
+        heart.x = Math.random() * canvas.width
+        heart.dy = Math.random() * 0.3 + 0.2
       }
       if (heart.x < -heart.size) {
-        heart.x = canvas.width + heart.size;
+        heart.x = canvas.width + heart.size
       } else if (heart.x > canvas.width + heart.size) {
-        heart.x = -heart.size;
+        heart.x = -heart.size
       }
-      ctx.save();
-      ctx.translate(heart.x, heart.y);
-      ctx.rotate(heart.rotation);
-      ctx.globalAlpha = heart.opacity;
-      ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size);
-      ctx.restore();
-    });
-    requestAnimationFrame(animate);
+      ctx.save()
+      ctx.translate(heart.x, heart.y)
+      ctx.rotate(heart.rotation)
+      ctx.globalAlpha = heart.opacity
+      ctx.drawImage(heart.img, -heart.size / 2, -heart.size / 2, heart.size, heart.size)
+      ctx.restore()
+    })
+    requestAnimationFrame(animate)
   }
 
   canvas.addEventListener("click", (e) => {
-    const clickHeartsCount = Math.floor(Math.random() * 3) + 3;
+    const clickHeartsCount = Math.floor(Math.random() * 3) + 3
     for (let i = 0; i < clickHeartsCount; i++) {
       hearts.push({
         img: heartImage,
@@ -2675,10 +2824,10 @@ document.addEventListener("DOMContentLoaded", () => {
         rotation: Math.random() * 0.2 - 0.1,
         rotationSpeed: Math.random() * 0.01 - 0.005,
         opacity: Math.random() * 0.3 + 0.7,
-      });
+      })
     }
-  });
-});
+  })
+})
 
 function setupPriceButtons() {
   document.querySelectorAll(".prc-btn-new").forEach((button) => {
