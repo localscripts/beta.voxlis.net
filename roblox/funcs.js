@@ -194,7 +194,7 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://linkvertise.com/1319977/solara?o=sharing",
     priceHref: "https://yap.com/",
-    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
+    info: "## Exploit Performance \n- [Solara]() offers solid performance with minimal crashes or instability, making it a reliable option for most users. It receives fast and frequent updates, keeping up with Roblox patches to reduce downtime.\n- Unlike many executors that rely on complicated key systems, [Solara]() simplifies access by requiring users to complete a quick Linkvertise task during download, making setup more user-friendly.\n\n## Background Information \n- [Solara]() is owned and managed by [@quivings](), who was previously active in the script development scene.\n- While not much is publicly known about him, [@quivings]() has built a respectable reputation within the community for his work and consistent updates to the tool.\n",
     hide: false,
     hasKeySystem: false,
     free: true,
