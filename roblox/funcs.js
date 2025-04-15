@@ -21,6 +21,7 @@ const expData = [
     href: "https://direct-link.net/1319977/zenith-level-8-exploit",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f2",
     hide: false,
+    
   },
   {
     id: "awp",
@@ -38,7 +39,7 @@ const expData = [
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
     premium: true,
-    hasKeySystem: false,
+    hasKeySystem: true,
     free: false,
     info: '## Exploit Performance  \n- Although [AWP.gg](/) is associated with [Krampus](/), it operates reliably. The developers focus on avoiding detection and ban waves by using Hyperion emulation techniques. However, running the official Roblox client can still be inconvenient, as it requires reinstallation, and users may occasionally face bans even when using [AWP.gg](/).\n\n> \n\n## Background Information  \n- There is speculation that [AWP.gg](/) is linked to [Krampus](/), an exploit that abruptly shut down on May 11, 2024, shortly after the release of Hyperion 4.0. The developers abandoned the project without offering any updates or refunds, leaving long-term license holders without support. The shutdown was likely due to the challenges in bypassing the new Hyperion 4.0. Although [Krampus](/) did not distribute malware, they issued a misleading "official explanation," falsely claiming their developers were "raided" and even circulating fabricated images as evidence in their Discord server.\n  \n- After months of inactivity, the [Krampus](/) Discord suddenly began promoting a Robux gambling site. It\'s unclear whether the developers are behind the site or were paid for sponsorship, but it\'s most likely that the Discord server was simply sold off.\n\n\n## Developers Background Information\n- Currently managed by [@merkuri6479](/), [@jbhglj7uj](/), and [@etheriut](/), but no additional information is known about them.\n\n\n \n\n> Sources: Reddit.com/r/robloxhackers, WeAreDevs.NET',
     href: "https://link-center.net/1319977/awpgg-level-8-exploit",
@@ -61,8 +62,8 @@ const expData = [
     accentColor: "from-red-600 to-red-700",
     info: "## Exploit Performance  \n- [Swift](/) is a high-performance exploit known for rapid updates, full 100% sUNC support, an integrated decompiler, custom functionality, and a distinctive user interface.  \n- In January 2025, [Swift](/) temporarily went offline due to a ROBLOX platform update. It returned in March 2025 with a significant overhaul—introducing 98% sUNC compatibility, a built-in decompiler, and various enhancements.\n\n## Background Information  \n- [Swift](/), originally known as [bunni.lol](/), was launched in May 2024. Despite a challenging start, the project rebranded to [Swift](/) in August 2024 and entered its Beta phase, quickly gaining a positive reputation and offering a premium experience at no cost.\n\n## Developers Background Information  \n- The Swift development team has experienced several changes over time. The current primary owner, [Peyton](/), has a strong track record, having led multiple successful projects in the past.  \n- [Bass](/), a newer addition, is one of the largest cheat resellers in the community and brings experience from previous involvement with the ScriptWare team.  \n- [Swift](/) has also commissioned developers for one-time jobs. Notable examples include Zenith’s team for error handling, and a designer named Blinx for UI development.  \n- The project is maintained by a team of trusted owners and supported by a large, responsive support staff managing over 1,000 tickets daily.\n\n> Sources: Reddit.com/r/robloxhackers, bunni.lol Discord Archives, Swift Discord Archives\n",
     premium: true,
-    hasKeySystem: true,
-    free: true,
+    hasKeySystem: false,
+    free: false,
     href: "https://link-target.net/1319977/swift",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258",
     hide: false,
@@ -104,9 +105,32 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
-    href: "https://link-target.net/1319977/macsploit",
-    priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f8",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
     info: "## Written by [@grossarl]() // NOT FINAL // COULD HAVE MISTAKES\nmacploit is a very strong executor for macos, being the only one of its kinda for the operating system after the shutdown of hydrogen, its main rivval competitor. offering 99% UNC, it shows strong performance as a level 8 executor and is able to handle more complex scripts with ease. it also has a beneficial decompiler to handle scripts with more ease while putting less load on the system, with many users claiming that they have no FPS drop while playing.\n\nhowever, updates are frankly late and sometimes come out even a couple days after updating (source - their discord, calculation of the time difference between roblox updating and them releasing a new version.\n\ndeveloper info - \nNexur42, the main developer for the project, frankly doesn't have the best history, being known for using loggers in the past, and the community still hasn't forgiven him for this. There are also other contributors including @atomic @rcloll and @Kohl. (source, raptor development discord) who assist with macsploit",
+    hide: false,
+    hasKeySystem: false,
+    free: false,
+  },
+  {
+    id: "seliware",
+    name: "Seliware",
+    desc: "A reliable exploit with excellent support.",
+    lvl: 8,
+    price: "$9.99",
+    period: "monthly",
+    plat: ["windows"],
+    pros: ["Has a decompiler", "100% sUNC", "Level 8"],
+    neutral: [],
+    cons: [],
+    verified: true,
+    editor: "voxlis.NET",
+    txtColor: "text-red-500",
+    accentColor: "from-red-600 to-red-700",
+    premium: false,
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
     hasKeySystem: false,
     free: false,
@@ -126,8 +150,8 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-purple-500",
     accentColor: "from-purple-600 to-purple-700",
-    href: "https://linkvertise.com/1319977/cryptic",
-    priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
     hasKeySystem: true,
@@ -140,7 +164,7 @@ const expData = [
     lvl: 8,
     price: "$4.97",
     period: "monthly",
-    plat: ["ios", "android"],
+    plat: ["windows", "ios", "android"],
     pros: ["98% UNC", "Level 8"],
     neutral: ["Issues with the keysystem", "Uses core technology from ArceusX"],
     cons: [],
@@ -148,8 +172,8 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-yellow-500",
     accentColor: "from-yellow-600 to-yellow-700",
-    href: "https://linkvertise.com/1319977/codex",
-    priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f5",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
     hasKeySystem: true,
@@ -170,7 +194,7 @@ const expData = [
     editor: "sk337",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
-    href: "https://linkvertise.com/1319977/matcha?o=sharing",
+    href: "https://yap.com/",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f3",
     info: "# Written by [@grossarl]() // NOT FINAL // COULD HAVE MISTAKES\nmatcha is a very good external with many features for many games. compared to a regular executor, it has a set amount of features and a very basic executor. supporting many games, it is one of the safest options on your main account due to the fact that features such as esp are merely overlays based on drivers. on that subject, the external is also driver based and has very short updates, with some coming out mere minutes after updating (source, their discord) for the mere price of $10 or 2k robux, it is an executor which buyers say is very much worth it and enjoy using over executors with scripts for the shooter games which matcha supports. matcha also supports set configs for different games and you dont have to load any of them as they automaticlally load by scanning the game id. (source, the actual exploit itself (at the bottom right every time you join a game))\n\nhowever the mods are raacist as fuck and not really supportive.",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
@@ -192,9 +216,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
-    href: "https://linkvertise.com/1319977/solara?o=sharing",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    info: "## Exploit Performance \n- [Solara]() offers solid performance with minimal crashes or instability, making it a reliable option for most users. It receives fast and frequent updates, keeping up with Roblox patches to reduce downtime.\n- Unlike many executors that rely on complicated key systems, [Solara]() simplifies access by requiring users to complete a quick Linkvertise task during download, making setup more user-friendly.\n\n## Background Information \n- [Solara]() is owned and managed by [@quivings](), who was previously active in the script development scene.\n- While not much is publicly known about him, [@quivings]() has built a respectable reputation within the community for his work and consistent updates to the tool.\n",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
     hasKeySystem: false,
     free: true,
@@ -213,8 +237,8 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
-    href: "https://linkvertise.com/1319977/xeno",
-    priceHref: "https://linkvertise.com/1319977/xeno",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
     hasKeySystem: false,
@@ -226,7 +250,7 @@ const expData = [
     desc: "A popular free exploit with good performance.",
     lvl: 8,
     price: "FREE",
-    plat: ["android"],
+    plat: ["windows", "android"],
     pros: ["100% UNC", "Level 8"],
     neutral: ["Includes a keysystem"],
     cons: [],
@@ -234,9 +258,9 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
-    href: "https://linkvertise.com/1319977/krnl",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
-    info: "##  Exploit Performance \n- [KRNL]() runs smoothly for an Android exploit. It performs surprisingly well for a free tool, though it may sometimes have issues with the [MuMu]() emulator. If that happens, consider using an alternative emulator for better stability.\n\n## Background Information \n- [KRNL]() was originally developed by [Ice Bear]() in around 2019~, a respected figure in the exploiting scene. It’s associated with [WeAreDevs](), a platform that has made [KRNL]() widely accessible—though not without controversy due to the site's history with unreliable exploits.\n- Over time, [KRNL]() has become one of the most widely-used free executors, rivaling even some paid ones in terms of performance. It often receives updates within hours of a Roblox patch, minimizing downtime for users.\n- After the introduction of [Hyperion]() (Byfron’s anti-cheat), [KRNL]() temporarily halted updates. Once users discovered the UWP (Microsoft Store version of Roblox) didn’t have [Byfron]() protection, [KRNL]() shifted support to UWP. However, this was short-lived as [Byfron]() was later implemented in UWP as well, leading to its discontinuation.\n\n##  Developer Background \n- [KRNL]() was developed by [Ice Bear](), known for maintaining a clean and reliable exploit. In late 2024, the KRNL brand was sold to [@valentinodev](), marking a new chapter in its development.\n",
+    info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
     hasKeySystem: true,
     free: true,
@@ -247,7 +271,7 @@ const expData = [
     desc: "A powerful multi-platform exploit.",
     lvl: 8,
     price: "FREE",
-    plat: ["ios", "android"],
+    plat: ["windows", "ios", "android"],
     pros: ["Best script support", "100% UNC", "Level 8"],
     neutral: ["Includes a keysystem"],
     cons: [],
@@ -255,7 +279,7 @@ const expData = [
     editor: "imveryh4ppy",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
-    href: "https://linkvertise.com/1319977/delta",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -263,26 +287,25 @@ const expData = [
     free: true,
   },
   {
-    id: "seliware",
-    name: "Seliware",
-    desc: "A reliable exploit with excellent support.",
-    lvl: 8,
-    price: "$9.99",
-    period: "monthly",
-    plat: ["windows"],
-    pros: ["Has a decompiler", "100% sUNC", "Level 8"],
-    neutral: [],
+    id: "zorara",
+    name: "Zorara",
+    desc: "A rebranded version of Xeno.",
+    lvl: 3,
+    price: "FREE",
+    plat: ["windows", "android"],
+    pros: ["41% sUNC"],
+    neutral: ["Level 3", "Has a keysystem", "Xeno - rebranded"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
-    txtColor: "text-red-500",
-    accentColor: "from-red-600 to-red-700",
-    premium: false,
-    href: "https://linkvertise.com/1319977/seliware",
+    txtColor: "text-purple-500",
+    accentColor: "from-purple-600 to-purple-700",
+    href: "https://yap.com/",
+    priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
-    hasKeySystem: false,
-    free: false,
+    hasKeySystem: true,
+    free: true,
   },
   {
     id: "dx9ware",
@@ -299,7 +322,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
-    href: "https://linkvertise.com/1319977/dx9ware",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -316,11 +339,11 @@ const expData = [
     pros: ["Has a decompiler", "98% sUNC", "Level 8"],
     neutral: ["New exploit- Safety is unknown"],
     cons: [],
-    verified: false,
+    verified: true,
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
-    href: "https://linkvertise.com/1319977/velocity",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -333,7 +356,7 @@ const expData = [
     desc: "A specialized exploit for iOS devices.",
     lvl: 8,
     price: "FREE",
-    plat: ["ios"],
+    plat: ["ios", "android"],
     pros: ["100% UNC~", "Level 8"],
     neutral: ["Delta paste", "Faked their UNC"],
     cons: [],
@@ -341,7 +364,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
-    href: "https://linkvertise.com/1319977/apple-ware",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -362,7 +385,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
-    href: "https://linkvertise.com/1319977/jjsploit",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -375,7 +398,7 @@ const expData = [
     desc: "A powerful exploit with short key duration.",
     lvl: 8,
     price: "FREE",
-    plat: ["android"],
+    plat: ["windows", "android"],
     pros: ["2 day long keys", "98% UNC", "Level 8"],
     neutral: ["Owned By 1 F0", "Includes a Key System"],
     cons: [],
@@ -383,7 +406,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-purple-500",
     accentColor: "from-purple-600 to-purple-700",
-    href: "https://linkvertise.com/1319977/vegax",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -404,11 +427,11 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
-    href: "https://linkvertise.com/1319977/ronix",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
-    hasKeySystem: false,
+    hasKeySystem: true,
     free: true,
   },
   {
@@ -425,7 +448,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-green-500",
     accentColor: "from-green-600 to-green-700",
-    href: "https://linkvertise.com/1319977/aimmy",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -446,7 +469,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
-    href: "https://linkvertise.com/1319977/debugging-framework",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -459,7 +482,7 @@ const expData = [
     desc: "A mobile exploit with high UNC percentage.",
     lvl: 8,
     price: "FREE",
-    plat: ["ios", "android"],
+    plat: ["windows", "ios", "android"],
     pros: ["98% UNC~", "Level 8"],
     neutral: ["Similar to CodeX", "Long keysystem"],
     cons: ["Stole user data in 2021"],
@@ -467,7 +490,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-yellow-500",
     accentColor: "from-yellow-600 to-yellow-700",
-    href: "https://linkvertise.com/1319977/arceusx",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -480,7 +503,7 @@ const expData = [
     desc: "An external AI-based exploit with many features.",
     lvl: 7,
     price: "FREE",
-    plat: ["windows"],
+    plat: ["windows", "android"],
     pros: ["External + AI-Based", "Ton of features"],
     neutral: ["Includes a keysystem", "Uses old version of AIMMY"],
     cons: ["Owner has a shady background"],
@@ -488,7 +511,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-purple-500",
     accentColor: "from-purple-600 to-purple-700",
-    href: "https://linkvertise.com/1319977/nezur",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -512,8 +535,8 @@ const expData = [
     info: '## Exploit Performance \n- Users have reported that while using [RatWare](/), their mouse randomly moves. [@sens6222](/) explains this happens because Hyperion detects RatWare for a split second, and it\'s supposedly fine. Also, when downloading the loader, it doesn\'t actually download the exploit — it downloads your user data.\n\n## Background Information\n- Formerly known as [Atlantis](/), it was rebranded to [Ratlantis](/), and after being exposed for making a rat with ChatGPT, it was renamed again to [RatWare](/), then got exposed again for leaving an unprotected WebHook named `UserLogs`, with the webhook using a rat as its avatar.\n- After being exposed, [@sens6222](/) made an announcement saying "Fuck incognito pastes" and changed [RatWare\'s](/) WebHook to continue downloading user data, but it was left unprotected again, allowing skids to delete it.\n\n\n\n\n## Developers Background Information\n- The exploit is made by [@sens6222](/), but users sometimes encounter an "Error Ratting User" message due to [@sens6222](/) using ChatGPT and not bothering to edit the script.\n',
     premium: false,
     hasKeySystem: false,
-    href: "https://link-hub.net/1319977/ratware",
-    priceHref: "",
+    href: "https://www.youtube.com/watch?v=7BqLKGJZ9lI&ab_channel=RoundRodent",
+    priceHref: "https://link-hub.net/1319977/ratware",
     hide: false,
     free: true,
   },
@@ -1834,21 +1857,6 @@ function rndrExps() {
         }
       })
     })
-    document.querySelectorAll(".web-btn").forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
-        if (card) {
-          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-          if (nameElement) {
-            const name = nameElement.textContent.trim().split(/\s+/)[0]
-            const exploit = expData.find((exp) => exp.name === name)
-            if (exploit && exploit.href) {
-              window.open(exploit.href, "_blank")
-            }
-          }
-        }
-      })
-    })
   }
   addButtonEventListeners()
 }
@@ -1928,15 +1936,14 @@ document.addEventListener("DOMContentLoaded", () => {
   createInfoModal()
   initTextSwitching()
   setupDropdowns()
-  updateScrollbarStyles()
-  const contentObserver = new MutationObserver(updateScrollbarStyles)
-  const config = { childList: true, subtree: true }
-  document.querySelectorAll(".crd-cntnt, .unc-modal-content, .info-modal-content").forEach((el) => {
-    contentObserver.observe(el, config)
-  })
-  fixFreeCardButtons()
-  setTimeout(fixFreeCardButtons, 500)
-  setTimeout(updateScrollbarStyles, 1000)
+  const themeOptions = document.querySelectorAll(".theme-dropdown-option")
+  if (themeOptions) {
+    themeOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        setTimeout(updateThemeElements, 100)
+      })
+    })
+  }
 })
 
 initTextSwitching()
@@ -1969,6 +1976,16 @@ function crtCrd(exp) {
               <span class="prem-bdg">
                 <i class="fas fa-crown"></i>
                 Premium
+              </span>
+            `
+                : ""
+            }
+            ${
+              exp.warning
+                ? `
+              <span class="warn-bdg">
+                <i class="fas fa-exclamation-triangle"></i>
+                Warning
               </span>
             `
                 : ""
@@ -2144,16 +2161,6 @@ function crtCrd(exp) {
           openInfoModal(exp)
         }
       }
-
-      const webBtn = card.querySelector(".web-btn")
-      if (webBtn) {
-        webBtn.onclick = (e) => {
-          e.stopPropagation()
-          if (exp.href) {
-            window.open(exp.href, "_blank")
-          }
-        }
-      }
     }
   }, 100)
   crd.setAttribute("data-id", exp.id)
@@ -2203,6 +2210,16 @@ function crtLstItm(exp) {
               <span class="prem-bdg">
                 <i class="fas fa-crown"></i>
                 Premium
+              </span>
+            `
+                : ""
+            }
+            ${
+              exp.warning
+                ? `
+              <span class="warn-bdg">
+                <i class="fas fa-exclamation-triangle"></i>
+                Warning
               </span>
             `
                 : ""
@@ -2839,3 +2856,102 @@ function fixFreeCardButtons() {
     })
   })
 }
+
+function createWarningModal() {
+  const modalContainer = document.createElement("div")
+  modalContainer.id = "warningModal"
+  modalContainer.className = "warning-modal-container"
+  modalContainer.style.display = "none"
+
+  modalContainer.innerHTML = `
+    <div class="warning-modal-overlay"></div>
+    <div class="warning-modal">
+      <div class="warning-modal-header">
+        <h2 class="warning-modal-title">Warning</h2>
+      </div>
+      <div class="warning-modal-content">
+        <div class="warning-modal-icon">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <p id="warningModalText" class="warning-modal-text">Are you sure you want to visit this website?</p>
+      </div>
+      <div class="warning-modal-footer">
+        <button id="warningModalCancel" class="warning-modal-btn warning-modal-btn-cancel">Cancel</button>
+        <button id="warningModalOkay" class="warning-modal-btn warning-modal-btn-okay">Okay</button>
+      </div>
+    </div>
+  `
+  document.body.appendChild(modalContainer)
+}
+
+function showModal(exploit) {
+  const warningModal = document.getElementById("warningModal")
+  const warningText = document.getElementById("warningModalText")
+  const cancelBtn = document.getElementById("warningModalCancel")
+  const okayBtn = document.getElementById("warningModalOkay")
+  const targetUrl = exploit.href
+
+  warningText.textContent = exploit.warningInfo || "Are you sure you want to visit this website?"
+
+  let freezeOverlay = document.getElementById("pageFreezeOverlay")
+  if (!freezeOverlay) {
+    freezeOverlay = document.createElement("div")
+    freezeOverlay.id = "pageFreezeOverlay"
+    freezeOverlay.className = "page-freeze-overlay"
+    document.body.appendChild(freezeOverlay)
+  }
+
+  freezeOverlay.style.display = "block"
+  warningModal.style.display = "flex"
+  warningModal.style.zIndex = "10001"
+  document.body.style.overflow = "hidden"
+
+  function cleanup() {
+    warningModal.style.display = "none"
+    freezeOverlay.style.display = "none"
+    document.body.style.overflow = ""
+  }
+
+  cancelBtn.onclick = function () {
+    cleanup()
+  }
+  okayBtn.onclick = function () {
+    cleanup()
+    if (targetUrl) {
+      window.open(targetUrl, "_blank")
+    }
+  }
+}
+
+function setupWebButtonWarning() {
+  if (!document.getElementById("warningModal")) {
+    createWarningModal()
+  }
+  document.querySelectorAll(".web-btn").forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit && exploit.warning === true) {
+            showModal(exploit)
+            return
+          } else {
+            if (exploit && exploit.href) {
+              window.open(exploit.href, "_blank")
+            }
+          }
+        }
+      }
+    })
+  })
+}
+document.addEventListener("DOMContentLoaded", () => {
+  createWarningModal()
+  setupWebButtonWarning()
+})
