@@ -21,7 +21,8 @@ const expData = [
     href: "https://direct-link.net/1319977/zenith-level-8-exploit",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f2",
     hide: false,
-    
+    warning: true,
+    warningInfo: "test"
   },
   {
     id: "awp",
