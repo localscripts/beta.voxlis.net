@@ -434,6 +434,8 @@ const expData = [
     hide: false,
     hasKeySystem: true,
     free: true,
+    warning: true,
+    warningInfo: "test"
   },
   {
     id: "aimmy",
