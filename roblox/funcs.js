@@ -408,7 +408,7 @@ const expData = [
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
-    hasKeySystem: true,
+    hasKeySystem: false,
     free: true,
   },
   {
