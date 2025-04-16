@@ -427,7 +427,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
-    href: "https://23421.com/",
+    href: "https://yap.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -1625,25 +1625,35 @@ function stpEvts() {
     })
   }
 
-  document.addEventListener("click", (e) => {
-    if (e.target.closest(".unc-btn")) {
-      const uncBtn = e.target.closest(".unc-btn")
-      const card = uncBtn.closest(".exp-crd") || uncBtn.closest(".exp-lst-itm")
-      if (card) {
-        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-        if (nameElement) {
-          const name = nameElement.textContent.trim().split(/\s+/)[0]
-          const exploit = expData.find((exp) => exp.name === name)
-          if (exploit && exploit.href) {
-            window.open(exploit.href, "_blank")
-          }
-          if (exploit && exploit.href) {
-            window.open(exploit.href, "_blank")
+  function setupWebButtonWarning() {
+    if (!document.getElementById("warningModal")) {
+      createWarningModal()
+    }
+    document.querySelectorAll(".web-btn").forEach((btn) => {
+      const newBtn = btn.cloneNode(true)
+      btn.parentNode.replaceChild(newBtn, btn)
+
+      newBtn.addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+
+        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+        if (card) {
+          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+          if (nameElement) {
+            const name = nameElement.textContent.trim().split(/\s+/)[0]
+            const exploit = expData.find((exp) => exp.name === name)
+            if (exploit && exploit.warning === true) {
+              showModal(exploit)
+              return
+            } else if (exploit && exploit.href) {
+              window.open(exploit.href, "_blank")
+            }
           }
         }
-      }
-    }
-  })
+      })
+    })
+  }
 
   if (els.keySwch) {
     els.keySwch.addEventListener("change", () => {
@@ -2830,8 +2840,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setupPriceButtons() {
   document.querySelectorAll(".prc-btn-new").forEach((button) => {
-    button.addEventListener("click", function (e) {
+    const newButton = button.cloneNode(true)
+    button.parentNode.replaceChild(newButton, button)
+
+    newButton.addEventListener("click", function (e) {
+      e.preventDefault()
       e.stopPropagation()
+
       const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
       if (card) {
         const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
@@ -2845,7 +2860,8 @@ function setupPriceButtons() {
       }
     })
 
-    button.style.cursor = "pointer"
+    newButton.style.cursor = "pointer"
+    newButton.style.pointerEvents = "auto"
   })
 }
 
@@ -2932,7 +2948,10 @@ function setupWebButtonWarning() {
     createWarningModal()
   }
   document.querySelectorAll(".web-btn").forEach((btn) => {
-    btn.addEventListener("click", function (e) {
+    const newBtn = btn.cloneNode(true)
+    btn.parentNode.replaceChild(newBtn, btn)
+
+    newBtn.addEventListener("click", function (e) {
       e.preventDefault()
       e.stopPropagation()
 
@@ -2953,38 +2972,111 @@ function setupWebButtonWarning() {
     })
   })
 }
-document.addEventListener("DOMContentLoaded", () => {
-  createWarningModal()
-  setupWebButtonWarning()
-  function setupFreeWebButtons() {
-    document.querySelectorAll(".free-program-grid + .web-btn").forEach((btn) => {
-      btn.addEventListener("click", function (e) {
-        e.preventDefault()
-        e.stopPropagation()
 
-        const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
-        if (card) {
-          const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
-          if (nameElement) {
-            const name = nameElement.textContent.trim().split(/\s+/)[0]
-            const exploit = expData.find((exp) => exp.name === name)
+function setupPriceButtons() {
+  document.querySelectorAll(".prc-btn-new").forEach((button) => {
+    const newButton = button.cloneNode(true)
+    button.parentNode.replaceChild(newButton, button)
 
-            if (exploit && exploit.warning === true) {
-              showModal(exploit)
-              return
-            } else if (exploit && exploit.href) {
-              window.open(exploit.href, "_blank")
-            }
+    newButton.addEventListener("click", function (e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit && exploit.priceHref) {
+            window.open(exploit.priceHref, "_blank")
           }
         }
-      })
+      }
     })
-  }
+
+    newButton.style.cursor = "pointer"
+    newButton.style.pointerEvents = "auto"
+  })
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  createWarningModal()
+
+  // Call the original render function
+  if (els.lvlVal) els.lvlVal.textContent = "ALL"
+  if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
+  updCnts()
   rndrExps()
-  setupFreeWebButtons()
+  initStrs()
+  stpEvts()
+  crtUncMdl()
+  setupPriceButtons()
+  setupPriceButtonRedirects()
+  createInfoModal()
+  initTextSwitching()
+  setupDropdowns()
+  updateScrollbarStyles()
   const originalRndrExps = rndrExps
   rndrExps = () => {
     originalRndrExps()
-    setupFreeWebButtons()
+    setTimeout(() => {
+      setupPriceButtons()
+      setupWebButtonWarning()
+      setupUncButtons()
+      setupInfoButtons()
+    }, 100)
   }
+  setupWebButtonWarning()
+  setupPriceButtons()
 })
+
+function setupUncButtons() {
+  document.querySelectorAll(".unc-btn").forEach((btn) => {
+    const newBtn = btn.cloneNode(true)
+    btn.parentNode.replaceChild(newBtn, btn)
+
+    newBtn.addEventListener("click", function (e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit) {
+            opnUncMdl(exploit)
+          }
+        }
+      }
+    })
+  })
+}
+
+function setupInfoButtons() {
+  document.querySelectorAll(".info-btn").forEach((btn) => {
+    const newBtn = btn.cloneNode(true)
+    btn.parentNode.replaceChild(newBtn, btn)
+
+    newBtn.addEventListener("click", function (e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      const card = this.closest(".exp-crd") || this.closest(".exp-lst-itm")
+      if (card) {
+        const nameElement = card.querySelector(".crd-ttl") || card.querySelector(".lst-itm-ttl")
+        if (nameElement) {
+          const name = nameElement.textContent.trim().split(/\s+/)[0]
+          const exploit = expData.find((exp) => exp.name === name)
+          if (exploit) {
+            openInfoModal(exploit)
+          }
+        }
+      }
+    })
+  })
+}
+
+document.addEventListener("DOMContentLoaded", fixButtonStyles)
