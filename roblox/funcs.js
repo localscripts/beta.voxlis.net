@@ -3078,5 +3078,3 @@ function setupInfoButtons() {
     })
   })
 }
-
-document.addEventListener("DOMContentLoaded", fixButtonStyles)
