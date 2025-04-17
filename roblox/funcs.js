@@ -427,7 +427,7 @@ const expData = [
     editor: "voxlis.NET",
     txtColor: "text-red-500",
     accentColor: "from-red-600 to-red-700",
-    href: "https://yap.com/",
+    href: "https://4324.com/",
     priceHref: "https://yap.com/",
     info: "## Oops! 🤭\n- Looks like we had not gathered the information yet on this Exploit! This could take some time to finish...\n\nIf you would like to help us out, visit https://github.com/localscripts/voxlis.NET/blob/main/README.md!",
     hide: false,
@@ -2901,7 +2901,6 @@ function createWarningModal() {
       </div>
     </div>
   `
-  document.body.appendChild(modalContainer)
 }
 
 function showModal(exploit) {
@@ -2910,31 +2909,23 @@ function showModal(exploit) {
   const cancelBtn = document.getElementById("warningModalCancel")
   const okayBtn = document.getElementById("warningModalOkay")
   const targetUrl = exploit.href
-
   warningText.textContent = exploit.warningInfo || "Are you sure you want to visit this website?"
-
-  let freezeOverlay = document.getElementById("pageFreezeOverlay")
-  if (!freezeOverlay) {
-    freezeOverlay = document.createElement("div")
-    freezeOverlay.id = "pageFreezeOverlay"
-    freezeOverlay.className = "page-freeze-overlay"
-    document.body.appendChild(freezeOverlay)
-  }
-
-  freezeOverlay.style.display = "block"
   warningModal.style.display = "flex"
-  warningModal.style.zIndex = "10001"
   document.body.style.overflow = "hidden"
-
+  void warningModal.offsetWidth
+  warningModal.classList.add("active")
   function cleanup() {
-    warningModal.style.display = "none"
-    freezeOverlay.style.display = "none"
-    document.body.style.overflow = ""
+    warningModal.classList.remove("active")
+    setTimeout(() => {
+      warningModal.style.display = "none"
+      document.body.style.overflow = ""
+    }, 300)
   }
 
   cancelBtn.onclick = () => {
     cleanup()
   }
+
   okayBtn.onclick = () => {
     cleanup()
     if (targetUrl) {
@@ -3002,8 +2993,6 @@ function setupPriceButtons() {
 
 document.addEventListener("DOMContentLoaded", () => {
   createWarningModal()
-
-  // Call the original render function
   if (els.lvlVal) els.lvlVal.textContent = "ALL"
   if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
   updCnts()
