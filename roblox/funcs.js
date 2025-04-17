@@ -84,7 +84,8 @@ const expData = [
     accentColor: "from-blue-600 to-blue-700",
     href: "https://link-hub.net/1319977/wave-level-8-exploit",
     priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258#f0",
-    info: "## Exploit Experience\n- [Wave]() works like a normal executor, has good uptime, but has its issues like random crashes, UI not saving tabs, and the workspace folder not saving after updates. [Wave]() offers a smooth experience and is bundled into a single `.exe` file, unlike many other exploits that come in `.zip` archives with multiple `.dll` files.\n\n## Background Information\n- In March 2022, [@lxnny]() — the owner of Delta — reposted the CW (community warning) on [WeAreDevs.NET](), exposing ArceusX for ratting users and massively scamming their developers.\n- Originally, [Wave's]() launch was delayed and teased multiple times in their Discord server.\n  It eventually released around April 5–9, but saw very few updates early on.\n  For example, when Roblox updated on a Wednesday, Wave wouldn't get updated until Friday.\n  This pattern continued up until December 2024, sometimes with even bigger delays.\n- Since December, [Wave]() has shown better performance and has been more consistent.\n  However, the UI and other features haven't seen much attention or updates since then.\n\n## Developers Background Information\n- Currently owned by [@Tiahh](), developer information is missing.\n\n> Sources: Reddit.com/r/robloxhackers, WeAreDevs.NET, Old V3rmillion.net",    hide: false,
+    info: "## Exploit Experience\n- [Wave]() works like a normal executor, has good uptime, but has its issues like random crashes, UI not saving tabs, and the workspace folder not saving after updates. [Wave]() offers a smooth experience and is bundled into a single `.exe` file, unlike many other exploits that come in `.zip` archives with multiple `.dll` files.\n\n## Background Information\n- In March 2022, [@lxnny]() — the owner of Delta — reposted the CW (community warning) on [WeAreDevs.NET](), exposing ArceusX for ratting users and massively scamming their developers.\n- Originally, [Wave's]() launch was delayed and teased multiple times in their Discord server.\n  It eventually released around April 5–9, but saw very few updates early on.\n  For example, when Roblox updated on a Wednesday, Wave wouldn't get updated until Friday.\n  This pattern continued up until December 2024, sometimes with even bigger delays.\n- Since December, [Wave]() has shown better performance and has been more consistent.\n  However, the UI and other features haven't seen much attention or updates since then.\n\n## Developers Background Information\n- Currently owned by [@Tiahh](), developer information is missing.\n\n> Sources: Reddit.com/r/robloxhackers, WeAreDevs.NET, Old V3rmillion.net",
+    hide: false,
     hasKeySystem: false,
     free: false,
   },
@@ -433,7 +434,8 @@ const expData = [
     hasKeySystem: false,
     free: true,
     warning: true,
-    warningInfo: "The owner of Ronix—formerly known as Nexam—has a documented history of community warnings and prior involvement in spreading malware. For more information, please refer to the 'MORE INFO' section if available. Would you still like to proceed to Ronix?",
+    warningInfo:
+      "The owner of Ronix—formerly known as Nexam—has a documented history of community warnings and prior involvement in spreading malware. For more information, please refer to the 'MORE INFO' section if available. Would you still like to proceed to Ronix?",
   },
   {
     id: "aimmy",
@@ -1309,13 +1311,17 @@ function stpEvts() {
     }
   })
 
-  els.menuTgl.addEventListener("click", () => {
-    els.menu.classList.toggle("hidden")
-    document.body.classList.toggle("menu-open")
-    els.menuTgl.innerHTML = els.menu.classList.contains("hidden")
-      ? '<i class="fas fa-bars"></i>'
-      : '<i class="fas fa-times"></i>'
-  })
+  if (els.menuTgl) {
+    els.menuTgl.addEventListener("click", () => {
+      if (els.menu) {
+        els.menu.classList.toggle("hidden")
+        document.body.classList.toggle("menu-open")
+        els.menuTgl.innerHTML = els.menu.classList.contains("hidden")
+          ? '<i class="fas fa-bars"></i>'
+          : '<i class="fas fa-times"></i>'
+      }
+    })
+  }
 
   els.srch.addEventListener("input", (e) => {
     st.qry = e.target.value
@@ -1796,26 +1802,56 @@ function fltrExps() {
       return true
     })
     .sort((a, b) => {
-      switch (st.srtBy) {
-        case "price-asc":
-          const prcA = a.price === "FREE" ? 0 : Number.parseFloat(a.price.replace("$", ""))
-          const prcB = b.price === "FREE" ? 0 : Number.parseFloat(b.price.replace("$", ""))
-          return prcA - prcB
-        case "price-desc":
-          const prcC = a.price === "FREE" ? 0 : Number.parseFloat(a.price.replace("$", ""))
-          const prcD = b.price === "FREE" ? 0 : Number.parseFloat(b.price.replace("$", ""))
-          return prcD - prcC
-        case "level-desc":
-          return b.lvl - a.lvl
-        case "name-asc":
-          return a.name.localeCompare(b.name)
-        default:
-          if (a.verified && !b.verified) return -1
-          if (!a.verified && b.verified) return 1
-          if (a.premium && !b.premium) return -1
-          if (!a.premium && b.premium) return 1
-          return 0
-      }
+      const sortFn = (() => {
+        switch (st.srtBy) {
+          case "price-asc":
+            return (a, b) => {
+              const priceA = Array.isArray(a.price)
+                ? Number.parseFloat(a.price[0].replace(/[^\d.]/g, "")) || 0
+                : a.price === "FREE"
+                  ? 0
+                  : Number.parseFloat(a.price.replace(/[^\d.]/g, "")) || 0
+
+              const priceB = Array.isArray(b.price)
+                ? Number.parseFloat(b.price[0].replace(/[^\d.]/g, "")) || 0
+                : b.price === "FREE"
+                  ? 0
+                  : Number.parseFloat(b.price.replace(/[^\d.]/g, "")) || 0
+
+              return priceA - priceB
+            }
+          case "price-desc":
+            return (a, b) => {
+              const priceA = Array.isArray(a.price)
+                ? Number.parseFloat(a.price[0].replace(/[^\d.]/g, "")) || 0
+                : a.price === "FREE"
+                  ? 0
+                  : Number.parseFloat(a.price.replace(/[^\d.]/g, "")) || 0
+
+              const priceB = Array.isArray(b.price)
+                ? Number.parseFloat(b.price[0].replace(/[^\d.]/g, "")) || 0
+                : b.price === "FREE"
+                  ? 0
+                  : Number.parseFloat(b.price.replace(/[^\d.]/g, "")) || 0
+
+              return priceB - priceA
+            }
+          case "level-desc":
+            return (a, b) => b.lvl - a.lvl
+          case "name-asc":
+            return (a, b) => a.name.localeCompare(b.name)
+          default:
+            return (a, b) => {
+              if (a.verified && !b.verified) return -1
+              if (!a.verified && b.verified) return 1
+              if (a.premium && !b.premium) return -1
+              if (!a.premium && b.premium) return 1
+              return 0
+            }
+        }
+      })()
+
+      return sortFn(a, b)
     })
 
   rndrExps()
@@ -1950,6 +1986,7 @@ document.addEventListener("DOMContentLoaded", () => {
   stpEvts()
   crtUncMdl()
   setupPriceButtons()
+  setupPriceButtonRedirects()
   createInfoModal()
   initTextSwitching()
   setupDropdowns()
@@ -2373,7 +2410,13 @@ function crtLstItm(exp) {
 }
 
 function setupDropdowns() {
-  const pageOverlay = document.getElementById("pageOverlay")
+  const pageOverlay = document.getElementById("pageOverlay") || document.createElement("div")
+  if (!document.getElementById("pageOverlay")) {
+    pageOverlay.id = "pageOverlay"
+    pageOverlay.className = "page-overlay"
+    document.body.appendChild(pageOverlay)
+  }
+
   const dropdowns = document.querySelectorAll(".custom-dropdown")
 
   dropdowns.forEach((dropdown) => {
@@ -2381,36 +2424,44 @@ function setupDropdowns() {
     const options = dropdown.querySelector(".custom-dropdown-options")
     const optionItems = dropdown.querySelectorAll(".custom-dropdown-option")
 
-    selected.addEventListener("click", (e) => {
-      e.stopPropagation()
-      dropdowns.forEach((d) => {
-        if (d !== dropdown && d.classList.contains("active")) {
-          d.classList.remove("active")
+    if (selected) {
+      selected.addEventListener("click", (e) => {
+        e.stopPropagation()
+        dropdowns.forEach((d) => {
+          if (d !== dropdown && d.classList.contains("active")) {
+            d.classList.remove("active")
+          }
+        })
+        dropdown.classList.toggle("active")
+        if (dropdown.classList.contains("active")) {
+          pageOverlay.classList.add("active")
+        } else {
+          pageOverlay.classList.remove("active")
         }
       })
-      dropdown.classList.toggle("active")
-      if (dropdown.classList.contains("active")) {
-        pageOverlay.classList.add("active")
-      } else {
-        pageOverlay.classList.remove("active")
-      }
-    })
-    optionItems.forEach((option) => {
-      option.addEventListener("click", () => {
-        const value = option.getAttribute("data-value")
-        const text = option.textContent
-        selected.querySelector("span").textContent = text
-        optionItems.forEach((opt) => opt.classList.remove("selected"))
-        option.classList.add("selected")
-        dropdown.classList.remove("active")
-        pageOverlay.classList.remove("active")
-        if (dropdown.closest(".srt-fltr-cntr") || dropdown.closest(".mob-srt-fltr-cntr")) {
-          st.srtBy = value
-          fltrExps()
-        }
+    }
+
+    if (optionItems) {
+      optionItems.forEach((option) => {
+        option.addEventListener("click", () => {
+          const value = option.getAttribute("data-value")
+          const text = option.textContent
+          if (selected && selected.querySelector("span")) {
+            selected.querySelector("span").textContent = text
+          }
+          optionItems.forEach((opt) => opt.classList.remove("selected"))
+          option.classList.add("selected")
+          dropdown.classList.remove("active")
+          pageOverlay.classList.remove("active")
+          if (dropdown.closest(".srt-fltr-cntr") || dropdown.closest(".mob-srt-fltr-cntr")) {
+            st.srtBy = value
+            fltrExps()
+          }
+        })
       })
-    })
+    }
   })
+
   pageOverlay.addEventListener("click", () => {
     dropdowns.forEach((dropdown) => {
       dropdown.classList.remove("active")
@@ -2428,6 +2479,7 @@ document.addEventListener("DOMContentLoaded", () => {
   stpEvts()
   crtUncMdl()
   setupPriceButtons()
+  setupPriceButtonRedirects()
   createInfoModal()
   initTextSwitching()
   setupDropdowns()
@@ -2660,13 +2712,8 @@ function setupSortDropdowns() {
         const value = this.getAttribute("data-value")
         sortDropdown.querySelector("span").textContent = this.textContent
         sortDropdown.parentElement.classList.remove("active")
-
-        if (window.st) {
-          window.st.srtBy = value
-          if (typeof window.fltrExps === "function") {
-            window.fltrExps()
-          }
-        }
+        window.st.srtBy = value
+        window.fltrExps()
       })
     })
   }
@@ -2690,13 +2737,8 @@ function setupSortDropdowns() {
         const value = this.getAttribute("data-value")
         mobSortDropdown.querySelector("span").textContent = this.textContent
         mobSortDropdown.parentElement.classList.remove("active")
-
-        if (window.st) {
-          window.st.srtBy = value
-          if (typeof window.fltrExps === "function") {
-            window.fltrExps()
-          }
-        }
+        window.st.srtBy = value
+        window.fltrExps()
       })
     })
   }
@@ -3072,3 +3114,84 @@ function setupInfoButtons() {
     })
   })
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenuToggle = document.getElementById("mobMenuTgl")
+  const mobileMenu = document.getElementById("mobMenu")
+
+  if (mobileMenuToggle && mobileMenu) {
+    const newToggle = mobileMenuToggle.cloneNode(true)
+    mobileMenuToggle.parentNode.replaceChild(newToggle, mobileMenuToggle)
+    newToggle.addEventListener("click", function () {
+      if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden")
+        document.body.classList.add("menu-open")
+        this.innerHTML = '<i class="fas fa-times"></i>'
+      } else {
+        mobileMenu.classList.add("hidden")
+        document.body.classList.remove("menu-open")
+        this.innerHTML = '<i class="fas fa-bars"></i>'
+      }
+    })
+  }
+  const dropdowns = document.querySelectorAll(".custom-dropdown")
+  dropdowns.forEach((dropdown) => {
+    const selected = dropdown.querySelector(".custom-dropdown-selected")
+    const options = dropdown.querySelector(".custom-dropdown-options")
+
+    if (selected && options) {
+      const newSelected = selected.cloneNode(true)
+      selected.parentNode.replaceChild(newSelected, selected)
+      newSelected.addEventListener("click", (e) => {
+        e.stopPropagation()
+        dropdowns.forEach((d) => {
+          if (d !== dropdown && d.classList.contains("active")) {
+            d.classList.remove("active")
+          }
+        })
+        dropdown.classList.toggle("active")
+        if (dropdown.classList.contains("active")) {
+          pageOverlay.classList.add("active")
+        } else {
+          pageOverlay.classList.remove("active")
+        }
+      })
+
+      const optionItems = options.querySelectorAll(".custom-dropdown-option")
+      optionItems.forEach((option) => {
+        option.addEventListener("click", function () {
+          const value = this.getAttribute("data-value")
+          const text = this.textContent.trim()
+          const span = newSelected.querySelector("span")
+          if (span) span.textContent = text
+          optionItems.forEach((opt) => opt.classList.remove("selected"))
+          this.classList.add("selected")
+          dropdown.classList.remove("active")
+          pageOverlay.classList.remove("active")
+          if (dropdown.closest(".srt-fltr-cntr") || dropdown.closest(".mob-srt-fltr-cntr")) {
+            if (window.st) {
+              window.st.srtBy = value
+              if (typeof window.fltrExps === "function") {
+                window.fltrExps()
+              }
+            }
+          }
+        })
+      })
+    }
+  })
+  document.addEventListener("click", (e) => {
+    dropdowns.forEach((dropdown) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("active")
+      }
+    })
+    pageOverlay.classList.remove("active")
+  })
+  pageOverlay.addEventListener("click", function () {
+    dropdowns.forEach((dropdown) => {
+      dropdown.classList.remove("active")
+    })
+    this.classList.remove("active")
+  })
+})
