@@ -48,12 +48,12 @@ const expData = [
   {
     id: "swift",
     name: "Swift",
-    desc: "Best Level 8 free exploit.",
+    desc: "Has a lifetime subscription.",
     lvl: 8,
-    price: ["FREE"],
+    price: ["$14.99", "FREE"],
     plat: ["windows"],
     pros: ["Has a lifetime option", "Has a decompiler", "100% sUNC", "Level 8"],
-    neutral: ["Early build - expect bugs"],
+    neutral: [],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
@@ -64,7 +64,7 @@ const expData = [
     hasKeySystem: true,
     free: true,
     href: "https://link-target.net/1319977/swift",
-    priceHref: "https://link-target.net/1319977/swift",
+    priceHref: "https://bloxproducts.com/?affiliate_key=1270744029168009258",
     hide: false,
   },
   {
@@ -88,8 +88,6 @@ const expData = [
     hide: false,
     hasKeySystem: false,
     free: false,
-    warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Wave’s website anyway?",
   },
   {
     id: "macsploit",
@@ -99,8 +97,8 @@ const expData = [
     price: "$9.99",
     period: "lifetime",
     plat: ["macos"],
-    pros: ["Has a Trial version", "Has a decompiler", "98% UNC", "Level 8"],
-    neutral: [],
+    pros: ["Has a decompiler", "98% UNC", "Level 8"],
+    neutral: ["Updates are slightly late"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
@@ -112,8 +110,6 @@ const expData = [
     hide: false,
     hasKeySystem: false,
     free: false,
-    warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to MacSploit's website anyway?",
   },
   {
     id: "cryptic",
@@ -123,8 +119,8 @@ const expData = [
     price: "$4.99",
     period: "monthly",
     plat: ["windows", "ios", "android"],
-    pros: ["Almost on all platforms", "Has a decompiler", "100% UNC", "Level 8"],
-    neutral: [],
+    pros: ["100% UNC", "Level 8"],
+    neutral: ["Has a keysystem"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
@@ -192,7 +188,7 @@ const expData = [
     price: "FREE",
     plat: ["windows"],
     pros: ["Has a decompiler", "51% sUNC"],
-    neutral: ["Level 3"],
+    neutral: ["Level 3", "Not stable"],
     cons: [],
     verified: true,
     editor: "voxlis.NET",
@@ -233,7 +229,7 @@ const expData = [
     lvl: 8,
     price: "FREE",
     plat: ["android"],
-    pros: ["Has a decompiler", "100% UNC", "Level 8"],
+    pros: ["100% UNC", "Level 8"],
     neutral: ["Includes a keysystem"],
     cons: [],
     verified: true,
@@ -257,7 +253,7 @@ const expData = [
     pros: ["Best script support", "100% UNC", "Level 8"],
     neutral: ["Includes a keysystem"],
     cons: [],
-    verified: true,
+    verified: false,
     editor: "imveryh4ppy",
     txtColor: "text-blue-500",
     accentColor: "from-blue-600 to-blue-700",
@@ -332,8 +328,6 @@ const expData = [
     hide: false,
     hasKeySystem: false,
     free: true,
-    warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Velocity website anyway?",
   },
   {
     id: "apple-ware",
@@ -355,8 +349,6 @@ const expData = [
     hide: false,
     hasKeySystem: false,
     free: true,
-    warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Aple-Ware's website anyway?",
   },
   {
     id: "celery",
@@ -555,7 +547,7 @@ const expData = [
     hide: false,
     free: true,
     warning: true,
-    warningInfo: "voxlis.NET recommends checking out “MORE INFO” for Wave so you know what you’re getting. Would you like to continue to Rat-Ware's website anyway?",
+    warningInfo: "pls read 'more info' before continuing plz",
   },
 ]
 
@@ -572,7 +564,7 @@ const st = {
   keyOnly: false,
   noKeyOnly: false,
   srtBy: "recommended",
-  fltrd: [...expData],
+  fltrd: expData.filter((exp) => exp.hide !== true),
 }
 
 const els = {
@@ -1266,6 +1258,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     isSlowDevice() ? 100 : 50,
   )
+
+  st.fltrd = expData.filter((exp) => exp.hide !== true)
+
   if (els.lvlVal) els.lvlVal.textContent = "ALL"
   if (els.mLvlVal) els.mLvlVal.textContent = "ALL"
   updCnts()
