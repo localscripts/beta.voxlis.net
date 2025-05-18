@@ -549,6 +549,25 @@ const expData = [
     warning: true,
     warningInfo: "pls read 'more info' before continuing plz",
   },
+    {
+      id: "kernel-realirist",
+      name: "Kernel",
+      desc: "One of the best in-game executors.",
+      lvl: 2,
+      price: "FREE",
+      plat: [],
+      pros: [],
+      neutral: ["Only works in one game", "Undetected", "32% UNC"],
+      cons: [],
+      verified: true,
+      editor: "voxlis.NET",
+      txtColor: "text-blue-500",
+      accentColor: "from-purple-600 to-purple-700",
+      premium: false,
+      href: "https://www.roblox.com/games/107411491460392/Kernel",
+      priceHref: "",
+      hide: false,
+    }
 ]
 
 const st = {
